@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description"><title>MySQL基础 | 墨鸿的Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">MySQL基础</h1><a id="logo" href="/.">墨鸿的Blog</a><p class="description"></p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">MySQL基础</h1><div class="post-meta">Apr 26, 2016</div><div class="post-content"><p>Structured Query Language 结构化查询语言, 关系型数据库，由标准和扩展部分组成</p>
+<a id="more"></a>
+<h1 id="SQL语句的组成"><a href="#SQL语句的组成" class="headerlink" title="SQL语句的组成"></a>SQL语句的组成</h1><ul>
+<li>DQL 数据查询语言</li>
+<li>DML 数据操作语言</li>
+<li>DDL 数据定义语言</li>
+<li>DCL 数据控制语言</li>
+<li>TPL 事务处理语言</li>
+<li>CCL 指针控制语言</li>
+</ul>
+<h1 id="常用数据库"><a href="#常用数据库" class="headerlink" title="常用数据库"></a>常用数据库</h1><ul>
+<li>Oracle</li>
+<li>DB2</li>
+<li>MySQL</li>
+</ul>
+<h1 id="MySQL的安装与配置"><a href="#MySQL的安装与配置" class="headerlink" title="MySQL的安装与配置"></a>MySQL的安装与配置</h1><p>大小写问题：mysql在windows系统中不区分大小写，但在其他系统中严格区分大小写。<br>验证是否安装配置成功：<br><code>mysql -u root -p</code></p>
+<p>（Hibernate）<br>Java类和表结构对应的<br>Java对象和表中的一条记录是对应的</p>
+<h1 id="DDL：数据定义语言"><a href="#DDL：数据定义语言" class="headerlink" title="DDL：数据定义语言"></a>DDL：数据定义语言</h1><p>作用：用于描述数据库中要存储的现实世界实体的语言。即创建数据库和表的结构<br>常用关键字：<code>CREATE</code> , <code>ALTER</code> , <code>DROP</code> , <code>TRUNCATE</code></p>
+<h2 id="库操作"><a href="#库操作" class="headerlink" title="库操作"></a>库操作</h2><p>显示所有的数据库：<br><code>show databases;</code></p>
+<p>创建一个名为mydb1的数据库：<br><code>create database mydb1;</code></p>
+<p>查看数据库的创建细节，可以看到使用的字符集<br><code>show create database mydb1;</code></p>
+<p>创建一个使用gbk字符集的mydb2数据库：<br><code>create database mydb2 character set gbk;</code></p>
+<p>删除前面创建的mydb2数据库：<br><code>drop database mydb2;</code></p>
+<p>把mydb1的字符集修改为utf8;<br><code>alter database mydb1 character set utf8;</code></p>
+<h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><p>选择数据库<br><code>use mydb1;</code></p>
+<p>显示当前选择的数据库<br><code>select database();</code></p>
+<p>创建一个员工表：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create table employee(</span><br><span class="line">	id int,</span><br><span class="line">	name varchar(100),</span><br><span class="line">	gender varchar(10),</span><br><span class="line">	birthday date,</span><br><span class="line">	job varchar(100),</span><br><span class="line">	salary float(8,2),</span><br><span class="line">	resume text</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>查看库中的所有表格<br><code>show tables;</code></p>
+<p>查看表的结构<br><code>desc employee;</code></p>
+<p>查看表的创建细节<br><code>show create table employee;</code></p>
+<p>添加一个image列<br><code>alter table employee add image blob;</code></p>
+<p>修改job列的长度为60<br><code>alter table employee modify job varchar(60);</code></p>
+<p>删除image列<br><code>alter table employee drop image;</code></p>
+<p>表名改为user<br><code>rename table employee to user;</code></p>
+<p>修改表的字符集为utf8<br><code>alter table user character set utf8;</code></p>
+<p>修改列名name为username<br><code>alter table user change name username varchar(100);</code></p>
+<h1 id="DML：数据操作语言"><a href="#DML：数据操作语言" class="headerlink" title="DML：数据操作语言"></a>DML：数据操作语言</h1><p>作用：向数据库中插入、删除、修改数据<br>常用关键字：<code>insert</code> ,<code>update</code>,<code>delete</code><br>注意：</p>
+<ul>
+<li>mysql中，字符串或者日期要包含在单引号中</li>
+<li>空值的表示为：null</li>
+</ul>
+<p>使用insert语句向表中插入三个员工的信息</p>
+<p><code>insert into user values (1,&#39;tom&#39;,&#39;female&#39;,&#39;1992-3-9&#39;,&#39;CTO&#39;,&#39;1000&#39;,&#39;developer&#39;);</code></p>
+<p><code>insert into user (id,username,gender,birthday,job,salary,resume)  values (2,&#39;jack&#39;,&#39;male&#39;,&#39;1993-3-9&#39;,&#39;CTO&#39;,&#39;2000&#39;,&#39;developer&#39;);</code></p>
+<p><code>insert into user (id,username,gender,birthday,job,salary,resume)  values (3,&#39;Lili&#39;,&#39;female&#39;,&#39;1993-3-9&#39;,&#39;CTO&#39;,&#39;2000&#39;,&#39;developer&#39;);</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show variables like &apos;character%&apos;;</span><br><span class="line">+--------------------------+--------------------------------+</span><br><span class="line">| Variable_name            | Value                          |</span><br><span class="line">+--------------------------+--------------------------------+</span><br><span class="line">| character_set_client     | gbk     客户端使用的编码</span><br><span class="line">| character_set_connection | gbk    数据库连接时使用的编码</span><br><span class="line">| character_set_database   | utf8     数据库使用的编码</span><br><span class="line">| character_set_filesystem | binary    </span><br><span class="line">| character_set_results    | gbk      查询结果集使用的编码</span><br><span class="line">| character_set_server     | latin1    服务器使用的编码</span><br><span class="line">| character_set_system     | utf8     系统使用的编码</span><br><span class="line">| character_sets_dir       | E:\xampp\mysql\share\charsets\ |</span><br><span class="line">+--------------------------+--------------------------------+</span><br></pre></td></tr></table></figure>
+<p>告知服务器客户端使用的编码：<br><code>set character_set_client=gbk;</code></p>
+<p>告知服务器返回的结果集使用gbk：<br><code>set character_set_results=gbk</code></p>
+<p>查看表中的所有记录<br><code>select * from user;</code></p>
+<p>将所有员工的薪水修改为3000：<br><code>update user set salary=3000;</code></p>
+<p>将姓名为“tom”的员工薪水改为2500：<br><code>update user set salary=2500 where username=&#39;tom&#39;;</code></p>
+<p>将姓名为”jack” 的员工薪水改为3200，job改为front-end：<br><code>update user set salary=4000,job=&#39;font-end&#39; where username=&#39;jack&#39;;</code></p>
+<p>将Lili的薪水在原有的基础上增加1000：<br><code>update user set salary=salary+1000 where username=&#39;Lili&#39;;</code></p>
+<p>删除表中用户名为Lili的记录：<br><code>delete from user where username=&#39;Lili&#39;;</code></p>
+<p>删除表中所有记录：<br><code>delete from user;</code></p>
+<p>使用truncate删除表中记录(摧毁整张表格，重新建立表结构)<br><code>truncate table user;</code>  </p>
+<h1 id="DQL-数据查询语言"><a href="#DQL-数据查询语言" class="headerlink" title="DQL 数据查询语言"></a>DQL 数据查询语言</h1><p>Date Query Language<br>作用：查询数据，返回结果集<br>常用关键字：select</p>
+<p>查询所有学生的信息<br><code>select * from student;</code></p>
+<p>查询表中所有学生的姓名和对应的英语成绩<br><code>select name,english from student;</code></p>
+<p>过滤表中重复的数据<br><code>select distinct english from student;</code></p>
+<p>给所有学生数学分数加上10分特长分<br><code>select name,math+10 from student;</code></p>
+<p>统计每个学生的总分<br><code>select name,chinese+english+math from student;</code></p>
+<p>使用别名表示学生分数<br><code>select name as 姓名,chinese+english+math 总分 from student;</code></p>
+<p>查询id=1的学生信息<br><code>select * from student where id=1;</code></p>
+<p>查询英语分数在80-90之间的学生信息<br><code>select * from student where english between 80 and 90;</code></p>
+<p>查询数学成绩为89，90,91的学生信息<br><code>select * from student where math in (89,90,91);</code></p>
+<p>查询姓李的学生信息<br><code>select * from student where name like &#39;李%&#39;;</code></p>
+<p>查询数学成绩大于80，语文成绩大于80的学生<br><code>select * from student where math&gt;80 and chinese&gt;80;</code></p>
+<p>对数学成绩排序输出<br><code>select name,math from student order by math;</code></p>
+<p>对总分排序从高到低倒序输出<br><code>select name as 姓名,chinese+english+math 总分 from student order by 总分 desc;</code></p>
+<h1 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h1><p>数据完整性是为了保证插入到数据中的数据是正确的，它放防止了用户可能的输入错误。</p>
+<ul>
+<li>实体（行）完整性<br>规定表的一行（即每一条记录）在表中是唯一的实体。<br>通过定义主键约束来实现<br>主键：primary key （不能为null,且唯一）<ul>
+<li>逻辑主键：比如ID，不代表实际的业务意义，只是用来标识唯一的一条记录（推荐使用）</li>
+<li>业务主键：比如username作为主键<br>实现方式1：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table t1(</span><br><span class="line">	id int primary key,</span><br><span class="line">	name varchar(100)</span><br><span class="line">	);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>实现方式2：可以定义联合主键<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table t2(</span><br><span class="line">	id int,</span><br><span class="line">	name varchar(100),</span><br><span class="line">	primary key (id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>实现方式3：（推荐）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table t3(</span><br><span class="line">	id int,</span><br><span class="line">	name varchar(100)</span><br><span class="line">);</span><br><span class="line">alter table t3 add primary key (id);</span><br></pre></td></tr></table></figure></p>
+<p>主键自增（Oracle没有）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table t4(</span><br><span class="line">	id int primary key auto_increment,</span><br><span class="line">	name varchar(100)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>域（列）完整性<br>指数据库表的列（即字段）必须符合某种特定的数据类型或约束<br>数据类型<br>长度<br>非空约束（not null）<br>唯一约束（unique）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table t5(</span><br><span class="line">	username varchar(100) not null unique,</span><br><span class="line">	gender varchar(100),</span><br><span class="line">	phonenumber varchar(100)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参照完整性（多表）外键约束<br>多表设计：一对多，多对多，一对一<br>一对多：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">create table customers(</span><br><span class="line">	id int,</span><br><span class="line">	name varchar(100),</span><br><span class="line">	address varchar(255)</span><br><span class="line">);</span><br><span class="line">create table orders(</span><br><span class="line">	id int primary key,</span><br><span class="line">	order_num varchar(100),</span><br><span class="line">	price float(8,2),</span><br><span class="line">	status int,</span><br><span class="line">	customer_id int,</span><br><span class="line">	constraint customer_id_fk foreign key(customer_id) references customers(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h1><p>链接查询</p>
+<ul>
+<li>交叉链接 （隐式查询，不使用关键字）：<br><code>select * from customers,orders;</code>  </li>
+<li>内链接：<br><code>select * from customers c,orders o where c.id=o.customer_id;</code></li>
+<li>外链接：<br>左外：返回符合链接条件的记录，同时返回左表中不满足链接条件的剩余记录<br>右外：</li>
+</ul>
+<p>几个简单的查询</p>
+<ul>
+<li>嵌套查询  子查询的语句放到小括号之内。</li>
+<li>联合查询</li>
+<li>报表查询</li>
+</ul>
+<h1 id="分组统计"><a href="#分组统计" class="headerlink" title="分组统计"></a>分组统计</h1><p>统计一个班共有多少学生？<br><code>select count(*) from student;</code></p>
+<p>统计数学成绩大于90分的学生共有多少个<br><code>select count(*) from student where math&gt;90;</code></p>
+<p>统计一个班的数学总成绩<br><code>select sum(math) from student ;</code></p>
+<p>注意：可以使用反引号把关键字引起来，当做普通字符串对待</p>
+</div><div class="tags"><a href="/tags/mysql/">mysql</a></div><div class="post-nav"><a href="/2016/04/29/学习Java过程中遇到的困惑/" class="pre">Java学习中遇到的困惑</a><a href="/2016/04/11/正则表达式/" class="next">正则表达式</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://arthas.com.cn"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/填坑/" style="font-size: 15px;">填坑</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/java-web/" style="font-size: 15px;">java web</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/mongodb/" style="font-size: 15px;">mongodb</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/webwiew/" style="font-size: 15px;">webwiew</a> <a href="/tags/flex/" style="font-size: 15px;">flex</a> <a href="/tags/react-native/" style="font-size: 15px;">react native</a> <a href="/tags/bootstrap/" style="font-size: 15px;">bootstrap</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/dpr/" style="font-size: 15px;">dpr</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/06/Algorithms笔记/">Algorithms笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Nginx反向代理实现Tomcat集群/">Nginx反向代理实现Tomcat集群</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/17/设备像素比的实际意义/">设备像素比的实际意义</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/关于flex的总结/">关于fiex的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/windows下安装Sass的正确姿势/">windows下安装Sass的正确姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/19/mongodb速记/">mongodb速记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/初识ReactNative/">初识ReactNative</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/13/javascript版2048开发总结/">javascript版2048开发总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/26/定制自己的Bootstrap样式/">定制自己的Bootstrap样式</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/24/实现类似饿了么网站标题栏的交互/">实现类似饿了么网站标题栏的交互</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.example1.com/" title="site-name1" target="_blank">site-name1</a><ul></ul><a href="http://www.example2.com/" title="site-name2" target="_blank">site-name2</a><ul></ul><a href="http://www.example3.com/" title="site-name3" target="_blank">site-name3</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2017 <a href="/." rel="nofollow">墨鸿的Blog.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
