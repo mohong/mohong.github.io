@@ -1,4 +1,911 @@
-<!DOCTYPE html><html lang="null"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content="墨鸿的博客"><title>Find the Truth | 墨鸿的博客</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/7.0.0/normalize.min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css"><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/pure/1.0.0/grids-responsive-min.css"><link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Find the Truth</h1><a id="logo" href="/.">Find the Truth</a><p class="description">墨鸿的博客</p></div><div id="nav-menu"><a href="/." class="current"><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 关于</i></a><a href="/atom.xml"><i class="fa fa-rss"> RSS</i></a></div></div><div id="layout" class="pure-g"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title"><a href="/2016/08/24/实现类似饿了么网站标题栏的交互/">实现类似饿了么网站标题栏的交互</a></h1><div class="post-meta">2016-08-24</div><div class="post-content"><p><img src="http://ob9qd20l4.bkt.clouddn.com/elemo.jpg" class="full-image"></p></div><p class="readmore"><a href="/2016/08/24/实现类似饿了么网站标题栏的交互/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/">Hexo修改了样式部署后无效果解决办法</a></h1><div class="post-meta">2016-07-30</div><div class="post-content"><p>修改完Hexo的样式后本地预览已经显示正常了，<code>hexo deploy</code>后却还是之前的样式，百度一圈之后明白其原因是之前生成部署缓存文件导致的，得到有效的解决办法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure></p>
-<p>此指令会清楚之前的部署缓存文件，然后在<code>hexo g</code>，<code>hexo d</code>，刷新页面，站点已更新为最新的样式。</p></div><p class="readmore"><a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/07/16/彻底解决mysql不能输入中文的问题/">彻底解决mysql不能输入中文的问题</a></h1><div class="post-meta">2016-07-16</div><div class="post-content"><p>用struts2写了一个页面表单提交数据，数据库为MySQL。提交的时候出现了如下报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.RuntimeException: java.sql.SQLException: Incorrect string value: &apos;\xE5\x90\x83\xE9\xA5\xAD...&apos; for column &apos;hobby&apos; at row 1 Query: insert into students (username,password,gender,hobby,birthday,email,grade) values (?,?,?,?,?,?,?) Parameters: [Ttt, ttt, male, 吃饭,睡觉, null, , 0]</span><br><span class="line">	at com.itheima.dao.impl.StudentDaoImpl.save(StudentDaoImpl.java:21)</span><br><span class="line">	at com.itheima.service.impl.BusinessServiceImpl.registStudent(BusinessServiceImpl.java:11)</span><br><span class="line">	......</span><br></pre></td></tr></table></figure></p>
-<p>当把表单内容全部修改为字母时，提交成功。<br>然后在mysql中<code>\s</code>，查看到如下信息：</p></div><p class="readmore"><a href="/2016/07/16/彻底解决mysql不能输入中文的问题/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/07/10/Java-web中的常用类名词解释/">Java web中的常用类名词解释</a></h1><div class="post-meta">2016-07-10</div><div class="post-content"><p>DBCP（DataBase Connection Pool）<br>数据库连接池。是 apache 上的一个 java 连接池项目，也是 tomcat 使用的连接池组件。单独使用dbcp需要2个包：commons-dbcp.jar,commons-pool.jar由于建立数据库连接是一个非常耗时耗资源的行为，所以通过连接池预先同数据库建立一些连接，放在内存中，应用程序需要建立数据库连接时直接到连接池中申请一个就行，用完后再放回去。</p></div><p class="readmore"><a href="/2016/07/10/Java-web中的常用类名词解释/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/07/04/Linux下后台运行jar文件/">Linux下后台运行jar文件</a></h1><div class="post-meta">2016-07-04</div><div class="post-content"><p>当我们把java程序打成jar包后，放到linux上通过putty或其它终端执行的时候，如果按照：java -jar xxxx.jar执行，当我们退出putty或终端的时候，xxxx.jar这个程序也会停止。为了保证程序能够一直运行，应该改为这样运行： <code>java -jar xxx.jar &amp;</code>命令，则程序会在后台一直运行，值得注意的是，此时程序控制台输出会被转移到nohup.out文件中，这个nohup.out文件的位置就在jar包的当前文件夹内。</p></div><p class="readmore"><a href="/2016/07/04/Linux下后台运行jar文件/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/05/24/解决每次向github提交要输入用户名和密码问题/">解决每次向github提交要输入用户名和密码问题</a></h1><div class="post-meta">2016-05-24</div><div class="post-content"><p>通过SSH文件的验证方式可以解决每次向github提交都要输入用户名和密码的问题</p>
-<p>检查是否存在SSH keys<br>在生成你的SSH key之前，先检查你的电脑上是否存在SSH keys</p></div><p class="readmore"><a href="/2016/05/24/解决每次向github提交要输入用户名和密码问题/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/04/29/学习Java过程中遇到的困惑/">Java学习中遇到的困惑</a></h1><div class="post-meta">2016-04-29</div><div class="post-content"><p>继承（extends）与实现（implements）<br>父类的方法中可以有抽象（abstract）方法，也可以没有抽象方法。当有抽象方法时，这个类就叫做抽象类。假设有一个类的方法既有抽象方法，又有普通方法，如果某子类继承（extends）了该类，且该子类需要创建对象，就必须要实现父类中的<strong>所有抽象方法</strong>才可创建。Java是单继承的。<br>接口有两个特点：</p></div><p class="readmore"><a href="/2016/04/29/学习Java过程中遇到的困惑/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/04/26/MySQL基础/">MySQL基础</a></h1><div class="post-meta">2016-04-26</div><div class="post-content"><p>Structured Query Language 结构化查询语言, 关系型数据库，由标准和扩展部分组成</p></div><p class="readmore"><a href="/2016/04/26/MySQL基础/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/04/11/JavaScript正则表达式/">JavaScript正则表达式</a></h1><div class="post-meta">2016-04-11</div><div class="post-content"><p>正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法, 以及 String 的 match、replace、search 和 split 方法。本章介绍 JavaScript正则表达式。</p></div><p class="readmore"><a href="/2016/04/11/JavaScript正则表达式/">Mehr lesen</a></p></div><div class="post"><h1 class="post-title"><a href="/2016/04/05/什么是webview/">什么是webView</a></h1><div class="post-meta">2016-04-05</div><div class="post-content"><p> 在Android手机中内置了一款高性能webkit内核浏览器，在SDK中封装为一个叫做WebView（网络视图）的组件。Android4.4的内核是chrome内核，Android4.4以下是Android webkit内核。<br>A View that displays web pages. This class is the basis upon which you can roll your own web browser or simply display some online content within your Activity. It uses the WebKit rendering engine to display web pages and includes methods to navigate forward and backward through a history, zoom in and out, perform text searches and more.</p></div><p class="readmore"><a href="/2016/04/05/什么是webview/">Mehr lesen</a></p></div><nav class="page-navigator"><a class="extend prev" rel="prev" href="/">Vorheriger</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Nächster</a></nav></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" class="search-form"><input type="text" name="q" maxlength="20" placeholder="Search"/><input type="hidden" name="sitesearch" value="http://arthas.com.cn"/></form></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/css/" style="font-size: 15px;">css</a> <a href="/tags/java-web/" style="font-size: 15px;">java web</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/Nginx/" style="font-size: 15px;">Nginx</a> <a href="/tags/mongodb/" style="font-size: 15px;">mongodb</a> <a href="/tags/填坑/" style="font-size: 15px;">填坑</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/webwiew/" style="font-size: 15px;">webwiew</a> <a href="/tags/flex/" style="font-size: 15px;">flex</a> <a href="/tags/react-native/" style="font-size: 15px;">react native</a> <a href="/tags/bootstrap/" style="font-size: 15px;">bootstrap</a> <a href="/tags/java/" style="font-size: 15px;">java</a> <a href="/tags/前端/" style="font-size: 15px;">前端</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/dpr/" style="font-size: 15px;">dpr</a> <a href="/tags/摄影/" style="font-size: 15px;">摄影</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/12/10/单反课程笔记/">单反课程笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/06/Algorithms笔记/">Algorithms笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/17/Nginx反向代理实现Tomcat集群/">Nginx反向代理实现Tomcat集群</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/17/设备像素比的实际意义/">设备像素比的实际意义</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/28/关于flex的总结/">关于fiex的总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/22/windows下安装Sass的正确姿势/">windows下安装Sass的正确姿势</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/19/mongodb速记/">mongodb速记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/11/17/初识ReactNative/">初识ReactNative</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/10/13/javascript版2048开发总结/">javascript版2048开发总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/09/26/定制自己的Bootstrap样式/">定制自己的Bootstrap样式</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Blogroll</i></div><ul></ul><a href="http://www.zcool.com.cn/u/14524635" title="站酷" target="_blank">站酷</a></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2018 <a href="/." rel="nofollow">Find the Truth.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a id="rocket" href="#top" class="show"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/fancybox/3.1.20/jquery.fancybox.min.css"><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="学海无涯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://arthas.com.cn">
+    <!--SEO-->
+
+<meta name="description" content="墨鸿的博客"/>
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>学海无涯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?152cb168941799d8bdb7e34a71468eda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="">
+            <img src="/img/avatar.jpg" alt="logo头像">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题">  
+             
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/前端/"><i class="fa fa-fw "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/后端/"><i class="fa fa-fw "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/工具/"><i class="fa fa-fw "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/资源/"><i class="fa fa-fw "></i>资源</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content ">
+                    <div class="carousel">
+    <img src="/img/head-img.jpg">
+</div>
+
+
+
+
+<article class="post">
+    
+        <div class="post-media">
+            <a href="/2016/10/13/javascript版2048开发总结/">
+                <img class="img-ajax" src="/img/loading.gif"  data-src="http://ob9qd20l4.bkt.clouddn.com/jietu1.jpg"   alt="javascript版2048开发总结"> 
+            </a>
+        </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/10/13/javascript版2048开发总结/">javascript版2048开发总结</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年10月13日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                2048这款游戏玩起来非常简单，但是又有着神奇的吸引力，尤其是对强迫症重症患者。所以界面的设计追求了简约、轻盈，清爽的原则，此游戏的色调已经成为经典，故小方格依然采用了经典色调。背景图片选择了可无缝拼接的木质材料，以达到全屏效果且优化...
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/javascript">
+               javascript
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/10/13</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/10/13/javascript版2048开发总结/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/09/26/定制自己的Bootstrap样式/">定制自己的Bootstrap样式</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年09月26日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                本文主要针对对Bootstrap有所了解，或者使用过Bootstrap的读者提供参考。官方提供了个性化定制功能 ,可以选择自己需要的组件，插件，自己设置不同模块的less变量，最后从官网下载到一份编译后的个性化bootsrap。
+如果是比较复杂的项目，虽然官网开放的变量上百个，但还是不能满足业务需求，这时候就需要下载源码修改less文件，bootstrap是通过less预编译的。…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/bootstrap">
+               bootstrap
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/09/26</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/09/26/定制自己的Bootstrap样式/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+        <div class="post-media">
+            <a href="/2016/08/24/实现类似饿了么网站标题栏的交互/">
+                <img class="img-ajax" src="/img/loading.gif"  data-src="http://ob9qd20l4.bkt.clouddn.com/elemo.jpg"   alt="实现类似饿了么网站标题栏的交互"> 
+            </a>
+        </div>
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/08/24/实现类似饿了么网站标题栏的交互/">实现类似饿了么网站标题栏的交互</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年08月24日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                …
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/前端">
+               前端
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/08/24</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/08/24/实现类似饿了么网站标题栏的交互/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/">Hexo修改了样式部署后无效果解决办法</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年07月30日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                修改完Hexo的样式后本地预览已经显示正常了，hexo deploy后却还是之前的样式，百度一圈之后明白其原因是之前生成部署缓存文件导致的，得到有效的解决办法：1hexo clean
+此指令会清楚之前的部署缓存文件，然后在hexo g，hexo d，刷新页面，站点已更新为最新的样式。…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/Hexo">
+               Hexo
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/07/30</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/07/16/彻底解决mysql不能输入中文的问题/">彻底解决mysql不能输入中文的问题</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年07月16日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                用struts2写了一个页面表单提交数据，数据库为MySQL。提交的时候出现了如下报错：1234java.lang.RuntimeException: java.sql.SQLException: Incorrect string value: &amp;apos;\xE5\x90\x83\xE9\xA5\xAD...&amp;apos; for column &amp;apos;hobby&amp;apos; at row 1 Query: insert into students (username,password,gender,hobby,birthday,email,grade) values (?,?,?,?,?,?,?) Parameters: [Ttt, ttt, male, 吃饭,睡觉, null, , 0]	at com.itheima.dao.impl.StudentDaoImpl.save(StudentDaoImpl.java:21)	at com.itheima.service.impl.BusinessServiceImpl.registStudent(BusinessServiceImpl.java:11)	......
+当把表单内容全部修改为字母时，提交成功。然后在mysql中\s，查看到如下信息：…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/mysql">
+               mysql
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/07/16</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/07/16/彻底解决mysql不能输入中文的问题/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/07/10/Java-web中的常用类名词解释/">Java web中的常用类名词解释</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年07月10日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                DBCP（DataBase Connection Pool）数据库连接池。是 apache 上的一个 java 连接池项目，也是 tomcat 使用的连接池组件。单独使用dbcp需要2个包：commons-dbcp.jar,commons-pool.jar由于建立数据库连接是一个非常耗时耗资源的行为，所以通过连接池预先同数据库建立一些连接，放在内存中，应用程序需要建立数据库连接时直接到连接池中申请一个就行，用完后再放回去。…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/java web">
+               java web
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/07/10</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/07/10/Java-web中的常用类名词解释/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/07/04/Linux下后台运行jar文件/">Linux下后台运行jar文件</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年07月04日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                当我们把java程序打成jar包后，放到linux上通过putty或其它终端执行的时候，如果按照：java -jar xxxx.jar执行，当我们退出putty或终端的时候，xxxx.jar这个程序也会停止。为了保证程序能够一直运行，应该改为这样运行： java -jar xxx.jar &amp;amp;命令，则程序会在后台一直运行，值得注意的是，此时程序控制台输出会被转移到nohup.out文件中，这个nohup.out文件的位置就在jar包的当前文件夹内。…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/linux">
+               linux
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/07/04</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/07/04/Linux下后台运行jar文件/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/05/24/解决每次向github提交要输入用户名和密码问题/">解决每次向github提交要输入用户名和密码问题</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年05月24日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                通过SSH文件的验证方式可以解决每次向github提交都要输入用户名和密码的问题
+检查是否存在SSH keys在生成你的SSH key之前，先检查你的电脑上是否存在SSH keys…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/git">
+               git
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/05/24</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/05/24/解决每次向github提交要输入用户名和密码问题/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/04/29/学习Java过程中遇到的困惑/">Java学习中遇到的困惑</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年04月29日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                继承（extends）与实现（implements）父类的方法中可以有抽象（abstract）方法，也可以没有抽象方法。当有抽象方法时，这个类就叫做抽象类。假设有一个类的方法既有抽象方法，又有普通方法，如果某子类继承（extends）了该类，且该子类需要创建对象，就必须要实现父类中的所有抽象方法才可创建。Java是单继承的。接口有两个特点：…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/java">
+               java
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/04/29</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/04/29/学习Java过程中遇到的困惑/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+<article class="post">
+    
+    <div class="post-content">
+        <div class="post-head home-post-head">
+            <h1 class="post-title">
+                <a href="/2016/04/26/MySQL基础/">MySQL基础</a>
+            </h1>
+            <div class="post-meta">  &bull;
+                <time class="post-date" datetime="" title="">
+                    2016年04月26日
+                </time>
+            </div>
+        </div>
+        <p class="brief">
+            
+                Structured Query Language 结构化查询语言, 关系型数据库，由标准和扩展部分组成…
+            
+        </p> 
+    </div>
+    <footer class="post-footer clearfix">
+        <div class="pull-left tag-list">
+            <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/mysql">
+               mysql
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2016/04/26</span>
+    </span>
+</div>
+
+        </div>
+
+        <div class="post-permalink"> 
+            <a href="/2016/04/26/MySQL基础/" class="btn btn-default">阅读全文</a>
+        </div>
+    </footer>
+</article>
+
+
+
+
+    <nav class="pagination" role="navigation">
+        <div id="page-nav">
+            <a class="extend prev" rel="prev" href="/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class='fa fa-angle-right'></i></a>
+        </div>
+    </nav>
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/mohong" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:arthas_qin@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">一月 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">十二月 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">一月 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">十二月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">十一月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">十月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">九月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/"><i class="fa" aria-hidden="true">八月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">七月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/"><i class="fa" aria-hidden="true">五月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/"><i class="fa" aria-hidden="true">四月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/"><i class="fa" aria-hidden="true">三月 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">十月 2015</i></a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 20px;">mysql</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/uml/" style="font-size: 10px;">uml</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a> <a href="/tags/摄影/" style="font-size: 10px;">摄影</a>
+    </div>
+  </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.arthas.com.cn" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
