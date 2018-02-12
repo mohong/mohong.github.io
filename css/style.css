@@ -228,8 +228,10 @@ pre {
 }
 .carousel {
   margin-bottom: 20px;
+  background-color: #fff;
 }
 .carousel img {
+  box-sizing: border-box;
   width: 100%;
 }
 /*====================================================
@@ -244,6 +246,7 @@ pre {
   background: #fff url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg);
   background-repeat: repeat;
   background-attachment: fixed;
+  display: none;
 }
 .main-header .banneriframe {
   width: 100%;
@@ -296,7 +299,7 @@ pre {
 }
 /* main-navigation */
 .main-navigation {
-  text-align: center;
+  text-align: right;
   background: #fff;
   border-top: 1px solid #ebebeb;
   margin-bottom: 30px;
