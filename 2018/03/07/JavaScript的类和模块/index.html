@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>归档：2016/4 | 学海无涯</title>
+<title>JavaScript的类和模块 | 学海无涯</title>
 
 
     <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
@@ -130,39 +130,84 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-    	<h1 class="info">2016年 4月</h1>
-        
-          <li class="post-items" _href="/2016/04/29/学习Java过程中遇到的困惑/">
-            <h3 class="post-item-title">
-            	<a href="/2016/04/29/学习Java过程中遇到的困惑/"> Java学习中遇到的困惑 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2016/04/26/MySQL基础/">
-            <h3 class="post-item-title">
-            	<a href="/2016/04/26/MySQL基础/"> MySQL基础 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2016/04/11/JavaScript正则表达式/">
-            <h3 class="post-item-title">
-            	<a href="/2016/04/11/JavaScript正则表达式/"> JavaScript正则表达式 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2016/04/05/什么是webview/">
-            <h3 class="post-item-title">
-            	<a href="/2016/04/05/什么是webview/"> 什么是webView </a>
-            </h3>  
-          </li>
-        
-    </ul>
-  </div>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript的类和模块">
+            
+	            JavaScript的类和模块
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/JavaScript">
+               JavaScript
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2018/03/07</span>
+    </span>
 </div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>JavaScript中类的一个重要特性是“动态可继承”。在JavaScript中，类的所有实例对象都从同一个原型对象上继承属性。因此，原型对象是类的核心。当且仅当两个对象继承自同一个原型对象时，它们才是属于同一个类的实例。</p>
+<h3 id="1、constructor"><a href="#1、constructor" class="headerlink" title="1、constructor"></a><strong>1、constructor</strong></h3><p>任何JavaScript函数都可以用作构造函数，并且调用构造函数是需要用到一个prototype属性的。因此，每个JavaScript函数(ECMAScript5中的Function.bind()方法返回的函数除外)都自动拥有一个prototype属性。这个属性的值是一个对象，这个对象包含唯一一个不可枚举属性constructor。constructor的属性的值是一个函数对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> P = F.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = P.constructor;</span><br><span class="line"></span><br><span class="line">c === F;</span><br></pre></td></tr></table></figure>
+<p>这意味着对象通常继承的constructor均指代它们的构造函数。由于构造函数是类的“公共标识”，因此这个constructor属性为对象提供了类。</p>
+<h4 id="2、类的扩充"><a href="#2、类的扩充" class="headerlink" title="2、类的扩充"></a><strong>2、类的扩充</strong></h4><p>JavaScript中基于原型的继承机制是动态的：对象从其原型继承属性，如果创建对象之后原型的属性发生改变，也会影响到继承这个原型的所有实例对象。这意味着我们可以通过给原型对象添加新方法来扩充类。</p>
+<p>构造函数是类的公共标识，但原型是唯一标识，尽管instanceof的右操作符是构造函数，但计算过程实际上是监测了对象的继承关系，而不是监测创建对象的构造函数。</p>
+<h3 id="3、JavaScript中的面向对象技术"><a href="#3、JavaScript中的面向对象技术" class="headerlink" title="3、JavaScript中的面向对象技术"></a><strong>3、JavaScript中的面向对象技术</strong></h3>
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
+            
+        </div>
+        <div>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/03/06/JavaScript面向对象/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159112"></script>
+
+    </div>
 
 
 

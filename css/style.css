@@ -315,7 +315,8 @@ pre {
 }
 .main-navigation .menu li a {
   color: #505050;
-  line-height: 4em;
+  font-size: 1.2em;
+  line-height: 3.5em;
   display: block;
   padding: 0 21px;
 }

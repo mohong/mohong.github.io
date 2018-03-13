@@ -1,0 +1,471 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="学海无涯">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://arthas.com.cn">
+    <!--SEO-->
+
+<meta name="description" content="墨鸿的博客"/>
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>JavaScript面向对象 | 学海无涯</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css?rev=3.3.4">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?152cb168941799d8bdb7e34a71468eda";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="">
+            <img src="/img/avatar.jpg" alt="logo头像">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                <h2> arthas.com.cn </h2>
+             
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation"><a href="/"><i class="fa fa-fw "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/前端/"><i class="fa fa-fw "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/后端/"><i class="fa fa-fw "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/设计/"><i class="fa fa-fw "></i>设计</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/工具/"><i class="fa fa-fw "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation"><a href="/categories/资源/"><i class="fa fa-fw "></i>资源</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript面向对象">
+            
+	            JavaScript面向对象
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/JavaScript">
+               JavaScript
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2018/03/06</span>
+    </span>
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>对象是JavaScript的基本数据类型，可以通过对象直接量、关键字new和（ECMAScript 5中的）Object.create()函数来创建对象。JavaScript对象可以从一个称为原型的对象继承属性，这种“原型式继承”是JavaScript的核心特征，JavaScript对象都是关联数组。 </p>
+<p>对象的属性具有一些属性特性</p>
+<ul>
+<li>可写（writable attribute） 表明是否可以设置该属性的值</li>
+<li>可枚举（enumerable attribute） 表明是否可以通过for/in循环返回该值</li>
+<li>可配置 （configureable attribute） 表明是否可以删除或者修改该属性</li>
+</ul>
+<h3 id="1、创建对象"><a href="#1、创建对象" class="headerlink" title="1、创建对象"></a><strong>1、创建对象</strong></h3><p>1、创建对象最简单的方式是使用对象直接量。直接量是有若干名/值对组成的映射表。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> point = &#123;<span class="attr">x</span>: <span class="number">12</span>, <span class="attr">y</span>: <span class="number">30</span>&#125;;</span><br></pre></td></tr></table></figure>
+<p>所有通过对象直接量创建的对象，都具有同一个原型对象，并可以通过Object.prototype获得对原型对象的引用。</p>
+<p>2、通过new关键字创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure>
+<p>通过关键字new和构造函数创建的对象，原型就是构造函数的prototype属性。<br>故通过{}创建的对象和通过new Object()创建的对象原型相同。</p>
+<p>3、Object.create()</p>
+<p>ECMAScript5定义了<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener">Object.create()</a>方法，它创建一个新对象，其中第一个参数是这个对象的原型，第二个参数可选，用以对对象的属性进行进一步描述。</p>
+<p>可以通过传入参数null来创建一个没有原型的对象，但以这种方式创建的对象不会继承任何东西。</p>
+<p>入股偶需要创建一个普通的空对象（比如通过{}或者new Object()创建的对象），需要传入Object.prototype</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);   <span class="comment">// 和&#123;&#125;、`new Object()`一样</span></span><br></pre></td></tr></table></figure>
+<p>可以通过任意原型创建新对象，（换句话说，可以使任意对象继承），这是一个强大的特性。</p>
+<h3 id="2、原型"><a href="#2、原型" class="headerlink" title="2、原型"></a><strong>2、原型</strong></h3><p>每一个JavaScript对象(null除外)都是从原型继承属性。</p>
+<h3 id="3、继承"><a href="#3、继承" class="headerlink" title="3、继承"></a><strong>3、继承</strong></h3><p>假设要查询对象o的属性x，如果o中不存在x，那么将会继续在o的原型对象中查询属性x，如果原型对象中也没有x，但这个原型对象也有原型，那么继续在这个原型对象的原型上执行查询，直到找到x或者查找到一个原型是null的对象为止。可以看到，对象的原型属性构成了一个“链”，通过这个链可以实现属性的继承。只有在查询属性时才会体会到继承的存在，而设置属性则和继承无关。</p>
+<h3 id="4、属性访问错误"><a href="#4、属性访问错误" class="headerlink" title="4、属性访问错误"></a><strong>4、属性访问错误</strong></h3><p>两种避免属性访问错误的写法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 冗余但易懂</span></span><br><span class="line"><span class="keyword">var</span> len = underfined;</span><br><span class="line"><span class="keyword">if</span> (book) &#123;</span><br><span class="line">	<span class="keyword">if</span> (book.subtitle) len = book.subtitle.length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更简练</span></span><br><span class="line"><span class="keyword">var</span> len = book &amp;&amp; book.subtitle &amp;&amp; book.subtitle.length;</span><br></pre></td></tr></table></figure>
+<h3 id="5、删除属性"><a href="#5、删除属性" class="headerlink" title="5、删除属性"></a><strong>5、删除属性</strong></h3><p>delete属性只能删除自有属性，不能删除继承属性，也不能删除那些可配置属性我false的属性。</p>
+<h3 id="6、监测属性"><a href="#6、监测属性" class="headerlink" title="6、监测属性"></a><strong>6、监测属性</strong></h3><p>可以通过in运算符，hasOwnProperty()和propertyIsEnumerable()判断某个属性是否存在某个对象中。</p>
+<ul>
+<li>in  自由属性和继承属性能找到都返回true；</li>
+<li>hasOwnProperty()  只能找出自由属性；</li>
+<li>propertyIsEnumerable()  只能找出自有属性且这个属性可枚举性为true的属性</li>
+</ul>
+<h3 id="7、枚举属性"><a href="#7、枚举属性" class="headerlink" title="7、枚举属性"></a><strong>7、枚举属性</strong></h3><p>除了监测对象是否存在，还需有遍历对象的所有属性。</p>
+<ul>
+<li>for/in循环可以遍历对象的所有可枚举属性（包括自由属性和可枚举属性）。对象继承的内置方法不可枚举，但在代码中给对象添加的属性都是可枚举的（除非转换成不可枚举的）。</li>
+<li>Object.keys()返回一个数组，这个数组由对象中可枚举的自有属性的名称组成（原理与下面的工具keys类似）。</li>
+<li>Object.getOwnPropertyNames() 与Object.keys()类似，不过返回的不仅仅是可枚举的自由属性，而是会返回对象的所有自有属性的名称。</li>
+</ul>
+<p>以下是一些遍历的工具函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 把p中可枚举的属性复制到o，并返回o</span></span><br><span class="line"><span class="comment"> * 如果p和o含有同名属性，则覆盖o中的属性</span></span><br><span class="line"><span class="comment"> * 这个函数并不处理getter和setter以及复制属性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">extend</span>(<span class="params">o, p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (prop <span class="keyword">in</span> p) &#123;</span><br><span class="line">        o[propk] = p[prop];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 把p中可枚举的属性复制到o，并返回o</span></span><br><span class="line"><span class="comment"> * 如果p和o含有同名属性，则o不受影响</span></span><br><span class="line"><span class="comment"> * 这个函数并不处理getter和setter以及复制属性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">merge</span>(<span class="params">o, p</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (prop <span class="keyword">in</span> p) &#123;</span><br><span class="line">        <span class="keyword">if</span> (o.hasOwnProperty[prop]) <span class="keyword">continue</span>;</span><br><span class="line">        o[prop] = p[prop];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返回一个数组，包含o中可枚举的自由属性的名字(key) </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">keys</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> o !== <span class="string">'object'</span>) <span class="keyword">throw</span> <span class="built_in">TypeError</span>();</span><br><span class="line">    <span class="keyword">var</span> result = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> prop <span class="keyword">in</span> o) &#123;</span><br><span class="line">        <span class="keyword">if</span> (o.hasOwnProperty[prop]) &#123;</span><br><span class="line">            result.push(prop);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="8、属性getter和setter"><a href="#8、属性getter和setter" class="headerlink" title="8、属性getter和setter"></a><strong>8、属性getter和setter</strong></h3><p>在ECMAScript5中，属性值可以用一个或两个方法代替，这两个方法就是getter和setter。由getter，setter定义的属性称为“存储器属性”。它不同于“数据属性”，数据属性只是一个简单的值。</p>
+<p>当程序查询存取器属性的值时，JavaScript调用getter方法，这个方法的返回值就是属性存储器表达式的值。当程序设置一个存储器属性的值时，JavaScript调用setter方法，j将赋值表达式右侧的值作为参数传入setter，从某种意义上讲，这个方法负责设置属性的值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj = &#123;</span><br><span class="line">    name: <span class="string">'zhang'</span>,</span><br><span class="line">    get allName () &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'get'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;,</span><br><span class="line">    set allName (value) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'set'</span>);</span><br><span class="line">        <span class="keyword">this</span>.name = value;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和数据属性一样，存储器属性也是可以继承的。</p>
+<h3 id="9、属性的特性"><a href="#9、属性的特性" class="headerlink" title="9、属性的特性"></a><strong>9、属性的特性</strong></h3><p>数据属性的4个特性为：</p>
+<ul>
+<li>value  值</li>
+<li>writable  可写性</li>
+<li>enumerable  可枚举性</li>
+<li>configuable  可配置性</li>
+</ul>
+<p>存储器属性的两个特性：</p>
+<ul>
+<li>get  可读性</li>
+<li>set  可写性</li>
+<li>enumerable  可枚举性</li>
+<li>configuable  可配置性</li>
+</ul>
+<p>为了实现属性特性的查询和设置操作，ECMAScript5定义了一个“属性描述符”的对象，这个对象代表那四个特性，描述符对象的特性和它们所描述的属性特性同名。<code>Object.getOwnPropertyDescriptor</code>可以获得某个对象特定属性的属性描述符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(&#123;<span class="attr">x</span>: <span class="number">1</span>&#125;, <span class="string">'x'</span>);   </span><br><span class="line"><span class="comment">// &#123;value: 1, writable: true, enumerable: true, configurable: true&#125;</span></span><br></pre></td></tr></table></figure>
+<p>要想设置属性的特性，或者想让新建属性具有某种特性，则需要调用Object.defineProperty()，这个方法要么修改已有属性，要么新建自由属性，但不能修改继承属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据属性</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'name'</span>, &#123;</span><br><span class="line">					value: <span class="string">'wang'</span>, </span><br><span class="line">					writable: <span class="literal">true</span>, </span><br><span class="line">					enumerable: <span class="literal">true</span>, </span><br><span class="line">					configurable: <span class="literal">true</span>&#125;)</span><br><span class="line">									</span><br><span class="line"><span class="comment">// 存储器属性</span></span><br><span class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'name'</span>, &#123;</span><br><span class="line">			get: functon() &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="string">'wang'</span>;</span><br><span class="line">			&#125;,</span><br><span class="line">			set: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<p>如果要同时修改或者创建多个属性，就需要用<code>Object.defineProperties()</code>;</p>
+<h3 id="10、对象的三个属性"><a href="#10、对象的三个属性" class="headerlink" title="10、对象的三个属性"></a><strong>10、对象的三个属性</strong></h3><ul>
+<li><p>原型属性  </p>
+<p>  原型属性是用来继承属性的,ECMAScript5中通过<code>Object.getPrototypeOf()</code>可以查看对象的原型。通过对象直接量或者Object.create()创建的对象包含一个名为constructor的属性，这个属性代指Object()构造函数。因此，constructor.prototype才是对象直接量的真正原型，但对于通过Object.create()创建的对象则往往不是这样的。监测一个对象是否是另一个对象的原型，可以用<code>isPrototypeOf</code>来监测。</p>
+</li>
+</ul>
+<blockquote>
+<p>Mozilla实现的JavaScript对外暴露了一个专门命名为<em>proto</em>的属性，用以直接查询/设置对象的原型。但并不推荐使用<em>proto</em>，因为尽管Safari和Chrome的当前版本都支持它，但IE和Opera还未实现它（可能以后也不会实现）。实现了ECMAScript5的Firefox版本依然支持<em>proto</em>，但对修改不可扩展对象的原型做了限制。</p>
+</blockquote>
+<ul>
+<li><p>类属性</p>
+<p>对象的类属性是一个字符串，用以白哦是对象的类型信息。</p>
+</li>
+<li><p>可扩展性</p>
+<p>对象的可扩展性用以表示是否可以给对象添加新属性。所有内置对象和自定义对象都是显式可扩展的。</p>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
+            
+        </div>
+        <div>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/03/07/JavaScript的类和模块/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+    
+    
+        <a href="/2018/01/18/UML类图教程/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2159112"></script>
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+    <div class="widget">    
+        <h3 class="title">搜索</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">站内搜索</button>
+                
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p><img src="/img/wx.png" style="width:100%;height:100%" /></p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">社交</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/mohong" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:arthas_qin@qq.com" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+    <div class="widget">
+        <h3 class="title">分类</h3>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/"><i class="fa" aria-hidden="true">摄影</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/"><i class="fa" aria-hidden="true">设计</i></a><span class="category-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+    <div class="widget">
+      <h3 class="title">归档</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">三月 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">一月 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">十二月 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">一月 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">十二月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">十一月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">十月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">九月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/"><i class="fa" aria-hidden="true">八月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">七月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/"><i class="fa" aria-hidden="true">五月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/"><i class="fa" aria-hidden="true">四月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/"><i class="fa" aria-hidden="true">三月 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">十月 2015</i></a><span class="archive-list-count">1</span></li></ul>
+    </div>
+
+
+        
+        
+  <div class="widget">
+    <h3 class="title">标签云</h3>
+    <div class="content tag-cloud">
+        <a href="/tags/Algorithms/" style="font-size: 10px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单反/" style="font-size: 10px;">单反</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a>
+    </div>
+  </div>
+
+
+        
+        <div class="widget challenge">
+    <h3 class="title">挑战2018</h3>
+    <div>
+        <ul>
+            <li>
+                <input type="checkbox" disabled> <span>写10000行JavaScript代码</span>
+            </li>
+            <li>
+                <input type="checkbox" disabled> <span>写10000行Java代码</span>
+            </li>
+            <li>
+                <input type="checkbox" disabled> <span>写5000行C代码</span>
+            </li>
+            <li>
+                <input type="checkbox" disabled> <span>leetcode上刷100道题</span>
+            </li>
+            <li>
+                <input type="checkbox" disabled> <span>上线一款Android版app</span>
+            </li>
+        </ul>
+    </div>
+</div>
+        
+        
+    <div class="widget">
+        <h3 class="title">友链</h3>
+        <div class="content friends-link">
+        
+            <a href="http://arthas.com.cn" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/mohong/hexo-theme-blog.git" class="copyright-links" target="_blank" rel="nofollow">mohong</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
