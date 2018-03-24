@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>JavaScript正则表达式 | 学海无涯</title>
+<title>掌握正则表达式 | 学海无涯</title>
 
 
     <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
@@ -131,9 +131,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="JavaScript正则表达式">
+        <h1 id="掌握正则表达式">
             
-	            JavaScript正则表达式
+	            掌握正则表达式
             
         </h1>
         <div class="post-meta">
@@ -141,8 +141,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/编程基础">
+            编程基础
         </a>
     </span>
     
@@ -151,8 +151,8 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a href="/tags/JavaScript">
-               JavaScript
+            <a href="/tags/正则">
+               正则
             </a>
             
         </span>
@@ -161,21 +161,16 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2016/04/11</span>
+        <span class="date-meta">2017/12/06</span>
     </span>
 </div>
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>703</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
         <p>正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法, 以及 String 的 match、replace、search 和 split 方法。本章介绍 JavaScript正则表达式。</p>
-<a id="more"></a>
 <h2 id="预定义字符"><a href="#预定义字符" class="headerlink" title="预定义字符"></a>预定义字符</h2><p>正则表达式为我们提供了几个常用的预定义类来匹配常见的字符,任何预定义字符么有加上数量词之前都只能匹配一个字符。</p>
 <table>
 <thead>
@@ -223,7 +218,7 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: ab+数字+任意字符  --- ab\d.</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: ab+数字+任意字符  --- ab\d.</span><br></pre></td></tr></table></figure>
 <h2 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h2><p>正则表达式还提供了几个常用的边界匹配字符</p>
 <table>
 <thead>
@@ -286,26 +281,26 @@
 </tbody>
 </table>
 <p><code>\w+\b Byron 匹配 单词＋边界＋Byron</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(/\w+\b Byron/).test(&apos;Hi Byron&apos;); //true</span><br><span class="line"></span><br><span class="line">(/\w+\b Byron/).test(&apos;Welcome Byron&apos;); //true</span><br><span class="line"></span><br><span class="line">(/\w+\b Byron/).test(&apos;HiByron&apos;); //false</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'Hi Byron'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'Welcome Byron'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'HiByron'</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
 <p><code>\d+\.\d{1,3} 匹配三位小数的数字</code></p>
 <h2 id="贪婪模式与非贪婪模式"><a href="#贪婪模式与非贪婪模式" class="headerlink" title="贪婪模式与非贪婪模式"></a>贪婪模式与非贪婪模式</h2><p>看了上面介绍的量词，也许爱思考的同学会想到关于匹配原则的一些问题，比如{3,5}这个量词，要是在句子中出现了十次，那么他是每次匹配三个还是五个，反正3、4、5都满足3～5的条件，量词在默认下是尽可能多的匹配的，也就是大家常说的贪婪模式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;123456789&apos;.match(/\d&#123;3,5&#125;/g); //[&quot;12345&quot;, &quot;6789&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,5&#125;/g</span>); <span class="comment">//["12345", "6789"]</span></span><br></pre></td></tr></table></figure>
 <p>既然有贪婪模式，那么肯定会有非贪婪模式，让正则表达式尽可能少的匹配，也就是说一旦成功匹配不不再继续尝试，做法很简单，在量词后加上 ? 即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;123456789&apos;.match(/\d&#123;3,5&#125;?/g); //[&quot;123&quot;, &quot;456&quot;, &quot;789&quot;]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,5&#125;?/g</span>); <span class="comment">//["123", "456", "789"]</span></span><br></pre></td></tr></table></figure>
 <h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>有时候我们希望使用量词的时候匹配多个字符，而不是像上面例子只是匹配一个，比如希望匹配Byron出现20次的字符串，我们如果写成 Byron{20} 的话匹配的是Byro＋n出现20次，怎么把Byron作为一个整体呢？使用()就可以达到次目的，我们称为分组</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron)&#123;20&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22182142-6b1688e29b584aa28af938a079a793d0.png" alt=""></p>
 <p>如果希望匹配Byron或Casper出现20次该怎么办呢？可以使用字符 ｜ 达到或的功效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron|Casper)&#123;20&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron|Casper)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22182815-593022d45eba482aaddd936f3b24beb4.png" alt=""></p>
 <p>我们看到图中有个＃1的东东，那是什么？使用分组的正则表达式会把匹配项也放到分组中，默认就是按数字编号分发的，各异根据编号获得捕获的分组内容，这个在一些希望具体操作第几个匹配项的函数中很有用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron).(ok)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron).(ok)</span><br></pre></td></tr></table></figure>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22183347-1db4325c096a43f3a5796b7d25c74b77.png" alt=""></p>
 <p>如果有分组嵌套的情况，外面的组的编号靠前</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((^|%&gt;)[^\t]*)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((^|%&gt;)[^\t]*)</span><br></pre></td></tr></table></figure>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/23222603-20a2c64f182a4b49b05a83ef6a3d414d.png" alt=""></p>
 <p>有时候我们不希望捕获某些分组，只需要在分组内加上 ?: 就可以了，着并不意味着该分组内容不属于正则表达式，只是不会给这个分组加编号了而已</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:Byron).(ok)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:Byron).(ok)</span><br></pre></td></tr></table></figure>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22183600-8865bffe0f1e48e3829aad75461f9bc8.png" alt=""></p>
 <h2 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h2><table>
 <thead>
@@ -327,12 +322,12 @@
 </table>
 <p>举个例子： <code>good(?=Byron)</code></p>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22191434-fc2c05f77d2b4002a91032e44e49815c.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(/good(?=Byron)/).exec(&apos;goodByron123&apos;); //[&apos;good&apos;]</span><br><span class="line">(/good(?=Byron)/).exec(&apos;goodCasper123&apos;); //null</span><br><span class="line">(/bad(?=Byron)/).exec(&apos;goodCasper123&apos;);//null</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/bad(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
 <p>通过上面例子可以看出 exp1(?=exp2) 表达式会匹配exp1表达式，但只有其后面内容是exp2的时候才会匹配，也就是两个条件，exp1(?!exp2) 比较类似</p>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p>
 <p><code>good(?!Byron)</code></p>
 <p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(/good(?!Byron)/).exec(&apos;goodByron123&apos;); //null</span><br><span class="line">(/good(?!Byron)/).exec(&apos;goodCasper123&apos;); //[&apos;good&apos;]</span><br><span class="line">(/bad(?!Byron)/).exec(&apos;goodCasper123&apos;);//null</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/bad(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://www.cnblogs.com/dolphinX/p/3486214.html" target="_blank" rel="noopener">JavaScript 正则表达式上——基本语法</a></li>
 <li><a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html" target="_blank" rel="noopener">司徒正美 javascript正则表达式</a></li>
@@ -356,10 +351,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2016/04/26/MySQL基础/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
+        <a href="/2017/12/06/Algorithms中的复杂度/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
     
-        <a href="/2016/04/05/什么是webview/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2017/01/17/Nginx反向代理实现Tomcat集群/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -370,9 +365,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2016/04/11/JavaScript正则表达式/';
-    this.page.identifier = '2016/04/11/JavaScript正则表达式/';
-    this.page.title = 'JavaScript正则表达式';
+    this.page.url = 'http://arthas.com.cn/2017/12/06/掌握正则表达式/';
+    this.page.identifier = '2017/12/06/掌握正则表达式/';
+    this.page.title = '掌握正则表达式';
   };
   var d = document, s = d.createElement('script');
   s.src = 'https://arthas-com-cn.disqus.com/embed.js';
@@ -426,7 +421,8 @@
     <div class="widget notification">
         <h3 class="title">网站公告</h3>
         <div>
-            <p><img src="/img/wx.png" style="width:100%;height:100%" /></p>
+            <p> <!--  <img src="/img/wx.png" style="width:100%;height:100%" /> --></p>
+<p>Each man is the architect of his own fate.</p>
         </div>
     </div>
 
@@ -468,7 +464,7 @@
         
     <div class="widget">
         <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/"><i class="fa" aria-hidden="true">摄影</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程基础/"><i class="fa" aria-hidden="true">编程基础</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/"><i class="fa" aria-hidden="true">设计</i></a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/"><i class="fa" aria-hidden="true">摄影</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程基础/"><i class="fa" aria-hidden="true">编程基础</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/"><i class="fa" aria-hidden="true">设计</i></a><span class="category-list-count">1</span></li></ul>
     </div>
 
 
@@ -476,7 +472,7 @@
         
     <div class="widget">
       <h3 class="title">归档</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">三月 2018</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">一月 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">十二月 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">一月 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">十二月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">十一月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">十月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">九月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/"><i class="fa" aria-hidden="true">八月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">七月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/"><i class="fa" aria-hidden="true">五月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/"><i class="fa" aria-hidden="true">四月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/"><i class="fa" aria-hidden="true">三月 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">十月 2015</i></a><span class="archive-list-count">1</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/"><i class="fa" aria-hidden="true">三月 2018</i></a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">一月 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">十二月 2017</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">一月 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">十二月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">十一月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">十月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/"><i class="fa" aria-hidden="true">九月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/"><i class="fa" aria-hidden="true">八月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/"><i class="fa" aria-hidden="true">七月 2016</i></a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/"><i class="fa" aria-hidden="true">五月 2016</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/"><i class="fa" aria-hidden="true">四月 2016</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/"><i class="fa" aria-hidden="true">三月 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/"><i class="fa" aria-hidden="true">十月 2015</i></a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
@@ -485,7 +481,7 @@
   <div class="widget">
     <h3 class="title">标签云</h3>
     <div class="content tag-cloud">
-        <a href="/tags/Algorithms/" style="font-size: 15px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单反/" style="font-size: 10px;">单反</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a>
+        <a href="/tags/Algorithms/" style="font-size: 13.33px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单反/" style="font-size: 10px;">单反</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
@@ -522,6 +518,10 @@
             <a href="http://arthas.com.cn" class="fa" target="_blank">个人博客</a>
         
             <a href="https://leetcode.com/mohong/" class="fa" target="_blank">Leetcode</a>
+        
+            <a href="http://m.zcool.com.cn/" class="fa" target="_blank">站酷</a>
+        
+            <a href="https://segmentfault.com/u/mohong" class="fa" target="_blank">segmentfault</a>
         
         </div>
     </div>
