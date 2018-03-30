@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>快速掌握Git基础操作 | 学海无涯</title>
+<title>JavaScript中的闭包 | 学海无涯</title>
 
 
     <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
@@ -131,9 +131,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="快速掌握Git基础操作">
+        <h1 id="JavaScript中的闭包">
             
-	            快速掌握Git基础操作
+	            JavaScript中的闭包
             
         </h1>
         <div class="post-meta">
@@ -141,8 +141,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -151,8 +151,8 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a href="/tags/git">
-               git
+            <a href="/tags/JavaScript">
+               JavaScript
             </a>
             
         </span>
@@ -161,90 +161,37 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2015/10/17</span>
+        <span class="date-meta">2018/03/30</span>
     </span>
 </div>
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>895</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <blockquote>
-<p>常用的<a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>命令</p>
-</blockquote>
-<a id="more"></a>
-<h2 id="初始化配置"><a href="#初始化配置" class="headerlink" title="初始化配置"></a><strong>初始化配置</strong></h2><p><code>$ git config --global user.name &quot;Your Name&quot;</code><br><code>$ git config --global user.email &quot;email@example.com&quot;</code></p>
-<h2 id="创建版本库（初始化仓库）"><a href="#创建版本库（初始化仓库）" class="headerlink" title="创建版本库（初始化仓库）"></a><strong>创建版本库</strong>（初始化仓库）</h2><p>windows系统下仓库路径不要出现中文<br><code>$git init</code></p>
-<h2 id="把文件添加到版本库"><a href="#把文件添加到版本库" class="headerlink" title="把文件添加到版本库"></a><strong>把文件添加到版本库</strong></h2><p> 添加所有改动过的文件<br><code>$git add .</code><br>提交到版本库<br><code>$git commit -m &quot;message&quot;</code></p>
-<h2 id="查看修改结果"><a href="#查看修改结果" class="headerlink" title="查看修改结果"></a><strong>查看修改结果</strong></h2><p>查看修改状态<br><code>$git status</code><br>查看具体修改内容<code>`$git diff filename.txt</code></p>
-<h2 id="版本回退"><a href="#版本回退" class="headerlink" title="版本回退"></a><strong>版本回退</strong></h2><p>版本历史记录<br><code>$git log --oneline --decorate --graph</code><br>回退到上一个版本<br><code>$ git reset --hard HEAD^</code><br>重返未来<br><code>$git reflog</code></p>
-<h2 id="撤销修改"><a href="#撤销修改" class="headerlink" title="撤销修改"></a><strong>撤销修改</strong></h2><ul>
-<li>未执行<code>$git add .</code>时，丢弃工作区的修改<br><em>当还没有提交到暂存区时，会和版本库一样</em><br><em>当提交到暂存区时，会回到添加暂存区后的状态</em><ul>
-<li><code>$git checkout -- readme.txt</code></li>
-<li><code>$git checkout -- .</code></li>
-</ul>
-</li>
-<li>执行了<code>$git add .</code>，但未<code>commit</code><br><em>把暂存区的修改撤销，重新放回工作区</em><ul>
-<li><code>$git reset HEAD file.txt</code></li>
-</ul>
-</li>
-<li>执行了<code>commit</code>，<ul>
-<li>版本回退</li>
-</ul>
-</li>
-</ul>
-<h2 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h2><ul>
-<li>从本地直接删除（此时工作区和版本库不一致）</li>
-<li><ul>
-<li>确实要从版本库中删除文件<ul>
-<li><code>$git rm -rf test.txt</code></li>
-<li><code>$git commit -m &quot;message&quot;</code></li>
-</ul>
-</li>
-<li>删错了想恢复<ul>
-<li><code>$git checkout -- test.txt</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><ul>
-<li>创建SSH key<ul>
-<li>生成SSH key<ul>
-<li><code>$ssh-keygen -t rsa -b 4096 -C &quot;your email@com&quot;</code></li>
-</ul>
-</li>
-<li>绑定在github网站</li>
-<li>检测是否绑定成功<ul>
-<li><code>$ssh -T git@github.com</code></li>
-</ul>
-</li>
-<li>添加远程库<ul>
-<li>在github上新建一个仓库，如learn.git</li>
-<li>在本地learn.git仓库中运行下列语句来关联远程库<ul>
-<li><code>$git remote add origin git@github.com:qinzhongjie/learngit.git</code></li>
-</ul>
-</li>
-<li>把本地仓库中所有内容推送到远程库<ul>
-<li>首次推送，-u为了关联两个仓库 <code>$git push -u origin master</code> </li>
-<li>以后的推送 <code>$git push origin master</code> </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>克隆远程库<ul>
-<li><code>$git clone git@github.com:qinzhongjie/learngit.git</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>注意： .gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。<br>    正确的做法是在每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br>    git update-index –assume-unchanged PATH    在PATH处输入要忽略的文件。</p>
+        <h2 id="1、变量作用域"><a href="#1、变量作用域" class="headerlink" title="1、变量作用域"></a>1、变量作用域</h2><p>一个变量的作用域（scope）是程序源代码中定义这个变量的区域。全局变量拥有全局作用域，在JavaScript代码中的任何地方都是有定义的。然而在函数内声明的变量只在函数体内有定义。它们是局部变量，作用域是局部性的。函数参数也是局部变量，它们只在函数体内有定义。</p>
+<p>在函数体内，局部变量的优先级高于同名的全局变量。如果在函数内声明的一个局部变量或者函数参数中带有的变量和全局变量重名，那么全局变量就被局部变量所遮盖。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> scope = <span class="string">'local'</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(scope);	<span class="comment">// local</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()</span><br></pre></td></tr></table></figure>
+<p>声明局部变量时必须使用var，否则该操作会创建全局变量。<br>函数定义是可以嵌套的。由于每个函数都有它自己的作用域，因此会出现几个局部作用域嵌套的情况，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">nested</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> scope = <span class="string">'nested scope'</span>;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> nested();</span><br><span class="line">&#125;</span><br><span class="line">checkScope()	<span class="comment">// nested scope</span></span><br></pre></td></tr></table></figure>
+<h3 id="1-1、函数作用域和声明提前"><a href="#1-1、函数作用域和声明提前" class="headerlink" title="1.1、函数作用域和声明提前"></a>1.1、函数作用域和声明提前</h3><p>在一些类似C语言的编程语言中，花括号内的每一段代码都是具有各自的作用域，而且变量在声明它们的代码段之外是不可见的，我们称为块级作用域（block scope），而JavaScript中没有块级作用域。JavaScript取而代之地使用了函数作用域（function scope）：变量在声明它们的函数体以及这个函数体嵌套的任意函数体内都是定义的。</p>
+<p>在如下所示的代码中，在不同位置定义了变量i，j和k，它们都在同一个作用域内——这三个变量在函数体内均是有定义的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;                          <span class="comment">// i在整个函数体内都是有定义的</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> o == <span class="string">'object'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> j = <span class="number">0</span>;                      <span class="comment">// j在整个函数体内是有定义的，不仅仅是在这个代码段内</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; <span class="number">10</span>; k++) &#123;  <span class="comment">// k在函数体内是有定义的，不仅仅是在这个代码段内</span></span><br><span class="line">          <span class="built_in">console</span>.log(k);             <span class="comment">// 输出数字0-9</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(k);                 <span class="comment">// k已经定义了，输出数字10</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(j);                     <span class="comment">// j已经定义了，但是可能没有初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>JavaScript的函数作用域是指在函数体内声明的所有变量在函数体内始终是可见的。有意思的是，这意味着变量在声明之前甚至已经可用。JavaScript的这个特性被非正式的称为声明提前(hoisting，或者变量提升)，即JavaScript函数里声明的所有变量（但不涉及赋值）都被“提前”至函数体的顶部，看如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(scope);     <span class="comment">// 输出undefined，而不是global</span></span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local'</span>;    <span class="comment">// 变量在这里赋初始值，但变量本身在函数体内任何地方均是有定义的</span></span><br><span class="line">  <span class="built_in">console</span>.log(scope);     <span class="comment">// 输出local</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码相当于如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope</span><br><span class="line">  <span class="built_in">console</span>.log(scope);</span><br><span class="line">  scope = <span class="string">'local'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(scope);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以一些程序员特意将变量声明放在函数体顶部。</p>
+<h3 id="1-2、作为属性的变量"><a href="#1-2、作为属性的变量" class="headerlink" title="1.2、作为属性的变量"></a>1.2、作为属性的变量</h3><p>当声明一个JavaScript全局变量时，实际上是定义了全局对象的一个属性。当使用var声明一个变量时，创建的这个属性是不可配置的，也就是说这个变量无法通过delete运算符删除。如果没有使用严格模式并给一个未声明的变量赋值的话，JavaScript会自动创建一个全局变量。以这种方式创建的变量是全局对象的正常的可配置属性，并可以删除它们。</p>
+<p>JavaScript全局变量是全局对象的属性，这是在ECMAScript规范中强制规定的。对于局部变量则没有如此规定，但我们可以想象得到，局部变量当做跟函数调用相关的某个对象的属性，局部变量当做跟函数调用相关的某个对象的属性。ECMAScript3规范称该对象为调用对象，ECMAScript5规范称为声明上下文对象。JavaScript可以允许使用this关键字来引用全局对象，却没有方法可以引用局部变量中存放的对象。</p>
+<h2 id="2、闭包"><a href="#2、闭包" class="headerlink" title="2、闭包"></a>2、闭包</h2><p>JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象可以通过作用域相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中称为“闭包”。</p>
+<p>从技术的角度讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链。当调用函数时闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链时，事情就变的非常微妙。当一个函数调用了另外一个函数，外部函数将嵌套的函数对象作为返回值返回的时候往往会发生这种事情。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()  <span class="comment">// 返回local scope</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()()	<span class="comment">// 返回local scope</span></span><br></pre></td></tr></table></figure>
+<p>在这段代码中，我们将函数内的一对圆括号移动到了checkScope()之后。checkScope()现在仅仅返回函数内嵌套的一个函数对象，而不是直接返回结果。在定义函数的作用域外面，调用这个嵌套的函数(包含最后一行代码的最后一对圆括号)会发生什么事情呢？</p>
+<p>回想一下词法作用域的基本规则，JavaScript函数的执行用到了作用域链，这个作用域链是函数定义的时候创建的。嵌套的函数f()定义在这个作用域链里，其中的变量scope一定是局部变量，不管在何时何地执行函数f()，这种绑定在执行f()时依然有效。因此最后一行代码返回“local scope”而不是“global scope”。简言之，闭包的这个特性强大到让人吃惊：它们可以捕捉到局部变量（和参数），并一直保存下来，看起来像这些变量绑定到了在其中定义它们的外部函数。</p>
+<p>参考资料<br>《JavaScript权威指南》</p>
 
     </div>
 
@@ -262,8 +209,8 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2016/03/24/Linux学习笔记/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
+        <a href="/2018/03/15/求第k大问题的解法/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -274,9 +221,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2015/10/17/快速掌握Git基础操作/';
-    this.page.identifier = '2015/10/17/快速掌握Git基础操作/';
-    this.page.title = '快速掌握Git基础操作';
+    this.page.url = 'http://arthas.com.cn/2018/03/30/JavaScript中的闭包/';
+    this.page.identifier = '2018/03/30/JavaScript中的闭包/';
+    this.page.title = 'JavaScript中的闭包';
   };
   var d = document, s = d.createElement('script');
   s.src = 'https://arthas-com-cn.disqus.com/embed.js';
