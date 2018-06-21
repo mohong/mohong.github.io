@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>标签: mongodb | 学海无涯</title>
+<title>用stylus写CSS | 学海无涯</title>
 
 
     <link rel="alternate" href="/atom.xml" title="学海无涯" type="application/atom+xml">
@@ -127,38 +127,101 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <h3> 
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="用stylus写CSS">
+            
+	            用stylus写CSS
+            
+        </h1>
+        <div class="post-meta">
     
-        mongodb 
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
     
     
-</h3>
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/css">
+               css
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2018/06/21</span>
+    </span>
+</div>
 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/2016/11/19/mongodb速记/">mongodb速记</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2016年11月19日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    在mongodb/bin下面运行启动指令，启动mongodb服务器要带数据文件的地址，比如：windows下：
-1mongod.exe --dbpath &amp;quot;f:\mongodb\data…
-                
-            </p> 
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="1、定义变量"><a href="#1、定义变量" class="headerlink" title="1、定义变量"></a>1、定义变量</h2><p>对于项目全局统一使用的主题色，可以定义成变量。</p>
+<p>variable.styl文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$color-grey = #666</span><br></pre></td></tr></table></figure>
+<p>需要使用的文件：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"../stylus/variable.styl"</span></span><br><span class="line"></span><br><span class="line">.item</span><br><span class="line">	color: $font-color</span><br></pre></td></tr></table></figure>
+<h2 id="2、定义方法"><a href="#2、定义方法" class="headerlink" title="2、定义方法"></a>2、定义方法</h2><p>对于重复用到的样式块，可以定义成一个方法，使用的时候直接传变量即可。</p>
+<p>mixin.styl文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bg-image($url)</span><br><span class="line">  background-image: url($url)</span><br></pre></td></tr></table></figure>
+<p>需要使用的文件：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">"../stylus/variable.styl"</span></span><br><span class="line"></span><br><span class="line">.item</span><br><span class="line">	bg-image(<span class="string">"pic.png"</span>)</span><br></pre></td></tr></table></figure>
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
+            
         </div>
-    </article>
- 
+        <div>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/04/23/websocket长连接及心跳实现/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
 
 
+    <div id="comments">
+        
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://arthas.com.cn/2018/06/21/用stylus写CSS/';
+    this.page.identifier = '2018/06/21/用stylus写CSS/';
+    this.page.title = '用stylus写CSS';
+  };
+  var d = document, s = d.createElement('script');
+  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', '' + +new Date());
+  (d.head || d.body).appendChild(s);
+</script>
+
+
+	
+
+    </div>
 
 
 
