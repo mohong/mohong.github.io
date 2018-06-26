@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>nodejs日志框架winston配置 | 墨鸿的博客</title>
+<title>分类: 前端 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -127,126 +127,46 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="nodejs日志框架winston配置">
-            
-	            nodejs日志框架winston配置
-            
-        </h1>
-        <div class="post-meta">
+                <main class="col-md-8 main-content ">
+                    <h3> 
     
+        前端 
     
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/后端">
-            后端
-        </a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a href="/tags/nodejs">
-               nodejs
-            </a>
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2018/06/22</span>
-    </span>
-</div>
+</h3>
 
-            
-            
-    </div>
-    
-    <div class="post-body post-content">
-        <h2 id="一、日志级别："><a href="#一、日志级别：" class="headerlink" title="一、日志级别："></a>一、日志级别：</h2><p><a href="https://www.npmjs.com/package/winston" target="_blank" rel="noopener">winston</a>是为nodejs开发的日志框架。winston默认定义了6中状态，级别由高到低依次是：<br><code>error</code>、<code>warn</code>、<code>info</code>、<code>verbose</code>、<code>debug</code>、<code>silly</code>。</p>
-<h2 id="二、-输出策略"><a href="#二、-输出策略" class="headerlink" title="二、 输出策略"></a>二、 输出策略</h2><ol>
-<li><p>运行日志根据日期命名，例如‘app-2018-06-19.log’</p>
-</li>
-<li><p>支持自定义保存天数，目前定义14天，不配置可不删除旧文件</p>
-</li>
-<li><p>日期格式化：‘YYYY-MM-DD HH:mm:ss’</p>
-</li>
-<li><p>日志输入格式：json</p>
-</li>
-<li><p>‘error’级日志独立输出</p>
-</li>
-<li><p>支持控制台输出</p>
-</li>
-</ol>
-<h2 id="三、-logger对象的接口"><a href="#三、-logger对象的接口" class="headerlink" title="三、 logger对象的接口"></a>三、 logger对象的接口</h2><ol>
-<li><p>logger.error( msg )    : 打印error级别的日志</p>
-</li>
-<li><p>logger. warn( msg )：打印warn级别的日志</p>
-</li>
-<li><p>logger.info( msg ) : 打印info级别的日志</p>
-</li>
-<li><p>logger. verbose( msg )：打印verbose （冗长的） 级别的日志</p>
-</li>
-<li><p>logger. debug( msg )：打印debug级别的日志</p>
-</li>
-<li><p>logger. silly( msg )：打印silly（愚蠢的）基本的日志</p>
-</li>
-</ol>
-<h2 id="四、-代码配置"><a href="#四、-代码配置" class="headerlink" title="四、 代码配置"></a>四、 代码配置</h2><p>定义logger.js文件:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> winston = <span class="built_in">require</span>(<span class="string">'winston'</span>);</span><br><span class="line"><span class="built_in">require</span>(<span class="string">'winston-daily-rotate-file'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 错误信息日志</span></span><br><span class="line"><span class="keyword">const</span> ERROR_LOG_NAME = <span class="string">'./logs/error.log'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 所有运行日志</span></span><br><span class="line"><span class="keyword">const</span> APP_LOG_NAME = <span class="string">'./logs/app-%DATE%.log'</span></span><br><span class="line"><span class="comment">// 保存天数</span></span><br><span class="line"><span class="keyword">const</span> SAVE_DAYS = <span class="string">'14d'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 日志级别</span></span><br><span class="line"><span class="keyword">const</span> levels = &#123;</span><br><span class="line">  error: <span class="number">0</span>,</span><br><span class="line">  warn: <span class="number">1</span>,</span><br><span class="line">  info: <span class="number">2</span>,</span><br><span class="line">  verbose: <span class="number">3</span>,</span><br><span class="line">  debug: <span class="number">4</span>,</span><br><span class="line">  silly: <span class="number">5</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 格式化输出内容</span></span><br><span class="line"><span class="keyword">const</span> formatter = winston.format.combine(</span><br><span class="line">  winston.format.json(),</span><br><span class="line">  winston.format.timestamp(&#123; <span class="attr">format</span>: <span class="string">'YYYY-MM-DD HH:mm:ss'</span> &#125;),</span><br><span class="line">  winston.format.printf(<span class="function"><span class="params">info</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 输出格式</span></span><br><span class="line">    <span class="comment">// TODO message字段是Symbol对象，对于error级的日志，需要遍历message的Symbol拿到error对象</span></span><br><span class="line">    <span class="keyword">const</span> showInfo = &#123; <span class="attr">time</span>: info.timestamp, <span class="attr">pid</span>: process.pid, <span class="attr">level</span>: info.level, <span class="attr">message</span>: info.message&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(showInfo)</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> logger = winston.createLogger(&#123;</span><br><span class="line">  levels: levels,</span><br><span class="line">  format: formatter,</span><br><span class="line">  transports: [</span><br><span class="line">    <span class="comment">// 'error'级别的日志处理</span></span><br><span class="line">    <span class="keyword">new</span> winston.transports.File(&#123; </span><br><span class="line">      level: <span class="string">'error'</span>,</span><br><span class="line">      filename: ERROR_LOG_NAME</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// '所有的日志处理, maxFiles是回滚时间，超时会删除旧文件，如果不设置，则不会删除'</span></span><br><span class="line">    <span class="keyword">new</span> (winston.transports.DailyRotateFile)(&#123;</span><br><span class="line">      filename: APP_LOG_NAME,</span><br><span class="line">      zippedArchive: <span class="literal">true</span>,</span><br><span class="line">      maxFiles: SAVE_DAYS</span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="comment">// 控制台输出</span></span><br><span class="line">    <span class="keyword">new</span> winston.transports.Console(&#123;&#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = logger;</span><br></pre></td></tr></table></figure>
-<p>将事件转换为GMT时间</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 格式化输出内容</span></span><br><span class="line"><span class="keyword">const</span> formatter = winston.format.combine(</span><br><span class="line">  <span class="comment">// 参数Z将指定时间为GMT时间，即格林尼治时间</span></span><br><span class="line">  winston.format.timestamp(&#123; <span class="attr">format</span>: <span class="string">'YYYY-MM-DD HH:mm:ss Z'</span>&#125;), <span class="comment">// &#123; format: 'YYYY-MM-DD HH:mm:ss' &#125;</span></span><br><span class="line">  winston.format.printf(<span class="function"><span class="params">info</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 输出格式</span></span><br><span class="line">    <span class="keyword">const</span> showInfo = &#123; <span class="attr">time</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(info.timestamp).toUTCString(), <span class="attr">pid</span>: process.pid, <span class="attr">level</span>: info.level, <span class="attr">message</span>: info.message&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(showInfo)</span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-    </div>
-
-    <div class="post-footer">   
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
-            
-        </div>
-        <div>
-            
-        </div>  
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2018/06/26/vue封装的svg圆形进度条/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
-    
-    
-        <a href="/2018/06/21/用stylus写CSS/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
-    
-</div>
-
-
-    <div id="comments">
+    <article class="post">
         
-	
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2018/06/22/nodejs日志框架winston配置/';
-    this.page.identifier = '2018/06/22/nodejs日志框架winston配置/';
-    this.page.title = 'nodejs日志框架winston配置';
-  };
-  var d = document, s = d.createElement('script');
-  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', '' + +new Date());
-  (d.head || d.body).appendChild(s);
-</script>
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/2016/03/27/CSS之绝对定位和相对定位/">CSS之绝对定位和相对定位</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2016年03月27日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    CSS中的定位方式有相对定位(relative)和绝对定位(absolute)
+相对定位：position: relative
+如果对一个元素进行相对定位，它将出现在它所在的位置上。然后，可以通过设置垂直或者水平位置，让这个元素“相对...
+                
+            </p> 
+        </div>
+    </article>
+ 
 
 
-	
+    <nav class="pagination" role="navigation">
+        <div id="page-nav">
+            <a class="extend prev" rel="prev" href="/categories/前端/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/categories/前端/">1</a><span class="page-number current">2</span>
+        </div>
+    </nav>
 
-    </div>
+
+
 
 
 
