@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>彻底解决mysql不能输入中文的问题 | 墨鸿的博客</title>
+<title>vue-cli多环境打包配置 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -137,9 +137,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="彻底解决mysql不能输入中文的问题">
+        <h1 id="vue-cli多环境打包配置">
             
-	            彻底解决mysql不能输入中文的问题
+	            vue-cli多环境打包配置
             
         </h1>
         <div class="post-meta">
@@ -147,8 +147,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -157,8 +157,8 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a href="/tags/mysql">
-               mysql
+            <a href="/tags/vue">
+               vue
             </a>
             
         </span>
@@ -167,33 +167,25 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2016/07/16</span>
+        <span class="date-meta">2018/08/23</span>
     </span>
 </div>
 
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>767</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p>用struts2写了一个页面表单提交数据，数据库为MySQL。提交的时候出现了如下报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.RuntimeException: java.sql.SQLException: Incorrect string value: &apos;\xE5\x90\x83\xE9\xA5\xAD...&apos; for column &apos;hobby&apos; at row 1 Query: insert into students (username,password,gender,hobby,birthday,email,grade) values (?,?,?,?,?,?,?) Parameters: [Ttt, ttt, male, 吃饭,睡觉, null, , 0]</span><br><span class="line">	at com.itheima.dao.impl.StudentDaoImpl.save(StudentDaoImpl.java:21)</span><br><span class="line">	at com.itheima.service.impl.BusinessServiceImpl.registStudent(BusinessServiceImpl.java:11)</span><br><span class="line">	......</span><br></pre></td></tr></table></figure></p>
-<p>当把表单内容全部修改为字母时，提交成功。<br>然后在mysql中<code>\s</code>，查看到如下信息：</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Connection id:          2</span><br><span class="line">Current database:</span><br><span class="line">Current user:           root@localhost</span><br><span class="line">SSL:                    Not in use</span><br><span class="line">Using delimiter:        ;</span><br><span class="line">Server version:         5.6.11 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:       10</span><br><span class="line">Connection:             localhost via TCP/IP</span><br><span class="line">Server characterset:    latin1</span><br><span class="line">Db     characterset:    latin1</span><br><span class="line">Client characterset:    gbk</span><br><span class="line">Conn.  characterset:    gbk</span><br><span class="line">TCP port:               3306</span><br><span class="line">Uptime:                 6 min 34 sec</span><br></pre></td></tr></table></figure>
-<p>根据报错查找到原因：mysql编码问题。<br>最终解决办法：<br>找到mysql配置文件my.ini，在<code>[mysqld]</code>中添加如下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">character-set-server = utf8</span><br></pre></td></tr></table></figure></p>
-<p>继续，找到<code>[mysql]</code>，添加如下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default-character-set = utf8</span><br></pre></td></tr></table></figure></p>
-<p>原因解释：<br>数据库的字符集是什么，表的字符集就是什么，同样MySQL服务器有自己的字符集，他们的优先级从大到小是这样的，MySQL服务器&gt;数据库&gt;表，意思就是，如果不指定数据库的字符集，在创建数据库的时候它会与MySQL服务器的字符集保持一致。<br>通过<code>\s</code>查看msql服务器的基本信息，注意以下语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server characterset:    utf8       //MySQL服务器字符集</span><br><span class="line">Db     characterset:    utf8		//数据库字符集</span><br><span class="line">Client characterset:    utf8	//客户端字符集</span><br><span class="line">Conn.  characterset:    utf8	//客户端连接字符集</span><br></pre></td></tr></table></figure>
-<p>通过<code>show create database test</code>查看数据库的字符集，通过<code>show create table user</code>查看表的字符集。</p>
-<p>如果在mysql未正确指定字符集的情况下已经创建了某个表，然后又修改了mysql服务器的字符集，存入的数据将会乱码，解决办法是修改此表的字符集和mysql服务器的一致，即utf8，通过以下命令修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name CONVERT TO CHARACTER SET charset_name;</span><br></pre></td></tr></table></figure>
-<p>tbl_name：表名<br>charset_name：字符集名</p>
-<p>只要遵循客户端字符集与数据库字符集统一即可解决乱码或者无法输入中文的问题。设置mysql服务器的字符集为utf8，jdbc连接mysql的时候发送字符集为utf-8，客户端show的时候也为utf-8，就不会出现乱码问题了。</p>
-
+        <p>通过<code>npm run build</code>打包之后的静态项目，可能部署在不同环境中，即提供数据的api也是多变的。需要根据配置在打包时动态生成。假设需求是需要打包测试环境和生产环境两套静态文件：</p>
+<p>1、<code>package.json</code>中script部门定义<code>test_build</code>、<code>production_build</code>两条指令，并给node环境变量中增加了环境变量<code>BUILD_ENV</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --disableHostCheck=true --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br><span class="line">  <span class="string">"start"</span>: <span class="string">"npm run dev"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</span><br><span class="line">  <span class="string">"test_build"</span>: <span class="string">"BUILD_ENV=test node build/build.js"</span>,</span><br><span class="line">  <span class="string">"production_build"</span>: <span class="string">"BUILD_ENV=production node build/build.js"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2、<code>./build/build.js</code>中增加并修改以下代码，用于加载不同文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="built_in">require</span>(<span class="string">'./check-versions'</span>)()</span><br><span class="line">process.env.NODE_ENV = <span class="string">'production'</span></span><br><span class="line"><span class="keyword">const</span> ora = <span class="built_in">require</span>(<span class="string">'ora'</span>)</span><br><span class="line"><span class="keyword">const</span> rm = <span class="built_in">require</span>(<span class="string">'rimraf'</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">const</span> chalk = <span class="built_in">require</span>(<span class="string">'chalk'</span>)</span><br><span class="line"><span class="keyword">const</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>)</span><br><span class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 增加部分</span></span><br><span class="line"><span class="keyword">let</span> webpackConfigFilePath = <span class="string">''</span></span><br><span class="line"><span class="keyword">switch</span> (process.env.BUILD_ENV) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'test'</span>:</span><br><span class="line">    webpackConfigFilePath = <span class="string">'./webpack.test.conf'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="string">'production'</span>:</span><br><span class="line">    webpackConfigFilePath = <span class="string">'./webpack.prod.conf'</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    webpackConfigFilePath = <span class="string">'./webpack.prod.conf'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 修改加载文件路径</span></span><br><span class="line"><span class="keyword">const</span> webpackConfig = <span class="built_in">require</span>(webpackConfigFilePath)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原脚手架代码</span></span><br><span class="line"><span class="keyword">const</span> spinner = ora(<span class="string">'building for production...'</span>)</span><br><span class="line">spinner.start()</span><br><span class="line"></span><br><span class="line">rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err =&gt; &#123;</span><br><span class="line">  <span class="comment">// ......</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>3、修改<code>./build</code>文件夹下增加<code>webpack.prod.conf.js</code>。plugins中<code>webpack.DefinePlugin</code>插件下定义的变量可以在项目中作为全局变量直接使用。<br>比如生产环境中的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ...</span></span><br><span class="line">plugins: [</span><br><span class="line">    <span class="comment">// http://vuejs.github.io/vue-loader/en/workflow/production.html</span></span><br><span class="line">    <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">      <span class="string">'process.env'</span>: env,</span><br><span class="line">      <span class="string">'HTTP_API'</span>: <span class="string">'"prod.api.com"'</span></span><br><span class="line">    &#125;),</span><br><span class="line">    <span class="keyword">new</span> UglifyJsPlugin(&#123;</span><br><span class="line">      uglifyOptions: &#123;</span><br><span class="line">        compress: &#123;</span><br><span class="line">          warnings: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      sourceMap: config.build.productionSourceMap,</span><br><span class="line">      parallel: <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+<p>测试环境将’HTTP_API’的值改为测试环境的接口。注意该需要用引号引起来，因为解析的时候不会自定转为字符串。是<code>&#39;&quot;prod.api.com&quot;&#39;</code>不是<code>&#39;prod.api.com&#39;</code>;</p>
+<p>4、直接在项目中使用<code>HTTP_API</code>全局变量即可。例如使用axios库时：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = HTTP_API</span><br></pre></td></tr></table></figure>
     </div>
 
     <div class="post-footer">   
@@ -210,10 +202,8 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
-    
-        <a href="/2016/07/10/Java-web中的常用类名词解释/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2018/06/26/vue封装的svg圆形进度条/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -224,9 +214,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2016/07/16/彻底解决mysql不能输入中文的问题/';
-    this.page.identifier = '2016/07/16/彻底解决mysql不能输入中文的问题/';
-    this.page.title = '彻底解决mysql不能输入中文的问题';
+    this.page.url = 'http://arthas.com.cn/2018/08/23/vue-cli多环境打包配置/';
+    this.page.identifier = '2018/08/23/vue-cli多环境打包配置/';
+    this.page.title = 'vue-cli多环境打包配置';
   };
   var d = document, s = d.createElement('script');
   s.src = 'https://arthas-com-cn.disqus.com/embed.js';

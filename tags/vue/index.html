@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>彻底解决mysql不能输入中文的问题 | 墨鸿的博客</title>
+<title>标签: vue | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -133,111 +133,44 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="彻底解决mysql不能输入中文的问题">
-            
-	            彻底解决mysql不能输入中文的问题
-            
-        </h1>
-        <div class="post-meta">
+                <main class="col-md-8 main-content ">
+                    <h3> 
+    
+        vue 
     
     
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
-        </a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a href="/tags/mysql">
-               mysql
-            </a>
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2016/07/16</span>
-    </span>
-</div>
+</h3>
 
-            
-            
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>767</strong>天之前发表，文中内容可能已经过时。
-            </p>
+    <article class="post">
         
-    </div>
-    
-    <div class="post-body post-content">
-        <p>用struts2写了一个页面表单提交数据，数据库为MySQL。提交的时候出现了如下报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.RuntimeException: java.sql.SQLException: Incorrect string value: &apos;\xE5\x90\x83\xE9\xA5\xAD...&apos; for column &apos;hobby&apos; at row 1 Query: insert into students (username,password,gender,hobby,birthday,email,grade) values (?,?,?,?,?,?,?) Parameters: [Ttt, ttt, male, 吃饭,睡觉, null, , 0]</span><br><span class="line">	at com.itheima.dao.impl.StudentDaoImpl.save(StudentDaoImpl.java:21)</span><br><span class="line">	at com.itheima.service.impl.BusinessServiceImpl.registStudent(BusinessServiceImpl.java:11)</span><br><span class="line">	......</span><br></pre></td></tr></table></figure></p>
-<p>当把表单内容全部修改为字母时，提交成功。<br>然后在mysql中<code>\s</code>，查看到如下信息：</p>
-<a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Connection id:          2</span><br><span class="line">Current database:</span><br><span class="line">Current user:           root@localhost</span><br><span class="line">SSL:                    Not in use</span><br><span class="line">Using delimiter:        ;</span><br><span class="line">Server version:         5.6.11 MySQL Community Server (GPL)</span><br><span class="line">Protocol version:       10</span><br><span class="line">Connection:             localhost via TCP/IP</span><br><span class="line">Server characterset:    latin1</span><br><span class="line">Db     characterset:    latin1</span><br><span class="line">Client characterset:    gbk</span><br><span class="line">Conn.  characterset:    gbk</span><br><span class="line">TCP port:               3306</span><br><span class="line">Uptime:                 6 min 34 sec</span><br></pre></td></tr></table></figure>
-<p>根据报错查找到原因：mysql编码问题。<br>最终解决办法：<br>找到mysql配置文件my.ini，在<code>[mysqld]</code>中添加如下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">character-set-server = utf8</span><br></pre></td></tr></table></figure></p>
-<p>继续，找到<code>[mysql]</code>，添加如下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">default-character-set = utf8</span><br></pre></td></tr></table></figure></p>
-<p>原因解释：<br>数据库的字符集是什么，表的字符集就是什么，同样MySQL服务器有自己的字符集，他们的优先级从大到小是这样的，MySQL服务器&gt;数据库&gt;表，意思就是，如果不指定数据库的字符集，在创建数据库的时候它会与MySQL服务器的字符集保持一致。<br>通过<code>\s</code>查看msql服务器的基本信息，注意以下语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Server characterset:    utf8       //MySQL服务器字符集</span><br><span class="line">Db     characterset:    utf8		//数据库字符集</span><br><span class="line">Client characterset:    utf8	//客户端字符集</span><br><span class="line">Conn.  characterset:    utf8	//客户端连接字符集</span><br></pre></td></tr></table></figure>
-<p>通过<code>show create database test</code>查看数据库的字符集，通过<code>show create table user</code>查看表的字符集。</p>
-<p>如果在mysql未正确指定字符集的情况下已经创建了某个表，然后又修改了mysql服务器的字符集，存入的数据将会乱码，解决办法是修改此表的字符集和mysql服务器的一致，即utf8，通过以下命令修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE tbl_name CONVERT TO CHARACTER SET charset_name;</span><br></pre></td></tr></table></figure>
-<p>tbl_name：表名<br>charset_name：字符集名</p>
-<p>只要遵循客户端字符集与数据库字符集统一即可解决乱码或者无法输入中文的问题。设置mysql服务器的字符集为utf8，jdbc连接mysql的时候发送字符集为utf-8，客户端show的时候也为utf-8，就不会出现乱码问题了。</p>
-
-    </div>
-
-    <div class="post-footer">   
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
-            
+            <div class="post-media">
+                <a href="/2018/08/23/vue-cli多环境打包配置/">
+                    <img class="img-ajax" src="/img/loading.gif"  data-src="https://cli.vuejs.org/logo.png"  alt="vue-cli多环境打包配置"> 
+                </a>
+            </div>
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/2018/08/23/vue-cli多环境打包配置/">vue-cli多环境打包配置</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年08月23日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    通过npm run build打包之后的静态项目，可能部署在不同环境中，即提供数据的api也是多变的。需要根据配置在打包时动态生成。假设需求是需要打包测试环境和生产环境两套静态文件：
+1、package.json中script部门定义...
+                
+            </p> 
         </div>
-        <div>
-            
-        </div>  
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2016/07/30/Hexo修改了样式部署后无效果解决办法/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
-    
-    
-        <a href="/2016/07/10/Java-web中的常用类名词解释/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
-    
-</div>
+    </article>
+ 
 
 
-    <div id="comments">
-        
-	
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2016/07/16/彻底解决mysql不能输入中文的问题/';
-    this.page.identifier = '2016/07/16/彻底解决mysql不能输入中文的问题/';
-    this.page.title = '彻底解决mysql不能输入中文的问题';
-  };
-  var d = document, s = d.createElement('script');
-  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', '' + +new Date());
-  (d.head || d.body).appendChild(s);
-</script>
-
-
-	
-
-    </div>
 
 
 
