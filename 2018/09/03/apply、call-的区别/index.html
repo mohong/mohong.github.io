@@ -147,8 +147,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -157,7 +157,9 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-                 
+            <a href="/tags/javascript">
+               javascript
+            </a>
             
         </span>
     </span>
@@ -174,7 +176,20 @@
     </div>
     
     <div class="post-body post-content">
-        
+        <p>在 javascript 中，call 和 apply 都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部 this 的指向。<br>JavaScript 的一大特点是，函数存在<code>定义时上下文</code>和<code>运行时上下文</code>以及<code>上下文是可以改变的</code>这样的概念。</p>
+<p>先来一个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"> </span><br><span class="line">fruits.prototype = &#123;</span><br><span class="line">    color: <span class="string">"red"</span>,</span><br><span class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</span><br><span class="line">apple.say();    <span class="comment">//My color is red</span></span><br></pre></td></tr></table></figure>
+<p>但是如果我们有一个对象banana= {color : “yellow”} ,我们不想对它重新定义 say 方法，那么我们可以通过 call 或 apply 用 apple 的 say 方法：</p>
+<p>banana = {<br>    color: “yellow”<br>}<br>apple.say.call(banana);     //My color is yellow<br>apple.say.apply(banana);    //My color is yellow</p>
+<p>所以，可以看出 call 和 apply 是为了动态改变 this 而出现的，当一个 object 没有某个方法（本栗子中banana没有say方法），但是其他的有（本栗子中apple有say方法），我们可以借助call或apply用其它对象的方法来操作。</p>
+<h3 id="apply、call-的区别"><a href="#apply、call-的区别" class="headerlink" title="apply、call 的区别"></a>apply、call 的区别</h3><p>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。</p>
+<p>第一个参数均为执行时的this对象，call需要把参数按顺序传递进去，而apply 则是把参数放在数组里。</p>
+<p>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call 。<br>而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个伪数组来遍历所有的参数。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p><strong>将伪数组转换为数组</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数组 = <span class="built_in">Array</span>.prototype.slice.call(伪数组))</span><br></pre></td></tr></table></figure>
+<p><strong>判断参数类型</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)</span><br><span class="line"><span class="comment">// "[object Object]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>])</span><br><span class="line"><span class="comment">// "[object Array]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">2</span>)</span><br><span class="line"><span class="comment">// "[object Number]”</span></span><br></pre></td></tr></table></figure>
+
     </div>
 
     <div class="post-footer">   
@@ -302,7 +317,7 @@
         
     <div class="widget">
         <h3 class="title">分类</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/"><i class="fa" aria-hidden="true">摄影</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程基础/"><i class="fa" aria-hidden="true">编程基础</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/"><i class="fa" aria-hidden="true">网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/"><i class="fa" aria-hidden="true">设计</i></a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/"><i class="fa" aria-hidden="true">前端</i></a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/后端/"><i class="fa" aria-hidden="true">后端</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/摄影/"><i class="fa" aria-hidden="true">摄影</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程基础/"><i class="fa" aria-hidden="true">编程基础</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/"><i class="fa" aria-hidden="true">网络</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/"><i class="fa" aria-hidden="true">设计</i></a><span class="category-list-count">1</span></li></ul>
     </div>
 
 
@@ -319,7 +334,7 @@
   <div class="widget">
     <h3 class="title">标签云</h3>
     <div class="content tag-cloud">
-        <a href="/tags/Algorithms/" style="font-size: 13.33px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/svg/" style="font-size: 10px;">svg</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单反/" style="font-size: 10px;">单反</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a>
+        <a href="/tags/Algorithms/" style="font-size: 13.33px;">Algorithms</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/UML/" style="font-size: 10px;">UML</a> <a href="/tags/bootstrap/" style="font-size: 10px;">bootstrap</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dpr/" style="font-size: 10px;">dpr</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/git/" style="font-size: 13.33px;">git</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/java-web/" style="font-size: 10px;">java web</a> <a href="/tags/javascript/" style="font-size: 13.33px;">javascript</a> <a href="/tags/linux/" style="font-size: 13.33px;">linux</a> <a href="/tags/mongodb/" style="font-size: 10px;">mongodb</a> <a href="/tags/mysql/" style="font-size: 13.33px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/react-native/" style="font-size: 10px;">react native</a> <a href="/tags/svg/" style="font-size: 10px;">svg</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/websocket/" style="font-size: 10px;">websocket</a> <a href="/tags/webwiew/" style="font-size: 10px;">webwiew</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单反/" style="font-size: 10px;">单反</a> <a href="/tags/填坑/" style="font-size: 10px;">填坑</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/问题/" style="font-size: 10px;">问题</a>
     </div>
   </div>
 
