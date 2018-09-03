@@ -189,6 +189,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数组 = <span class="built_in">Array</span>.prototype.slice.call(伪数组))</span><br></pre></td></tr></table></figure>
 <p><strong>判断参数类型</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(&#123;&#125;)</span><br><span class="line"><span class="comment">// "[object Object]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([<span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>])</span><br><span class="line"><span class="comment">// "[object Array]"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">2</span>)</span><br><span class="line"><span class="comment">// "[object Number]”</span></span><br></pre></td></tr></table></figure>
+<p>参考资料：</p>
+<ul>
+<li><a href="http://www.cnblogs.com/coco1s/p/4833199.html" target="_blank" rel="noopener">【优雅代码】深入浅出 妙用Javascript中apply、call、bind</a></li>
+</ul>
 
     </div>
 
