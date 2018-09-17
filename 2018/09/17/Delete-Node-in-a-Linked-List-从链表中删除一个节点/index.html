@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>JavaScript中的闭包 | 墨鸿的博客</title>
+<title>Delete Node in a Linked List 从链表中删除一个节点 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -137,9 +137,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="JavaScript中的闭包">
+        <h1 id="Delete Node in a Linked List 从链表中删除一个节点">
             
-	            JavaScript中的闭包
+	            Delete Node in a Linked List 从链表中删除一个节点
             
         </h1>
         <div class="post-meta">
@@ -147,8 +147,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/前端">
-            前端
+        <a href="/categories/编程基础">
+            编程基础
         </a>
     </span>
     
@@ -157,8 +157,8 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a href="/tags/JavaScript">
-               JavaScript
+            <a href="/tags/leetcode">
+               leetcode
             </a>
             
         </span>
@@ -167,7 +167,7 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2018/03/30</span>
+        <span class="date-meta">2018/09/17</span>
     </span>
 </div>
 
@@ -176,29 +176,17 @@
     </div>
     
     <div class="post-body post-content">
-        <h2 id="1、变量作用域"><a href="#1、变量作用域" class="headerlink" title="1、变量作用域"></a>1、变量作用域</h2><p>一个变量的作用域（scope）是程序源代码中定义这个变量的区域。全局变量拥有全局作用域，在JavaScript代码中的任何地方都是有定义的。然而在函数内声明的变量只在函数体内有定义。它们是局部变量，作用域是局部性的。函数参数也是局部变量，它们只在函数体内有定义。</p>
-<p>在函数体内，局部变量的优先级高于同名的全局变量。如果在函数内声明的一个局部变量或者函数参数中带有的变量和全局变量重名，那么全局变量就被局部变量所遮盖。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="keyword">var</span> scope = <span class="string">'local'</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(scope);	<span class="comment">// local</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()</span><br></pre></td></tr></table></figure>
-<p>声明局部变量时必须使用var，否则该操作会创建全局变量。<br>函数定义是可以嵌套的。由于每个函数都有它自己的作用域，因此会出现几个局部作用域嵌套的情况，例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">nested</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> scope = <span class="string">'nested scope'</span>;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> nested();</span><br><span class="line">&#125;</span><br><span class="line">checkScope()	<span class="comment">// nested scope</span></span><br></pre></td></tr></table></figure>
-<h3 id="1-1、函数作用域和声明提前"><a href="#1-1、函数作用域和声明提前" class="headerlink" title="1.1、函数作用域和声明提前"></a>1.1、函数作用域和声明提前</h3><p>在一些类似C语言的编程语言中，花括号内的每一段代码都是具有各自的作用域，而且变量在声明它们的代码段之外是不可见的，我们称为块级作用域（block scope），而JavaScript中没有块级作用域。JavaScript取而代之地使用了函数作用域（function scope）：变量在声明它们的函数体以及这个函数体嵌套的任意函数体内都是定义的。</p>
-<p>在如下所示的代码中，在不同位置定义了变量i，j和k，它们都在同一个作用域内——这三个变量在函数体内均是有定义的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span>;                          <span class="comment">// i在整个函数体内都是有定义的</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> o == <span class="string">'object'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> j = <span class="number">0</span>;                      <span class="comment">// j在整个函数体内是有定义的，不仅仅是在这个代码段内</span></span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> k = <span class="number">0</span>; k &lt; <span class="number">10</span>; k++) &#123;  <span class="comment">// k在函数体内是有定义的，不仅仅是在这个代码段内</span></span><br><span class="line">          <span class="built_in">console</span>.log(k);             <span class="comment">// 输出数字0-9</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="built_in">console</span>.log(k);                 <span class="comment">// k已经定义了，输出数字10</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">console</span>.log(j);                     <span class="comment">// j已经定义了，但是可能没有初始化</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>JavaScript的函数作用域是指在函数体内声明的所有变量在函数体内始终是可见的。有意思的是，这意味着变量在声明之前甚至已经可用。JavaScript的这个特性被非正式的称为声明提前(hoisting，或者变量提升)，即JavaScript函数里声明的所有变量（但不涉及赋值）都被“提前”至函数体的顶部，看如下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(scope);     <span class="comment">// 输出undefined，而不是global</span></span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local'</span>;    <span class="comment">// 变量在这里赋初始值，但变量本身在函数体内任何地方均是有定义的</span></span><br><span class="line">  <span class="built_in">console</span>.log(scope);     <span class="comment">// 输出local</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>以上代码相当于如下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope</span><br><span class="line">  <span class="built_in">console</span>.log(scope);</span><br><span class="line">  scope = <span class="string">'local'</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(scope);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>所以一些程序员特意将变量声明放在函数体顶部。</p>
-<h3 id="1-2、作为属性的变量"><a href="#1-2、作为属性的变量" class="headerlink" title="1.2、作为属性的变量"></a>1.2、作为属性的变量</h3><p>当声明一个JavaScript全局变量时，实际上是定义了全局对象的一个属性。当使用var声明一个变量时，创建的这个属性是不可配置的，也就是说这个变量无法通过delete运算符删除。如果没有使用严格模式并给一个未声明的变量赋值的话，JavaScript会自动创建一个全局变量。以这种方式创建的变量是全局对象的正常的可配置属性，并可以删除它们。</p>
-<p>JavaScript全局变量是全局对象的属性，这是在ECMAScript规范中强制规定的。对于局部变量则没有如此规定，但我们可以想象得到，局部变量当做跟函数调用相关的某个对象的属性，局部变量当做跟函数调用相关的某个对象的属性。ECMAScript3规范称该对象为调用对象，ECMAScript5规范称为声明上下文对象。JavaScript可以允许使用this关键字来引用全局对象，却没有方法可以引用局部变量中存放的对象。</p>
-<h2 id="2、闭包"><a href="#2、闭包" class="headerlink" title="2、闭包"></a>2、闭包</h2><p>JavaScript函数对象的内部状态不仅包含函数的代码逻辑，还必须引用当前的作用域链。函数对象可以通过作用域相互关联起来，函数体内部的变量都可以保存在函数作用域内，这种特性在计算机科学文献中称为“闭包”。</p>
-<p>从技术的角度讲，所有的JavaScript函数都是闭包：它们都是对象，它们都关联到作用域链。当调用函数时闭包所指向的作用域链和定义函数时的作用域链不是同一个作用域链时，事情就变的非常微妙。当一个函数调用了另外一个函数，外部函数将嵌套的函数对象作为返回值返回的时候往往会发生这种事情。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()  <span class="comment">// 返回local scope</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">'global scope'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkScope</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> scope = <span class="string">'local scope'</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> scope;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">checkScope()()	<span class="comment">// 返回local scope</span></span><br></pre></td></tr></table></figure>
-<p>在这段代码中，我们将函数内的一对圆括号移动到了checkScope()之后。checkScope()现在仅仅返回函数内嵌套的一个函数对象，而不是直接返回结果。在定义函数的作用域外面，调用这个嵌套的函数(包含最后一行代码的最后一对圆括号)会发生什么事情呢？</p>
-<p>回想一下词法作用域的基本规则，JavaScript函数的执行用到了作用域链，这个作用域链是函数定义的时候创建的。嵌套的函数f()定义在这个作用域链里，其中的变量scope一定是局部变量，不管在何时何地执行函数f()，这种绑定在执行f()时依然有效。因此最后一行代码返回“local scope”而不是“global scope”。简言之，闭包的这个特性强大到让人吃惊：它们可以捕捉到局部变量（和参数），并一直保存下来，看起来像这些变量绑定到了在其中定义它们的外部函数。</p>
-<p>参考资料<br>《JavaScript权威指南》</p>
-
+        <p>leetcode第237号题<a href="https://leetcode.com/problems/delete-node-in-a-linked-list/description/" target="_blank" rel="noopener">Delete Node in a Linked List</a>，从链表中删除一个节点。刚看到这个题目还以为是题目出错了，因为要删除一个一个节点，至少题设要告诉链表的头结点和需要删除的节点。查阅之后才明白并不是题目出错，而是自己思路理解有误。在没有告知头结点的情况下，只告诉要删除的节点，也是可以删除的。原理就是用把当前传入的节点(即需要删除的节点)用其下一个节点覆盖掉。</p>
+<p><img src="https://leetcode.com/media/original_images/237_LinkedList.png" alt=""></p>
+<p>因为题目中已告知：</p>
+<ul>
+<li>该链表至少两个节点</li>
+<li>所有节点的值均唯一</li>
+<li>给出的节点不会是最后的尾节点并且一定是有效节点</li>
+<li>不要返回任何值</li>
+</ul>
+<p>题解代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(ListNode node)</span> </span>&#123;</span><br><span class="line">    node.val = node.next.val;</span><br><span class="line">    node.next = node.next.next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
     <div class="post-footer">   
@@ -215,10 +203,8 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2018/04/23/websocket长连接及心跳实现/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
-    
-        <a href="/2018/03/15/求第k大问题的解法/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2018/09/03/JavaScript中apply、call-的区别/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -229,9 +215,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2018/03/30/JavaScript中的闭包/';
-    this.page.identifier = '2018/03/30/JavaScript中的闭包/';
-    this.page.title = 'JavaScript中的闭包';
+    this.page.url = 'http://arthas.com.cn/2018/09/17/Delete-Node-in-a-Linked-List-从链表中删除一个节点/';
+    this.page.identifier = '2018/09/17/Delete-Node-in-a-Linked-List-从链表中删除一个节点/';
+    this.page.title = 'Delete Node in a Linked List 从链表中删除一个节点';
   };
   var d = document, s = d.createElement('script');
   s.src = 'https://arthas-com-cn.disqus.com/embed.js';
