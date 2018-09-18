@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>vue封装的svg圆形进度条 | 墨鸿的博客</title>
+<title>归档 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -133,106 +133,27 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content m-post">
-                    <p id="process"></p>
-<article class="post">
-    <div class="post-head">
-        <h1 id="vue封装的svg圆形进度条">
-            
-	            vue封装的svg圆形进度条
-            
-        </h1>
-        <div class="post-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-        <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/前端">
-            前端
-        </a>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            <a href="/tags/svg">
-               svg
-            </a>
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2018/06/26</span>
-    </span>
-</div>
-
-            
-            
-    </div>
-    
-    <div class="post-body post-content">
-        <blockquote>
-<p>可缩放矢量图形（Scalable Vector Graphics，SVG)，是一种用来描述二维矢量图形的 XML 标记语言。 简单地说，SVG 面向图形，HTML 面向文本。</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-circle"</span>&gt;</span><br><span class="line">    &lt;svg :width=<span class="string">"radius"</span> :height=<span class="string">"radius"</span> viewBox=<span class="string">"0 0 100 100"</span> version=<span class="string">"1.1"</span> xmlns=<span class="string">"http://www.w3.org/2000/svg"</span>&gt;</span><br><span class="line">      &lt;circle <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-background"</span> cx=<span class="string">"50"</span> cy=<span class="string">"50"</span> r=<span class="string">"50"</span> fill=<span class="string">"transparent"</span>/&gt;</span><br><span class="line">      &lt;circle <span class="class"><span class="keyword">class</span></span>=<span class="string">"progress-bar"</span> cx=<span class="string">"50"</span> cy=<span class="string">"50"</span> r=<span class="string">"50"</span> fill=<span class="string">"transparent"</span></span><br><span class="line">      :stroke-dasharray=<span class="string">"dashArray"</span> :stroke-dashoffset=<span class="string">"dashOffset"</span> /&gt;</span><br><span class="line">    &lt;<span class="regexp">/svg&gt;</span></span><br><span class="line"><span class="regexp">    &lt;slot&gt;&lt;/</span>slot&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/ecmascript-6"</span>&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    percent: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    radius: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      dashArray: <span class="built_in">Math</span>.PI * <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">      dashOffset() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> - <span class="keyword">this</span>.percent) * <span class="keyword">this</span>.dashArray</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style scoped lang="stylus"&gt;</span></span><br><span class="line"><span class="regexp">  .progress-circle</span></span><br><span class="line"><span class="regexp">    position: relative</span></span><br><span class="line"><span class="regexp">    circle </span></span><br><span class="line"><span class="regexp">      transform-origin: center</span></span><br><span class="line"><span class="regexp">      stroke-linecap: round</span></span><br><span class="line"><span class="regexp">      &amp;.progress-background</span></span><br><span class="line"><span class="regexp">        stroke-width: 5px</span></span><br><span class="line"><span class="regexp">        stroke: #e7eef2</span></span><br><span class="line"><span class="regexp">        transform: scale(0.9)</span></span><br><span class="line"><span class="regexp">      &amp;.progress-bar</span></span><br><span class="line"><span class="regexp">        stroke-width: 8px</span></span><br><span class="line"><span class="regexp">        transform: scale(0.9) rotate(-90deg)</span></span><br><span class="line"><span class="regexp">        transition: stroke-dashoffset 0.5s ease;</span></span><br><span class="line"><span class="regexp">        stroke: #00b04d</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br></pre></td></tr></table></figure>
-<p>使用：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">progress-circle</span> <span class="attr">radius</span>=<span class="string">"100px"</span> <span class="attr">:percent</span>=<span class="string">"0.6"</span>&gt;</span><span class="tag">&lt;/<span class="name">progress-circle</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：如果要看到下面的动画效果，需要将percent参数设置为变量，然后修改其值。</p>
-</blockquote>
-<p>效果：</p>
-<p><img src="http://ob9qd20l4.bkt.clouddn.com/image-6%E6%9C%88-26-2018%2022-52-21.gif" alt=""></p>
-<p>推荐阅读：<br><a href="https://www.zhangxinxu.com/wordpress/2014/04/animateion-line-drawing-svg-path-%E5%8A%A8%E7%94%BB-%E8%B7%AF%E5%BE%84/" target="_blank" rel="noopener">纯CSS实现帅气的SVG路径描边动画效果</a></p>
-
-    </div>
-
-    <div class="post-footer">   
-        <div>
-            
-                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
-            
-        </div>
-        <div>
-            
-        </div>  
-    </div>
-</article>
-
-<div class="article-nav prev-next-wrap clearfix">
-    
-        <a href="/2018/08/23/vue-cli多环境打包配置/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
-    
-    
-        <a href="/2018/06/22/nodejs日志框架winston配置/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
-    
-</div>
-
-
-    <div id="comments">
+                <main class="col-md-8 main-content ">
+                    <div id="main">
+  <div id="post-list">
+    <ul class="archives-post-list">
+    	<h1 class="info">undefined年 undefined月</h1>
         
-	
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-  var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2018/06/26/vue封装的svg圆形进度条/';
-    this.page.identifier = '2018/06/26/vue封装的svg圆形进度条/';
-    this.page.title = 'vue封装的svg圆形进度条';
-  };
-  var d = document, s = d.createElement('script');
-  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', '' + +new Date());
-  (d.head || d.body).appendChild(s);
-</script>
+          <li class="post-items" _href="/2015/10/17/快速掌握Git基础操作/">
+            <h3 class="post-item-title">
+            	<a href="/2015/10/17/快速掌握Git基础操作/"> 快速掌握Git基础操作 </a>
+            </h3>  
+          </li>
+        
+    </ul>
+  </div>
+</div>
 
-
-	
-
-    </div>
+    <nav class="pagination" role="navigation">
+        <div id="page-nav">
+            <a class="extend prev" rel="prev" href="/archives/page/4/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span>
+        </div>
+    </nav>
 
 
 
