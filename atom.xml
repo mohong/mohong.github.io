@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2018-09-27T12:46:55.720Z</updated>
+  <updated>2018-10-09T07:05:42.977Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS计数器</title>
+    <link href="http://arthas.com.cn/2018/10/09/CSS%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
+    <id>http://arthas.com.cn/2018/10/09/CSS计数器/</id>
+    <published>2018-10-09T06:51:22.000Z</published>
+    <updated>2018-10-09T07:05:42.977Z</updated>
+    
+    <content type="html"><![CDATA[<p>CSS 计数器本质上是 CSS 维护的变量，这些变量可以根据 CSS 规则增加以跟踪使用次数。</p><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>1.命名变量并定义计数器的值，默认为 0。表示定义了varname计数器，从2开始计数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">counter-reset: varname 2;</span><br></pre></td></tr></table></figure><p>2.递增计数器的值，默认增量为 1。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">counter-increment: varname;</span><br></pre></td></tr></table></figure><p>3.counter() / counters() 方法显示计数。和伪元素before/after配合使用。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">counter(varname);</span><br></pre></td></tr></table></figure><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>1、统计点击按钮</p><script async src="//jsrun.net/KWhKp/embed/html,css,result/light/"></script><p>2、文章序号自动递增</p><script async src="//jsrun.net/pWhKp/embed/html,css,result/light/"></script><p>3、文章序号掏钱递增</p><script async src="//jsrun.net/YWhKp/embed/html,css,result/light/"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;CSS 计数器本质上是 CSS 维护的变量，这些变量可以根据 CSS 规则增加以跟踪使用次数。&lt;/p&gt;
+&lt;h3 id=&quot;语法&quot;&gt;&lt;a href=&quot;#语法&quot; class=&quot;headerlink&quot; title=&quot;语法&quot;&gt;&lt;/a&gt;语法&lt;/h3&gt;&lt;p&gt;1.命名变量并定义计数器的值，
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="CSS" scheme="http://arthas.com.cn/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>贪心算法</title>
@@ -512,31 +538,6 @@
     
     
       <category term="单反" scheme="http://arthas.com.cn/tags/%E5%8D%95%E5%8F%8D/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>掌握正则表达式</title>
-    <link href="http://arthas.com.cn/2017/12/06/%E6%8E%8C%E6%8F%A1%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
-    <id>http://arthas.com.cn/2017/12/06/掌握正则表达式/</id>
-    <published>2017-12-06T06:55:21.000Z</published>
-    <updated>2018-03-23T02:05:13.767Z</updated>
-    
-    <content type="html"><![CDATA[<p>正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法, 以及 String 的 match、replace、search 和 split 方法。本章介绍 JavaScript正则表达式。</p><h2 id="预定义字符"><a href="#预定义字符" class="headerlink" title="预定义字符"></a>预定义字符</h2><p>正则表达式为我们提供了几个常用的预定义类来匹配常见的字符,任何预定义字符么有加上数量词之前都只能匹配一个字符。</p><table><thead><tr><th>字符</th><th>等价类</th><th>含义</th></tr></thead><tbody><tr><td>.</td><td>[^\n\r]</td><td>除了回车符和换行符之外的所有字符</td></tr><tr><td>\d</td><td>[0-9]</td><td>数字字符</td></tr><tr><td>\D</td><td>[^0-9]</td><td>非数字字符</td></tr><tr><td>\s</td><td>[ \t\n\x0B\f\r]</td><td>空白符</td></tr><tr><td>\S</td><td>[^ \t\n\x0B\f\r]</td><td>非空白符</td></tr><tr><td>\w</td><td>[a-zA-Z_0-9]</td><td>单词字符(字母、数字、下划线)</td></tr><tr><td>\W</td><td>[^a-zA-Z_0-9]</td><td>非单词字符</td></tr></tbody></table><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eg: ab+数字+任意字符  --- ab\d.</span><br></pre></td></tr></table></figure><h2 id="边界"><a href="#边界" class="headerlink" title="边界"></a>边界</h2><p>正则表达式还提供了几个常用的边界匹配字符</p><table><thead><tr><th>字符</th><th>含义</th></tr></thead><tbody><tr><td>^</td><td>以xx开头</td></tr><tr><td>$</td><td>以xx结尾</td></tr><tr><td>\b</td><td>单词边界，指[a-zA-Z_0-9]之外的字符</td></tr><tr><td>\B</td><td>非单词边界</td></tr></tbody></table><h2 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h2><table><thead><tr><th>字符</th><th>含义</th></tr></thead><tbody><tr><td>？</td><td>出现零次或一次（最多出现一次）</td></tr><tr><td>+</td><td>出现一次或多次（至少出现一次）</td></tr><tr><td>*</td><td>出现零次或多次（任意次）</td></tr><tr><td>{n}</td><td>出现n次</td></tr><tr><td>{n, m}</td><td>出现n到m次</td></tr><tr><td>{n, }</td><td>至少出现n次</td></tr></tbody></table><p><code>\w+\b Byron 匹配 单词＋边界＋Byron</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'Hi Byron'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'Welcome Byron'</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line">(<span class="regexp">/\w+\b Byron/</span>).test(<span class="string">'HiByron'</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure><p><code>\d+\.\d{1,3} 匹配三位小数的数字</code></p><h2 id="贪婪模式与非贪婪模式"><a href="#贪婪模式与非贪婪模式" class="headerlink" title="贪婪模式与非贪婪模式"></a>贪婪模式与非贪婪模式</h2><p>看了上面介绍的量词，也许爱思考的同学会想到关于匹配原则的一些问题，比如{3,5}这个量词，要是在句子中出现了十次，那么他是每次匹配三个还是五个，反正3、4、5都满足3～5的条件，量词在默认下是尽可能多的匹配的，也就是大家常说的贪婪模式</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,5&#125;/g</span>); <span class="comment">//["12345", "6789"]</span></span><br></pre></td></tr></table></figure><p>既然有贪婪模式，那么肯定会有非贪婪模式，让正则表达式尽可能少的匹配，也就是说一旦成功匹配不不再继续尝试，做法很简单，在量词后加上 ? 即可</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,5&#125;?/g</span>); <span class="comment">//["123", "456", "789"]</span></span><br></pre></td></tr></table></figure><h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>有时候我们希望使用量词的时候匹配多个字符，而不是像上面例子只是匹配一个，比如希望匹配Byron出现20次的字符串，我们如果写成 Byron{20} 的话匹配的是Byro＋n出现20次，怎么把Byron作为一个整体呢？使用()就可以达到次目的，我们称为分组</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure><p><img src="https://images0.cnblogs.com/blog/349217/201312/22182142-6b1688e29b584aa28af938a079a793d0.png" alt=""></p><p>如果希望匹配Byron或Casper出现20次该怎么办呢？可以使用字符 ｜ 达到或的功效</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron|Casper)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure><p><img src="https://images0.cnblogs.com/blog/349217/201312/22182815-593022d45eba482aaddd936f3b24beb4.png" alt=""></p><p>我们看到图中有个＃1的东东，那是什么？使用分组的正则表达式会把匹配项也放到分组中，默认就是按数字编号分发的，各异根据编号获得捕获的分组内容，这个在一些希望具体操作第几个匹配项的函数中很有用</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron).(ok)</span><br></pre></td></tr></table></figure><p><img src="https://images0.cnblogs.com/blog/349217/201312/22183347-1db4325c096a43f3a5796b7d25c74b77.png" alt=""></p><p>如果有分组嵌套的情况，外面的组的编号靠前</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((^|%&gt;)[^\t]*)</span><br></pre></td></tr></table></figure><p><img src="https://images0.cnblogs.com/blog/349217/201312/23222603-20a2c64f182a4b49b05a83ef6a3d414d.png" alt=""></p><p>有时候我们不希望捕获某些分组，只需要在分组内加上 ?: 就可以了，着并不意味着该分组内容不属于正则表达式，只是不会给这个分组加编号了而已</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:Byron).(ok)</span><br></pre></td></tr></table></figure><p><img src="https://images0.cnblogs.com/blog/349217/201312/22183600-8865bffe0f1e48e3829aad75461f9bc8.png" alt=""></p><h2 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h2><table><thead><tr><th>表达式</th><th>含义</th></tr></thead><tbody><tr><td>exp1(?=exp2)</td><td>匹配后面是exp2的exp1</td></tr><tr><td>exp1(?!exp2)</td><td>匹配后面不是exp2的exp1</td></tr></tbody></table><p>举个例子： <code>good(?=Byron)</code></p><p><img src="https://images0.cnblogs.com/blog/349217/201312/22191434-fc2c05f77d2b4002a91032e44e49815c.png" alt=""></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/bad(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure><p>通过上面例子可以看出 exp1(?=exp2) 表达式会匹配exp1表达式，但只有其后面内容是exp2的时候才会匹配，也就是两个条件，exp1(?!exp2) 比较类似</p><p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p><p><code>good(?!Byron)</code></p><p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/bad(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul><li><a href="http://www.cnblogs.com/dolphinX/p/3486214.html" target="_blank" rel="noopener">JavaScript 正则表达式上——基本语法</a></li><li><a href="http://www.cnblogs.com/rubylouvre/archive/2010/03/09/1681222.html" target="_blank" rel="noopener">司徒正美 javascript正则表达式</a></li><li><a href="https://regexper.com/" target="_blank" rel="noopener">https://regexper.com/</a></li><li><a href="http://www.jqhtml.com/6915.html" target="_blank" rel="noopener">15个常用的javaScript正则表达式</a></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法, 以及 String 的 match、replace、search 和 split 方法。本章介绍 JavaScrip
-      
-    
-    </summary>
-    
-      <category term="编程基础" scheme="http://arthas.com.cn/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="正则" scheme="http://arthas.com.cn/tags/%E6%AD%A3%E5%88%99/"/>
     
   </entry>
   
