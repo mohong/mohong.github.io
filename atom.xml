@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2018-10-09T07:13:01.834Z</updated>
+  <updated>2018-10-11T09:44:18.631Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BFC布局介绍</title>
+    <link href="http://arthas.com.cn/2018/10/10/BFC%E5%B8%83%E5%B1%80%E4%BB%8B%E7%BB%8D/"/>
+    <id>http://arthas.com.cn/2018/10/10/BFC布局介绍/</id>
+    <published>2018-10-10T09:37:21.000Z</published>
+    <updated>2018-10-11T09:44:18.631Z</updated>
+    
+    <content type="html"><![CDATA[<p>BFC全称block formatting context，中文为“块级格式化上下文”。如果一个元素具有BFC，则内部元素不会影响到外部元素。所以BFC元素是不可能发生margin重叠的，因为margin重叠会影响到外部的元素；BFC元素也可用用来清除浮动的影响，因为如果不清除，子元素浮动则父元素高度塌陷。必然会影响元素的布局和定位。</p><p>以下条件会触发BFC：</p><ul><li><code>&lt;html&gt;</code>根元素</li><li>float的值不为none时</li><li>overflow的值为auto、scroll和hidden</li><li>display的值为table-cell、table-caption、inline-block中的任何一个</li><li>position的值不为relative和static</li></ul><p>换言之，只要元素符合上面任一条件，就无需使用clear:both的属性去清除浮动的影响了。</p><p>以下是一个图片浮动的例子：</p><script async src="//jsrun.net/CfhKp/embed/all/light/"></script><p>可以看到文字和图片出现了环绕效果。如果我们想让文字和图片隔开该如何实现？只需要设置文字部分为BFC元素：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.animal</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><script async src="//jsrun.net/CfhKp/embed/all/light/"></script><p>用BFC实现一个两列布局会简单很多：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bfc"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left side"</span>&gt;</span>左侧<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bfc"</span>&gt;</span>主体内容<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bfc</span> &#123;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.left</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.side</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><script async src="//jsrun.net/SfhKp/embed/all/light/"></script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;BFC全称block formatting context，中文为“块级格式化上下文”。如果一个元素具有BFC，则内部元素不会影响到外部元素。所以BFC元素是不可能发生margin重叠的，因为margin重叠会影响到外部的元素；BFC元素也可用用来清除浮动的影响，因为如果不
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://arthas.com.cn/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS计数器</title>
@@ -506,38 +531,6 @@
     
     
       <category term="JavaScript" scheme="http://arthas.com.cn/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>佳能相机使用指南</title>
-    <link href="http://arthas.com.cn/2017/12/10/%E4%BD%B3%E8%83%BD%E7%9B%B8%E6%9C%BA%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
-    <id>http://arthas.com.cn/2017/12/10/佳能相机使用指南/</id>
-    <published>2017-12-10T03:10:46.000Z</published>
-    <updated>2018-02-13T12:17:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>测光模式: 评价测光   局部测光    点测光    中央重点测光</p><p>光线均匀的时候用评价测光;背光比较严重，发差比较大的时候用局部测光或者点测光;<br>人物放在中间的时候用中央重点测光;</p><p>白平衡: 用来控制相机的色彩还原，因为物体受到了环境色的影响</p><p>自动对焦:<br>ONE SHOT   AI FOCUS     AI SERVO</p><ul><li>ONE SHOT 单次对焦，用于拍摄运动幅度不大的物体，比如静物</li><li>AI FOCUS            用于拍摄无法预知的物体，比如小孩</li><li><p>AI SERVO  连续对焦  用于拍摄连续运动的物体，比如运动的车</p><p>  注：只要运动幅度不大，尽量使用单次对焦</p></li></ul><a id="more"></a><p>ISO</p><ul><li>天气晴朗的室外，100-400</li><li>阴天或傍晚  400-1600</li><li>黑暗的室内或者夜晚  1600-6400.H（H表示扩展ISO）</li></ul><p>原则：只要光线允许，都应该让ISO的值越低，高了就会有噪点 </p><p>闪光补偿:<br>用来配合闪光灯使用，闪光灯打过了，给负补偿，闪光灯不足，给正补偿<br>在目镜中观察标尺，左边表示光线不足，右边表示光线过大</p><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><p>小孔成像</p><h3 id="机身和镜头的详细介绍"><a href="#机身和镜头的详细介绍" class="headerlink" title="机身和镜头的详细介绍"></a>机身和镜头的详细介绍</h3><p>卡口环   快门键   热靴    取景器    肩屏    脚架螺口（通用）    电池仓    镜头</p><p>焦距: 焦距越长，镜头的视角越窄；焦距越短，镜头的视角越宽</p><p>以焦距为标准的镜头分类</p><ul><li>按聚焦局是否可变：变焦镜头、定焦镜头</li><li>按焦距长短：广角、标准、中焦、长焦</li><li><p>按特殊用途：微距镜头、移轴镜头</p></li><li><p>广角：全幅28mm焦距   非全幅28mm/1.6</p></li><li>标准：全幅50mm焦距   非全幅50mm/1.6</li><li>中焦：全幅85mm-135mm   非全幅=全幅/1.6</li><li>长焦：全幅135mm焦距    非全幅135mm/1.6</li></ul><p>靠的近：会变形，尴尬，无法对焦</p><p>自动对焦: 非常暗的地方，没有层次的物体，透过玻璃拍   这些情况需要用手动对焦</p><p>四、快门、光圈与各种曝光模式<br>光圈<br>光圈是一个用来控制光线透过镜头，进入机身内感光面的光亮的装置，它在镜头内。<br>光圈的值越大，进光越小；光圈的值越小，进光越大；</p><p>1:3.5-5.6        非恒定光圈<br>焦距为18的时候，光圈能达到3.5；焦距为135的时候，光圈为5.6<br>变焦的过程中光圈会改变<br>景深：画面中纵向上静物清晰的范围<br>光圈越大，景深越小；光圈越小，景深越大。<br>通过大光圈拍摄小景深照片，背景很模糊的照片，净化构图。</p><p>快门与光圈的成级变化：<br>T：1/2  1/4  1/8  1/15  1/30  1/60  1/125  1/250 ……<br>F:  1   1.4   2    2.8    4    5.6    8     11    16   22……..<br>快门<br>通过控制进光时间控制进光量<br>快门可以决定画面的亮度<br>快门速度越高，画面越清晰；快门速度越低，画面越模糊<br>高速快门拍瞬间，低速快门记录轨迹</p><p>拨盘<br>AV 光圈优先模式<br>光圈值手动，快门相机定   光圈先决<br>直接影响到景深的大小<br>拍人用大光圈，如F2.7 F2.8 ,拍摄风景可以用小光圈，如F11  F12<br>光圈值大于8时可以叫小光圈</p><p>TV 快门优先模式<br>高速运动的物体使用高速的快门<br>拍摄一个不动的人，一般1/60s就可以<br>拍摄一个缓步行走的人1/125s<br>拍摄一个跑动的人1/250s<br>拍摄一辆行驶的汽车1/400s<br>1s能把水流拍摄的像绸缎一样</p><p>当快门开到很高时，如果出现光圈值闪烁，说明即使把光圈值开到最大，也无法正常曝光，此时需要降低快门速度以获得正确曝光。</p><p>曝光补偿：<br>拍摄黑色物体时可以给一点负的曝光补偿，拍摄白色物体时可以给点正的曝光补偿</p><p>五、像素、白平衡、相对感光度<br>P档下可以自由设置参数，A档（傻瓜档）无法设置</p><p>画幅<br>1、画幅越大，能够实现的像素值越高<br>2、同等条件下，画幅大的影像品质高<br>3、画幅越大，广角优势越明显</p><p>注：数码相机可以更改像素，但并非缩小画幅。</p><p>感光度<br>提速快门，抓拍运动的物体<br>只要光线允许，尽量使用低的ISO，多用脚架，ISO只是手持的时候辅助曝光。</p><p>白平衡<br>数码相机专有的功能<br>固有色还原，条件色还原<br>任何情况下，使用日光灯，条件色的还原</p><p>拍摄晚霞的时候，使用“阴天”会让晚霞更红，因为阴天有一部分蓝色，相机为了中和蓝色，会多用一下黄色暖光中和，导致画面更红。</p><p>夜景，色温值设的越低，相机会做冷色补偿，画面偏蓝色<br>  色温值设的越高，相机会做暖调的补偿，画面偏红</p><p>六、景深原理与对焦<br>景深的三要素</p><p>1、景深与光圈成反比<br>2、景深与焦距成反比<br>3、景深与拍摄距离（对焦距离）成正比</p><p>焦点的选择<br>七、曝光补偿与手动模式<br>M档曝光补偿将失效<br>M档设置参数时参考内置的游标，<br>箭头在左表示曝光不足，<br>此时当放慢快门，放大光圈，或者增加ISO；<br>箭头在右表示曝光过度<br>此时当增加快门，缩小光圈，或者减小ISO;</p><p>中间灰</p><p>白加黑减<br>中间灰色不补充<br>*键锁定曝光</p><p>八、测光模式<br>测光模式的选择<br>1、评价测光<br>     也叫平均测光，适用于受光均匀的场景。 </p><p>2、局部测光<br>3、 点测光<br>适用于反差很大的场景，是非常极端的测光方式，只测算焦点附近的区域，如逆光拍摄，<br>     剪影等  只测量5%-15%<br>佳能相机取取景器中心的点测光，当焦点不在取景器中心时，使用*键（曝光锁定键）先锁定曝光，然后再对焦<br>4、中央重点测光<br>适用于稍微有点反差，偏重于画面中心的位置，兼顾周围环境</p><p>九、夜景摄影与夜景人像摄影<br>相机配置：<br>宜广角镜头、配三脚架<br>机身设置：<br>1、一般使用低的ISO控制画面的细腻度，并实现长时间曝光；<br>2、阳光模式还原条件色、高温色呈现暖调、低色温表现冷调；<br>3、单次对焦、如失效使用手动对焦；<br>4、平均测光（评价测光、3D矩阵测光，加权测光……）；<br>5、小光圈实现慢快门并将光圈表现出星芒、大光圈拍摄局部特写，营造虚化背景的梦幻效果；<br>6、按测光表反馈获得，根据画面亮度做补偿；<br>7、三脚架、快门线、中灰滤镜、黑卡纸。</p><p>注意：打开相机的“长时间曝光进行降噪”功能；<br>      夜景摄影没有苛刻的曝光要求，自己决定；<br>      避开大功率光源；<br>      入夜是拍摄夜景的最佳时机；<br>  当把相机架在三脚架上后一定要关闭防抖，否则会适得其反；</p><p>人像摄影<br>快门优先</p><p>1、稍高的ISO（如400-800），稍大的光圈（如F4，F2.8）拍摄夜景，找出合适的快门，在此快门基础上减少一到两级曝光；<br>2、WB设置闪光灯模式；<br>3、以人物对焦；<br>4、开启闪光灯，设置后帘同步；<br>5、试拍摄，按照画面亮度做出闪光补偿；</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;基本概念&quot;&gt;&lt;a href=&quot;#基本概念&quot; class=&quot;headerlink&quot; title=&quot;基本概念&quot;&gt;&lt;/a&gt;基本概念&lt;/h3&gt;&lt;p&gt;测光模式: 评价测光   局部测光    点测光    中央重点测光&lt;/p&gt;
-&lt;p&gt;光线均匀的时候用评价测光;背光比较严重，发差比较大的时候用局部测光或者点测光;&lt;br&gt;人物放在中间的时候用中央重点测光;&lt;/p&gt;
-&lt;p&gt;白平衡: 用来控制相机的色彩还原，因为物体受到了环境色的影响&lt;/p&gt;
-&lt;p&gt;自动对焦:&lt;br&gt;ONE SHOT   AI FOCUS     AI SERVO&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ONE SHOT 单次对焦，用于拍摄运动幅度不大的物体，比如静物&lt;/li&gt;
-&lt;li&gt;AI FOCUS            用于拍摄无法预知的物体，比如小孩&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;AI SERVO  连续对焦  用于拍摄连续运动的物体，比如运动的车&lt;/p&gt;
-&lt;p&gt;  注：只要运动幅度不大，尽量使用单次对焦&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-    
-    </summary>
-    
-      <category term="摄影" scheme="http://arthas.com.cn/categories/%E6%91%84%E5%BD%B1/"/>
-    
-    
-      <category term="单反" scheme="http://arthas.com.cn/tags/%E5%8D%95%E5%8F%8D/"/>
     
   </entry>
   
