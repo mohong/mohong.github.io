@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2018-10-12T07:57:41.463Z</updated>
+  <updated>2018-10-24T13:49:53.700Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript数组转树结构</title>
+    <link href="http://arthas.com.cn/2018/10/24/JavaScript%E6%95%B0%E7%BB%84%E8%BD%AC%E6%A0%91%E7%BB%93%E6%9E%84/"/>
+    <id>http://arthas.com.cn/2018/10/24/JavaScript数组转树结构/</id>
+    <published>2018-10-24T13:43:22.000Z</published>
+    <updated>2018-10-24T13:49:53.700Z</updated>
+    
+    <content type="html"><![CDATA[<p>对于带有树结构性质的数组，经常需要处理成树形结构来处理业务。比如多级导航，遍历文件夹等。用遍历的方式实现转换方法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* data 数组数据</span></span><br><span class="line"><span class="comment">* pid 顶级元素的parentId值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">array2Tree</span> (<span class="params">data, pid</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> result = []</span><br><span class="line">      <span class="keyword">let</span> temp</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (data[i].parentId === pid) &#123;</span><br><span class="line">          <span class="keyword">let</span> obj = &#123;<span class="attr">id</span>: data[i].id, <span class="attr">name</span>: data[i].name&#125;</span><br><span class="line">          temp = array2Tree(data, data[i].id)</span><br><span class="line">          <span class="keyword">if</span> (temp.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            obj.children = temp</span><br><span class="line">          &#125;</span><br><span class="line">          result.push(obj)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>参考文章：</p><p><a href="https://www.imooc.com/article/13562" target="_blank" rel="noopener">js递归实现数组转树结构（多级菜单应用）</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;对于带有树结构性质的数组，经常需要处理成树形结构来处理业务。比如多级导航，遍历文件夹等。用遍历的方式实现转换方法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;sp
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://arthas.com.cn/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>BFC布局介绍</title>
@@ -505,32 +531,6 @@
     
     
       <category term="UML" scheme="http://arthas.com.cn/tags/UML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript之Event对象</title>
-    <link href="http://arthas.com.cn/2018/01/15/JavaScript%E4%B9%8BEvent%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://arthas.com.cn/2018/01/15/JavaScript之Event对象/</id>
-    <published>2018-01-15T12:38:06.000Z</published>
-    <updated>2018-03-13T06:21:59.637Z</updated>
-    
-    <content type="html"><![CDATA[<p>Event接口表示在DOM中发生的任何事件; 一些是用户生成的（例如鼠标或键盘事件），而其他由API生成(例如指示动画已经完成运行的事件，视频已被暂停等等)。有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。</p><h2 id="注册事件监听器"><a href="#注册事件监听器" class="headerlink" title="注册事件监听器"></a>注册事件监听器</h2><p>有三种方式可以为DOM元素注册事件处理函数。(// Assuming myButton is a button element)</p><ul><li><p>EventTarget.addEventListener</p><p>myButton.addEventListener(‘click’, function(){alert(‘Hello world’);}, false);</p></li><li><p>HTML 属性</p><p><code>&lt;button onclick=&quot;alert(&#39;Hello world!&#39;)&quot;&gt;</code></p></li><li><p>DOM 元素属性</p><p>myButton.onclick = function(event){alert(‘Hello world’);};</p></li></ul><h2 id="DOM-Event-接口"><a href="#DOM-Event-接口" class="headerlink" title="DOM Event 接口"></a>DOM Event 接口</h2><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><ul><li>Event.bubbles 只读 一个布尔值，用来表示该事件是否在DOM中冒泡。</li><li>……</li></ul><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul><li>event.initEvent  通过DocumentEvent的接口给被创建的事件初始化某些值。</li><li>event.preventDefault   取消事件（如果该事件可取消）。</li><li>event.stopPropagation   停止事件冒泡</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Event接口表示在DOM中发生的任何事件; 一些是用户生成的（例如鼠标或键盘事件），而其他由API生成(例如指示动画已经完成运行的事件，视频已被暂停等等)。有许多类型的事件，其中一些使用基于主要事件接口的其他接口。事件本身包含所有事件通用的属性和方法。&lt;/p&gt;
-&lt;h2 i
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="JavaScript" scheme="http://arthas.com.cn/tags/JavaScript/"/>
     
   </entry>
   

@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>标签: dpr | 墨鸿的博客</title>
+<title>JavaScript数组转树结构 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -133,37 +133,101 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <h3> 
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="JavaScript数组转树结构">
+            
+	            JavaScript数组转树结构
+            
+        </h1>
+        <div class="post-meta">
     
-        dpr 
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
     
     
-</h3>
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/javascript">
+               javascript
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2018/10/24</span>
+    </span>
 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/2016/12/17/设备像素比的实际意义/">设备像素比的实际意义</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2016年12月17日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    设备像素比devicePixelRatio简单介绍一文专业介绍了设备像素比，摘抄精简为以下：设备像素比（devicePixelRatio）其实指的是window.devicePixelRatio, 被所有WebKit浏览器以及Opera所支持，随着显示器的发展，这个属性也慢慢登上了前端技术的舞台。window.devicePixelRatio是设备上物理像素和设备独立像素(device-independent pixels (dips))的比例。…
-                
-            </p> 
+    <!-- 不蒜子 显示文章阅读次数-->
+    <span class="fa-wrap" id="busuanzi_container_page_pv">
+        被围观<span id="busuanzi_value_page_pv"></span>次
+    </span>
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>对于带有树结构性质的数组，经常需要处理成树形结构来处理业务。比如多级导航，遍历文件夹等。用遍历的方式实现转换方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* data 数组数据</span></span><br><span class="line"><span class="comment">* pid 顶级元素的parentId值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">array2Tree</span> (<span class="params">data, pid</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> result = []</span><br><span class="line">      <span class="keyword">let</span> temp</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; data.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (data[i].parentId === pid) &#123;</span><br><span class="line">          <span class="keyword">let</span> obj = &#123;<span class="attr">id</span>: data[i].id, <span class="attr">name</span>: data[i].name&#125;</span><br><span class="line">          temp = array2Tree(data, data[i].id)</span><br><span class="line">          <span class="keyword">if</span> (temp.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            obj.children = temp</span><br><span class="line">          &#125;</span><br><span class="line">          result.push(obj)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> result</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>参考文章：</p>
+<p><a href="https://www.imooc.com/article/13562" target="_blank" rel="noopener">js递归实现数组转树结构（多级菜单应用）</a></p>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
+            
         </div>
-    </article>
- 
+        <div>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/10/10/BFC布局介绍/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
 
 
+    <div id="comments">
+        
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://arthas.com.cn/2018/10/24/JavaScript数组转树结构/';
+    this.page.identifier = '2018/10/24/JavaScript数组转树结构/';
+    this.page.title = 'JavaScript数组转树结构';
+  };
+  var d = document, s = d.createElement('script');
+  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', '' + +new Date());
+  (d.head || d.body).appendChild(s);
+</script>
+
+
+	
+
+    </div>
 
 
 
