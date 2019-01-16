@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2019-01-02T07:52:53.422Z</updated>
+  <updated>2019-01-16T09:55:00.120Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue-router中import时不能使用变量解决办法</title>
+    <link href="http://arthas.com.cn/2019/01/16/vue-router%E4%B8%ADimport%E6%97%B6%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://arthas.com.cn/2019/01/16/vue-router中import时不能使用变量解决办法/</id>
+    <published>2019-01-16T09:39:48.000Z</published>
+    <updated>2019-01-16T09:55:00.120Z</updated>
+    
+    <content type="html"><![CDATA[<p>vue-router中为了实现懒加载组件，需要用这样的写法：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/page/login/login.vue'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但有时候需求会导致需要通过变量指定vue文件路径，从而实现动态加载，例如：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'@/page/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是webpack在编译时import()不能使用变量，需要用静态字符串才能正确打包。上面的写法会因找不到包而报错。</p><p><img src="/images/vue-router1.png" alt="报错"></p><p>但一定要用变量的时候，可以通过字符串模板来提供部分信息给webpack；例如:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">`@/page<span class="subst">$&#123;path&#125;</span>`</span>)</span><br></pre></td></tr></table></figure><p>这样编译时会编译所有./path下的模块，但运行时确定path的值才会加载，从而实现懒加载。</p><p><a href="https://blog.csdn.net/zjcjava/article/details/82179975" target="_blank" rel="noopener">原文</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;vue-router中为了实现懒加载组件，需要用这样的写法：&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span c
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="vue-router" scheme="http://arthas.com.cn/tags/vue-router/"/>
+    
+  </entry>
   
   <entry>
     <title>vue中的过渡和动画</title>
@@ -508,32 +534,6 @@
     
     
       <category term="问题" scheme="http://arthas.com.cn/tags/%E9%97%AE%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript的类和模块</title>
-    <link href="http://arthas.com.cn/2018/03/07/JavaScript%E7%9A%84%E7%B1%BB%E5%92%8C%E6%A8%A1%E5%9D%97/"/>
-    <id>http://arthas.com.cn/2018/03/07/JavaScript的类和模块/</id>
-    <published>2018-03-07T07:05:30.000Z</published>
-    <updated>2018-03-13T06:21:28.331Z</updated>
-    
-    <content type="html"><![CDATA[<p>JavaScript中类的一个重要特性是“动态可继承”。在JavaScript中，类的所有实例对象都从同一个原型对象上继承属性。因此，原型对象是类的核心。当且仅当两个对象继承自同一个原型对象时，它们才是属于同一个类的实例。</p><h3 id="1、constructor"><a href="#1、constructor" class="headerlink" title="1、constructor"></a><strong>1、constructor</strong></h3><p>任何JavaScript函数都可以用作构造函数，并且调用构造函数是需要用到一个prototype属性的。因此，每个JavaScript函数(ECMAScript5中的Function.bind()方法返回的函数除外)都自动拥有一个prototype属性。这个属性的值是一个对象，这个对象包含唯一一个不可枚举属性constructor。constructor的属性的值是一个函数对象：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> P = F.prototype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> c = P.constructor;</span><br><span class="line"></span><br><span class="line">c === F;</span><br></pre></td></tr></table></figure><p>这意味着对象通常继承的constructor均指代它们的构造函数。由于构造函数是类的“公共标识”，因此这个constructor属性为对象提供了类。</p><h4 id="2、类的扩充"><a href="#2、类的扩充" class="headerlink" title="2、类的扩充"></a><strong>2、类的扩充</strong></h4><p>JavaScript中基于原型的继承机制是动态的：对象从其原型继承属性，如果创建对象之后原型的属性发生改变，也会影响到继承这个原型的所有实例对象。这意味着我们可以通过给原型对象添加新方法来扩充类。</p><p>构造函数是类的公共标识，但原型是唯一标识，尽管instanceof的右操作符是构造函数，但计算过程实际上是监测了对象的继承关系，而不是监测创建对象的构造函数。</p><h3 id="3、JavaScript中的面向对象技术"><a href="#3、JavaScript中的面向对象技术" class="headerlink" title="3、JavaScript中的面向对象技术"></a><strong>3、JavaScript中的面向对象技术</strong></h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;JavaScript中类的一个重要特性是“动态可继承”。在JavaScript中，类的所有实例对象都从同一个原型对象上继承属性。因此，原型对象是类的核心。当且仅当两个对象继承自同一个原型对象时，它们才是属于同一个类的实例。&lt;/p&gt;
-&lt;h3 id=&quot;1、constructor
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="JavaScript" scheme="http://arthas.com.cn/tags/JavaScript/"/>
     
   </entry>
   

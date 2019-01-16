@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>归档 | 墨鸿的博客</title>
+<title>vue-router中import时不能使用变量解决办法 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -133,81 +133,106 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-    	<h1 class="info">undefined年 undefined月</h1>
-        
-          <li class="post-items" _href="/2018/03/07/JavaScript的类和模块/">
-            <h3 class="post-item-title">
-            	<a href="/2018/03/07/JavaScript的类和模块/"> JavaScript的类和模块 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/03/06/JavaScript面向对象/">
-            <h3 class="post-item-title">
-            	<a href="/2018/03/06/JavaScript面向对象/"> JavaScript面向对象 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/01/18/UML类图教程/">
-            <h3 class="post-item-title">
-            	<a href="/2018/01/18/UML类图教程/"> UML类图教程 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/01/15/JavaScript之Event对象/">
-            <h3 class="post-item-title">
-            	<a href="/2018/01/15/JavaScript之Event对象/"> JavaScript之Event对象 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/12/10/佳能相机使用指南/">
-            <h3 class="post-item-title">
-            	<a href="/2017/12/10/佳能相机使用指南/"> 佳能相机使用指南 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/12/06/Algorithms中的复杂度/">
-            <h3 class="post-item-title">
-            	<a href="/2017/12/06/Algorithms中的复杂度/"> Algorithms中的复杂度 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/12/06/掌握正则表达式/">
-            <h3 class="post-item-title">
-            	<a href="/2017/12/06/掌握正则表达式/"> 掌握正则表达式 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2017/01/17/Nginx反向代理实现Tomcat集群/">
-            <h3 class="post-item-title">
-            	<a href="/2017/01/17/Nginx反向代理实现Tomcat集群/"> Nginx反向代理实现Tomcat集群 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2016/12/17/设备像素比的实际意义/">
-            <h3 class="post-item-title">
-            	<a href="/2016/12/17/设备像素比的实际意义/"> 设备像素比的实际意义 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2016/11/28/关于flex的总结/">
-            <h3 class="post-item-title">
-            	<a href="/2016/11/28/关于flex的总结/"> 关于fiex的总结 </a>
-            </h3>  
-          </li>
-        
-    </ul>
-  </div>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue-router中import时不能使用变量解决办法">
+            
+	            vue-router中import时不能使用变量解决办法
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a href="/tags/vue-router">
+               vue-router
+            </a>
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">2019/01/16</span>
+    </span>
 </div>
 
-    <nav class="pagination" role="navigation">
-        <div id="page-nav">
-            <a class="extend prev" rel="prev" href="/archives/page/2/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/"><i class='fa fa-angle-right'></i></a>
+        <!-- 不蒜子 显示文章阅读次数-->
+        <span class="fa-wrap" id="busuanzi_container_page_pv">
+            该文章被围观<span id="busuanzi_value_page_pv"></span>次
+        </span>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>vue-router中为了实现懒加载组件，需要用这样的写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/page/login/login.vue'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但有时候需求会导致需要通过变量指定vue文件路径，从而实现动态加载，例如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'@/page/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是webpack在编译时import()不能使用变量，需要用静态字符串才能正确打包。上面的写法会因找不到包而报错。</p>
+<p><img src="/images/vue-router1.png" alt="报错"></p>
+<p>但一定要用变量的时候，可以通过字符串模板来提供部分信息给webpack；例如:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">`@/page<span class="subst">$&#123;path&#125;</span>`</span>)</span><br></pre></td></tr></table></figure>
+<p>这样编译时会编译所有./path下的模块，但运行时确定path的值才会加载，从而实现懒加载。</p>
+<p><a href="https://blog.csdn.net/zjcjava/article/details/82179975" target="_blank" rel="noopener">原文</a></p>
+
+    </div>
+
+    <div class="post-footer">   
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">墨鸿</a>
+            
         </div>
-    </nav>
+        <div>
+            
+        </div>  
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2019/01/02/vue中的过渡和动画/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  var disqus_config = function () {
+    this.page.url = 'http://arthas.com.cn/2019/01/16/vue-router中import时不能使用变量解决办法/';
+    this.page.identifier = '2019/01/16/vue-router中import时不能使用变量解决办法/';
+    this.page.title = 'vue-router中import时不能使用变量解决办法';
+  };
+  var d = document, s = d.createElement('script');
+  s.src = 'https://arthas-com-cn.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', '' + +new Date());
+  (d.head || d.body).appendChild(s);
+</script>
+
+
+	
+
+    </div>
 
 
 
