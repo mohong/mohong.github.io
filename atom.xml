@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2019-01-16T12:48:35.484Z</updated>
+  <updated>2019-01-17T14:08:26.417Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://arthas.com.cn/2019/01/16/vue-router%E4%B8%ADimport%E6%97%B6%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://arthas.com.cn/2019/01/16/vue-router中import时不能使用变量解决办法/</id>
     <published>2019-01-16T09:39:48.000Z</published>
-    <updated>2019-01-16T12:48:35.484Z</updated>
+    <updated>2019-01-17T14:08:26.417Z</updated>
     
     <content type="html"><![CDATA[<p>vue-router中为了实现懒加载组件，需要用这样的写法：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/page/login/login.vue'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但有时候需求会导致需要通过变量指定vue文件路径，从而实现动态加载，例如：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'@/page/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是webpack在编译时import()不能使用变量，需要用静态字符串才能正确打包。上面的写法会因找不到文件而报错。</p><p><img src="/images/vue-router1.png" alt="报错"></p><p>但一定要用变量的时候，可以通过字符串模板来提供部分信息给webpack；例如:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">`@/page<span class="subst">$&#123;path&#125;</span>`</span>)</span><br></pre></td></tr></table></figure><p>这样编译时会编译所有./path下的模块，但运行时确定path的值才会加载，从而实现懒加载。</p><p><a href="https://blog.csdn.net/zjcjava/article/details/82179975" target="_blank" rel="noopener">原文</a></p>]]></content>
     
