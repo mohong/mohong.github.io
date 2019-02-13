@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2019-01-21T13:00:39.221Z</updated>
+  <updated>2019-02-13T08:38:56.726Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>函数节流</title>
+    <link href="http://arthas.com.cn/2019/02/13/%E5%87%BD%E6%95%B0%E8%8A%82%E6%B5%81/"/>
+    <id>http://arthas.com.cn/2019/02/13/函数节流/</id>
+    <published>2019-02-13T08:27:12.000Z</published>
+    <updated>2019-02-13T08:38:56.726Z</updated>
+    
+    <content type="html"><![CDATA[<p>浏览器中某些计算和处理要比其他的昂贵很多。例如DOM操作比起非DOM交互需要更多的内存和CPU。连续尝试进行过多的DOM相关操作可能会导致浏览器挂起，有时候甚至奔溃。</p><p>函数节流背后的基本思想是指，某些代码不可以在没有间断的情况下连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一个的定时器，并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意思。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。</p><p>以下是该模式的基本形式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> processor = &#123;</span><br><span class="line">  timeoutId: <span class="literal">null</span>,</span><br><span class="line">  performProcessing: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实际执行的业务代码</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始处理调用的方法</span></span><br><span class="line">  process: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    clearTimeout(<span class="keyword">this</span>.timeoutId);</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.timeoutId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      that.performProcessing();</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试开始执行</span></span><br><span class="line">processor.process();</span><br></pre></td></tr></table></figure></p><p>上面的过程可以通过throttle()函数简化：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">method, context</span>) </span>&#123;</span><br><span class="line">    clearTimeout(method.tId);</span><br><span class="line">    method.tId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        method.call(context);</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>throttle()函数接收两个参数，要执行的函数以及哪个作用域执行。<br>节流在resize事件中是最常用的。如果你基于该事件来改变页面布局的话，最好控制处理的频率，以确保浏览器不会在极短的时间内进行更多的计算。例如，假设有一个div元素需要保持它的始终等同于宽度，那么实现这一功能的JavaScript可以如下编写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line">    div.style.height = div.offsetWidth + <span class="string">'px'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这样处理虽然能解决问题，但是会出现页面卡顿的情况，首先，如果该元素或者该页面的其他元素有非常复杂的CSS样式，那么这个过程将会很复杂。其次，设置元素的高度依然会很复杂，如果使用throttle()函数，将会大大得到优化：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeDiv</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line">    div.style.height = div.offsetWidth + <span class="string">'px'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    throttle(resizeDiv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>只要代码是周期性执行的，都应该使用节流，但是你不能控制请求执行的频率。</p><p>参考资料：<br>《JavaScript高级程序设计》(第3版)</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;浏览器中某些计算和处理要比其他的昂贵很多。例如DOM操作比起非DOM交互需要更多的内存和CPU。连续尝试进行过多的DOM相关操作可能会导致浏览器挂起，有时候甚至奔溃。&lt;/p&gt;
+&lt;p&gt;函数节流背后的基本思想是指，某些代码不可以在没有间断的情况下连续重复执行。第一次调用函数，创
+      
+    
+    </summary>
+    
+      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://arthas.com.cn/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>XSS（跨站脚本攻击）和CSRF（跨站请求伪造）</title>
@@ -498,33 +524,6 @@
         &lt;h2 id=&quot;盒模型概述&quot;&gt;&lt;a href=&quot;#盒模型概述&quot; class=&quot;headerlink&quot; title=&quot;盒模型概述&quot;&gt;&lt;/a&gt;盒模型概述&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的尺寸&lt;/li&gt;
 &lt;li&gt;如果在元素上添
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="css" scheme="http://arthas.com.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS之选择器</title>
-    <link href="http://arthas.com.cn/2018/03/14/CSS%E4%B9%8B%E9%80%89%E6%8B%A9%E5%99%A8/"/>
-    <id>http://arthas.com.cn/2018/03/14/CSS之选择器/</id>
-    <published>2018-03-14T06:14:55.000Z</published>
-    <updated>2018-03-14T06:18:20.228Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><ul><li>伪类选择器<ul><li><code>:link</code>  <code>:visited</code>  –链接伪类，只能应用于锚元素</li><li><code>:hover</code>  <code>:active</code>  <code>:focus</code>  –动态伪类，理论上可以引用于任何元素</li></ul></li><li>通用选择器 ：<code>* {}</code></li><li>子选择器和相邻选择器(<code>#nav&gt;li</code>)</li><li>属性选择器：<code>acronym[title]</code>(具有title属性的acronym元素)，还可以根据属性值应用样式<code>a[rel=&quot;nofollow&quot;]</code></li><li>ID选择器</li><li>类选择器</li></ul><h2 id="CSS选择器的优先级"><a href="#CSS选择器的优先级" class="headerlink" title="CSS选择器的优先级"></a>CSS选择器的优先级</h2><p>!important &gt;  id &gt; class &gt; tag</p><h2 id="权重"><a href="#权重" class="headerlink" title="权重"></a>权重</h2><blockquote><p>基本上，用style属性编写的规则总是比其他任何规则特殊，具有ID选择器的规则比没有ID选择器的规则特殊，具有类选择器的规则比只有类选择器的规则特殊。<br>如果两个规则的特殊性相同，那么后定义的规则优先。</p></blockquote><p>CSS定义的权重</p><p>以下是权重的规则：标签的权重为1，class的权重为10，id的权重为100，以下例子是演示各种定义的权重值：</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*权重为1*/</span></span><br><span class="line"><span class="selector-tag">div</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*权重为10*/</span></span><br><span class="line"><span class="selector-class">.class1</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*权重为100*/</span></span><br><span class="line"><span class="selector-id">#id1</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*权重为100+1=101*/</span></span><br><span class="line"><span class="selector-id">#id1</span> <span class="selector-tag">div</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*权重为10+1=11*/</span></span><br><span class="line"><span class="selector-class">.class1</span> <span class="selector-tag">div</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*权重为10+10+1=21*/</span></span><br><span class="line"><span class="selector-class">.class1</span> <span class="selector-class">.class2</span> <span class="selector-tag">div</span>&#123;&#125;</span><br></pre></td></tr></table></figure><h2 id="应用样式"><a href="#应用样式" class="headerlink" title="应用样式"></a>应用样式</h2><p>1、链接样式</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"/css/basic.css"</span> <span class="attr">ref</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css /&gt;</span></span></span><br></pre></td></tr></table></figure><p>2、导入样式</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(/css/advanced.css)</span><br></pre></td></tr></table></figure><p>注意：导入样式表比链接样式表要慢</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;CSS选择器&quot;&gt;&lt;a href=&quot;#CSS选择器&quot; class=&quot;headerlink&quot; title=&quot;CSS选择器&quot;&gt;&lt;/a&gt;CSS选择器&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;伪类选择器&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;:link&lt;/code&gt;  &lt;code&gt;:visited
       
     
     </summary>

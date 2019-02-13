@@ -29,7 +29,7 @@
     <!--Title-->
 
 
-<title>Linux学习笔记 | 墨鸿的博客</title>
+<title>函数节流 | 墨鸿的博客</title>
 
 
     <link rel="alternate" href="/atom.xml" title="墨鸿的博客" type="application/atom+xml">
@@ -137,9 +137,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Linux学习笔记">
+        <h1 id="函数节流">
             
-	            Linux学习笔记
+	            函数节流
             
         </h1>
         <div class="post-meta">
@@ -147,8 +147,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/前端">
+            前端
         </a>
     </span>
     
@@ -157,8 +157,8 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            <a href="/tags/linux">
-               linux
+            <a href="/tags/javascript">
+               javascript
             </a>
             
         </span>
@@ -167,7 +167,7 @@
     
     <span class="fa-wrap">
         <i class="fa fa-clock-o"></i>
-        <span class="date-meta">2016/03/24</span>
+        <span class="date-meta">2019/02/13</span>
     </span>
 </div>
 
@@ -177,111 +177,17 @@
         </span>
             
             
-            <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>1056</strong>天之前发表，文中内容可能已经过时。
-            </p>
-        
     </div>
     
     <div class="post-body post-content">
-        <p><strong>1、Ubuntu的图形模式与字符模式切换</strong></p>
-<ul>
-<li><code>ctrl+alt+f2</code>进入命令行模式</li>
-<li><code>ctrl+alt+f7</code>进入到图形模式</li>
-</ul>
-<p><strong>2、使用root终端：<code>sudo -i</code></strong></p>
-<p><strong>3、shutdown</strong></p>
-<ul>
-<li>-t seco    设定在seco秒之后关机</li>
-<li>-r 重启</li>
-<li>-h 关机</li>
-<li>man shutdown  帮助</li>
-</ul>
-<p><strong>4、软件安装包</strong><br>Linxu安装软件包文件有许多不同的类型。他们多数与特定Linux发行版的软件管理器相关联，</p>
-<ul>
-<li>Debian软件包文件为.deb （ubuntu主要包）</li>
-<li>RedHat软件包文件为.rpm</li>
-<li>Tarballs软件包文件为.tar</li>
-</ul>
-<p><strong>5、APT</strong></p>
-<blockquote>
-<p>APT(The Advanced Packaging Tool 高级软件包工具)是一个强大的包管理系统，图形化程序如添加/删除应用程序和Synictic都是建立在其基础之上，APT会自动处理依赖关系，APT由名字以“apt-”打头的程序组成， </p>
-<p>Aptitude为一个高级包管理工具，也是目前首选的字符界面APT前端程序，它会记住哪些包是你安装的，哪些是为了满足依赖关系而安装的。在已安装包不需要的情况下，Aptitude会自动卸载后者。Aptitude完全可以作为apt-get的替代品。</p>
-</blockquote>
-<p>APT的一些常用操作命令</p>
-<ul>
-<li>查看软件的信息：sudo apt-cache showsrc <package></package></li>
-<li>获取源代码： sudo apt-get source <package></package></li>
-<li>安装软件包： sudo apt-get install <package></package></li>
-<li>获取新的软件包列表： sudo apt-get update</li>
-</ul>
-<p><strong>6、安装软件</strong><br>Ubuntu相关的软件包文件名使用.deb作为后缀，这是因为Ubuntu和Debian发行版有着紧密的联系。dpkg(debian package)是为Debian系统专门开发的软件包。</p>
-<ul>
-<li><p>安装软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i &lt;package&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>删除软件包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i &lt;package&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>7、alien转换包</strong><br>不建议安装rpm包，因为debian的包已经很多了，但是当只有rpm包的时候，又需要安装到ubuntu上的时候，就需要用alien把rpm包转换为deb包，再安装。</p>
-<blockquote>
-<p>alien也可以指在linux下运行的一款软件。它的作用是对现有流行的linux软件发行格式——如rpm,deb,tgz等进行转换。<br>可以帮助某一发行版的linux用户转换由其它linux发行版发行的软件来使用（如在debian上安装由fedora(Red Hat)主推的rpm格式软件），以保证软件的格式兼容。</p>
-</blockquote>
-<p>安装alien<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install alien</span><br></pre></td></tr></table></figure></p>
-<p>通过alien将rpm包转换成deb包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo alien package_file.rpm</span><br></pre></td></tr></table></figure></p>
-<p>生成同名的.deb文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i package_file.deb</span><br></pre></td></tr></table></figure></p>
-<p><strong>8、修改源</strong><br>备份当前的源列表文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -p /etc/apt/sources.list /etc/apt/sources.list_bak</span><br></pre></td></tr></table></figure></p>
-<p>(ubuntu用户)用文本编辑器修改源文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit sources.list</span><br></pre></td></tr></table></figure></p>
-<p>注意：将不同软件源混杂在一起可能导致系统崩溃</p>
-<p><strong>9、更新</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br></pre></td></tr></table></figure></p>
-<p>这个命令（换源后必须执行），会访问源列表里的每个网址，并读取软件列表，然后保存在本地电脑。我们在新立得软件包管理器里看到的软件列表，都是通过update命令更新的。接着：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get upgrade</span><br></pre></td></tr></table></figure>
-<p>这个命令，会把本地已安装的软件，与刚下载的软件列表里对应软件进行对比，如果发现已安装的软件版本太低，就会提示你更新。upgreade可不能乱用，要是源里面有系统更新，直接会把系统升级了。</p>
-<p><strong>9、搜索</strong><br>搜索所有包含xxx的文件或文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locate xxx</span><br></pre></td></tr></table></figure></p>
-<p><strong>10、多命令执行</strong></p>
-<ul>
-<li>分号<br>使用方式：command1 ; command2<br>先执行command1,不管command1会不会出错，都会执行command2</li>
-<li>&amp;&amp;<br>使用方式：command1 &amp;&amp; command2<br>只有当command1正确运行完毕后才执行command2</li>
-</ul>
-<p><strong>11、文件查找</strong><br>find命令从指定的起始目录开始，递归的搜索其各个子目录，查找满足查找条件的文件并对其采取相关操作。语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find [路径] [参数]</span><br></pre></td></tr></table></figure></p>
-<p>参数</p>
-<ul>
-<li>-amin n : 查找n分钟以内被访问的文件</li>
-<li>-name ‘字符串’：查找文件名匹配所给字符串的所有文件，字符串内可以用通配符？*和[]</li>
-<li>-user ‘字符串’ ： 查找属于用户名为所给字符串的所有文件</li>
-</ul>
-<p>which命令基本功能是从系统变量path中指定的路径去寻找可执行文件，简单来说，其基本功能在于查找可执行文件，语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">which [文件名称]</span><br></pre></td></tr></table></figure></p>
-<p>whereis用于查找一个指定文件名的文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis [-bmsu] [目录名称]</span><br></pre></td></tr></table></figure></p>
-<p>12、查看某个目录的大小<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -s [-h][-m]</span><br></pre></td></tr></table></figure></p>
-<p>默认是以k为单位的，</p>
-<ul>
-<li>-s : 省略子文件的显示</li>
-<li>-h : 用人类能读懂的方式显示[human readable]</li>
-<li>-m : 以M为单位显示</li>
-</ul>
-<p>13、前后台管理</p>
-<ul>
-<li>&amp;<br>用户将屏幕中的命令（command）在后台执行，可通过<code>fg</code>让该程序切换到前台执行</li>
-<li>ctrl+z<br>用户将一个前台正在执行的命令放到后台，并且暂停</li>
-<li>jobs<br>用来查看当前有多少命令在后台执行</li>
-</ul>
-<p>14、进程管理</p>
-<ul>
-<li>ps<br>ps指令和top指令都用来监视系统进程和资源使用情况。ps更为常用。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>显示所有包含其他用户的进程</p>
-<ul>
-<li><p>top<br>动态显示系统进程和资源信息</p>
-</li>
-<li><p>free [-k][-m][-h]<br>查看当前内存情况</p>
-</li>
-<li><p>kill -9 pid<br>用于杀死pid进程，和ps、pgrep结合在一起使用</p>
-</li>
-<li><p>who<br>who和w用来查看目前系统上的用户</p>
-</li>
-</ul>
+        <p>浏览器中某些计算和处理要比其他的昂贵很多。例如DOM操作比起非DOM交互需要更多的内存和CPU。连续尝试进行过多的DOM相关操作可能会导致浏览器挂起，有时候甚至奔溃。</p>
+<p>函数节流背后的基本思想是指，某些代码不可以在没有间断的情况下连续重复执行。第一次调用函数，创建一个定时器，在指定的时间间隔之后运行代码。当第二次调用该函数时，它会清除前一个的定时器，并设置另一个。如果前一个定时器已经执行过了，这个操作就没有任何意思。然而，如果前一个定时器尚未执行，其实就是将其替换为一个新的定时器。目的是只有在执行函数的请求停止了一段时间之后才执行。</p>
+<p>以下是该模式的基本形式：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> processor = &#123;</span><br><span class="line">  timeoutId: <span class="literal">null</span>,</span><br><span class="line">  performProcessing: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实际执行的业务代码</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始处理调用的方法</span></span><br><span class="line">  process: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    clearTimeout(<span class="keyword">this</span>.timeoutId);</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">this</span>.timeoutId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      that.performProcessing();</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 尝试开始执行</span></span><br><span class="line">processor.process();</span><br></pre></td></tr></table></figure></p>
+<p>上面的过程可以通过throttle()函数简化：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">method, context</span>) </span>&#123;</span><br><span class="line">    clearTimeout(method.tId);</span><br><span class="line">    method.tId = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        method.call(context);</span><br><span class="line">    &#125;, <span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>throttle()函数接收两个参数，要执行的函数以及哪个作用域执行。<br>节流在resize事件中是最常用的。如果你基于该事件来改变页面布局的话，最好控制处理的频率，以确保浏览器不会在极短的时间内进行更多的计算。例如，假设有一个div元素需要保持它的始终等同于宽度，那么实现这一功能的JavaScript可以如下编写：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line">    div.style.height = div.offsetWidth + <span class="string">'px'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样处理虽然能解决问题，但是会出现页面卡顿的情况，首先，如果该元素或者该页面的其他元素有非常复杂的CSS样式，那么这个过程将会很复杂。其次，设置元素的高度依然会很复杂，如果使用throttle()函数，将会大大得到优化：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resizeDiv</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'myDiv'</span>);</span><br><span class="line">    div.style.height = div.offsetWidth + <span class="string">'px'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.onresize = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    throttle(resizeDiv);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只要代码是周期性执行的，都应该使用节流，但是你不能控制请求执行的频率。</p>
+<p>参考资料：<br>《JavaScript高级程序设计》(第3版)</p>
 
     </div>
 
@@ -299,10 +205,8 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/2016/03/27/CSS之绝对定位和相对定位/" class="pre-post btn btn-default"><i class="fa fa-angle-left fa-fw"></i>上一篇</a>
     
-    
-        <a href="/2015/10/17/快速掌握Git基础操作/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
+        <a href="/2019/01/21/XSS（跨站脚本攻击）和CSRF（跨站请求伪造）/" class="next-post btn btn-default">下一篇<i class="fa fa-angle-right fa-fw"></i></a>
     
 </div>
 
@@ -313,9 +217,9 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
   var disqus_config = function () {
-    this.page.url = 'http://arthas.com.cn/2016/03/24/Linux学习笔记/';
-    this.page.identifier = '2016/03/24/Linux学习笔记/';
-    this.page.title = 'Linux学习笔记';
+    this.page.url = 'http://arthas.com.cn/2019/02/13/函数节流/';
+    this.page.identifier = '2019/02/13/函数节流/';
+    this.page.title = '函数节流';
   };
   var d = document, s = d.createElement('script');
   s.src = 'https://arthas-com-cn.disqus.com/embed.js';
