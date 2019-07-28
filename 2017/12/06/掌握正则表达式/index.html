@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,16 +16,16 @@
     <link rel="dns-prefetch" href="http://arthas.com.cn">
     <!--SEO-->
 
-<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影"/>
+<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影">
 
 
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -67,7 +67,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -178,7 +178,7 @@
             
             
             <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>434</strong>天之前发表，文中内容可能已经过时。
+                本文于<strong>598</strong>天之前发表，文中内容可能已经过时。
             </p>
         
     </div>
@@ -303,19 +303,19 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'123456789'</span>.match(<span class="regexp">/\d&#123;3,5&#125;?/g</span>); <span class="comment">//["123", "456", "789"]</span></span><br></pre></td></tr></table></figure>
 <h2 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h2><p>有时候我们希望使用量词的时候匹配多个字符，而不是像上面例子只是匹配一个，比如希望匹配Byron出现20次的字符串，我们如果写成 Byron{20} 的话匹配的是Byro＋n出现20次，怎么把Byron作为一个整体呢？使用()就可以达到次目的，我们称为分组</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22182142-6b1688e29b584aa28af938a079a793d0.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22182142-6b1688e29b584aa28af938a079a793d0.png" alt></p>
 <p>如果希望匹配Byron或Casper出现20次该怎么办呢？可以使用字符 ｜ 达到或的功效</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron|Casper)&#123;<span class="number">20</span>&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22182815-593022d45eba482aaddd936f3b24beb4.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22182815-593022d45eba482aaddd936f3b24beb4.png" alt></p>
 <p>我们看到图中有个＃1的东东，那是什么？使用分组的正则表达式会把匹配项也放到分组中，默认就是按数字编号分发的，各异根据编号获得捕获的分组内容，这个在一些希望具体操作第几个匹配项的函数中很有用</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(Byron).(ok)</span><br></pre></td></tr></table></figure>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22183347-1db4325c096a43f3a5796b7d25c74b77.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22183347-1db4325c096a43f3a5796b7d25c74b77.png" alt></p>
 <p>如果有分组嵌套的情况，外面的组的编号靠前</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((^|%&gt;)[^\t]*)</span><br></pre></td></tr></table></figure>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/23222603-20a2c64f182a4b49b05a83ef6a3d414d.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/23222603-20a2c64f182a4b49b05a83ef6a3d414d.png" alt></p>
 <p>有时候我们不希望捕获某些分组，只需要在分组内加上 ?: 就可以了，着并不意味着该分组内容不属于正则表达式，只是不会给这个分组加编号了而已</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(?:Byron).(ok)</span><br></pre></td></tr></table></figure>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22183600-8865bffe0f1e48e3829aad75461f9bc8.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22183600-8865bffe0f1e48e3829aad75461f9bc8.png" alt></p>
 <h2 id="前瞻"><a href="#前瞻" class="headerlink" title="前瞻"></a>前瞻</h2><table>
 <thead>
 <tr>
@@ -335,12 +335,12 @@
 </tbody>
 </table>
 <p>举个例子： <code>good(?=Byron)</code></p>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191434-fc2c05f77d2b4002a91032e44e49815c.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191434-fc2c05f77d2b4002a91032e44e49815c.png" alt></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/good(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/bad(?=Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
 <p>通过上面例子可以看出 exp1(?=exp2) 表达式会匹配exp1表达式，但只有其后面内容是exp2的时候才会匹配，也就是两个条件，exp1(?!exp2) 比较类似</p>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt></p>
 <p><code>good(?!Byron)</code></p>
-<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt=""></p>
+<p><img src="https://images0.cnblogs.com/blog/349217/201312/22191951-c13dc0c8696a4021a016496b556e3545.png" alt></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodByron123'</span>); <span class="comment">//null</span></span><br><span class="line">(<span class="regexp">/good(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>); <span class="comment">//['good']</span></span><br><span class="line">(<span class="regexp">/bad(?!Byron)/</span>).exec(<span class="string">'goodCasper123'</span>);<span class="comment">//null</span></span><br></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://www.cnblogs.com/dolphinX/p/3486214.html" target="_blank" rel="noopener">JavaScript 正则表达式上——基本语法</a></li>

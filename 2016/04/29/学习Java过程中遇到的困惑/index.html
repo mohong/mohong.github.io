@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,16 +16,16 @@
     <link rel="dns-prefetch" href="http://arthas.com.cn">
     <!--SEO-->
 
-<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影"/>
+<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影">
 
 
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -67,7 +67,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -178,7 +178,7 @@
             
             
             <p class="fa fa-exclamation-triangle warning">
-                本文于<strong>1019</strong>天之前发表，文中内容可能已经过时。
+                本文于<strong>1184</strong>天之前发表，文中内容可能已经过时。
             </p>
         
     </div>
@@ -194,6 +194,8 @@
 <h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>利用接口可以制定一套规则（标准），避免开发过程中对相同功能的方法起不同的名字。<br>接口可以扩展功能，弥补java单继承中的缺点</p>
 <blockquote>
 <p><em>例如我定义了一个接口，但是我在继承这个接口的类中还要写接口的实现方法，那我不如直接就在这个类中写实现方法岂不是更便捷，还省去了定义接口？</em></p>
+</blockquote>
+<blockquote>
 <p>接口就是个招牌。<br>比如说你今年放假出去杭州旅游，玩了一上午，你也有点饿了，突然看到前面有个店子，上面挂着KFC，然后你就知道今天中饭有着落了。<br>KFC就是接口，我们看到了这个接口，就知道这个店会卖炸鸡腿（实现接口）。<br>那么为神马我们要去定义一个接口涅，这个店可以直接卖炸鸡腿啊（直接写实现方法），是的，这个店可以直接卖炸鸡腿，但没有挂KFC的招牌，我们就不能直接简单粗暴的冲进去叫服务员给两个炸鸡腿了。<br>要么，我们就要进去问，你这里卖不卖炸鸡腿啊，卖不卖汉堡啊，卖不卖圣代啊（这就是反射）。很显然，这样一家家的问实在是非常麻烦（反射性能很差）。<br>要么，我们就要记住，中山路108号卖炸鸡，黄山路45号卖炸鸡（硬编码），很显然这样我们要记住的很多很多东西（代码量剧增），而且，如果有新的店卖炸鸡腿，我们也不可能知道（不利于扩展）。<br><a href="http://www.zhihu.com/question/20111251/answer/16585393" target="_blank" rel="noopener">知乎用户对接口的解释</a></p>
 </blockquote>
 <h2 id="关于多态"><a href="#关于多态" class="headerlink" title="关于多态"></a>关于多态</h2><p>多态弊端，只能使用父类引用指向父类成员，指向子类成员是会运行报错。非多态对象强制转换成子类型，引用子类型的特有方法时运行报错，报错信息为：<br><code>java.lang.ClassCastException</code></p>

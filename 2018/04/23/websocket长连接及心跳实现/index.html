@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
     <!--Setting-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,16 +16,16 @@
     <link rel="dns-prefetch" href="http://arthas.com.cn">
     <!--SEO-->
 
-<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影"/>
+<meta name="description" content="墨鸿的博客,html,css,js,git,nodejs,java,linux,摄影">
 
 
 
 
 
-<meta name="robots" content="all" />
-<meta name="google" content="all" />
-<meta name="googlebot" content="all" />
-<meta name="verify" content="all" />
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
     <!--Title-->
 
 
@@ -67,7 +67,7 @@
     
 </head>
 
-
+</html>
 <!--[if lte IE 8]>
 <style>
     html{ font-size: 1em }
@@ -177,6 +177,10 @@
         </span>
             
             
+            <p class="fa fa-exclamation-triangle warning">
+                本文于<strong>460</strong>天之前发表，文中内容可能已经过时。
+            </p>
+        
     </div>
     
     <div class="post-body post-content">
@@ -187,7 +191,7 @@
 <p>index.html</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"show"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> count = <span class="number">0</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> url = <span class="string">"ws://192.168.199.131:8082"</span>;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> ws = <span class="keyword">new</span> WebSocket(url);</span></span><br><span class="line"><span class="javascript">        ws.onopen = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'和服务端建立连接'</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        ws.onerror = <span class="function"><span class="keyword">function</span> (<span class="params">params</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(params);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        ws.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> showData = count++ + <span class="string">'   '</span> + event.data;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.querySelector(<span class="string">'#show'</span>).innerHTML = showData;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>浏览器打开index.html并观察控制台，可以看到服务端发送过来的信息</p>
-<p><img src="http://ob9qd20l4.bkt.clouddn.com/image-websocket1.png" alt=""></p>
+<p><img src="http://ob9qd20l4.bkt.clouddn.com/image-websocket1.png" alt></p>
 <p>此时手机和电脑连接到同一个网络，手机访问也是可以实现连接。</p>
 <p>但是目前的服务存在以下问题：</p>
 <ol>
@@ -203,7 +207,7 @@
 <p>如果客户端支持ping，最好由客户端发起ping，然后服务器记录时间，超时断开即可。浏览器中没有相关api发送ping给服务器，只能由服务器发ping给浏览器。</p>
 <p>对上述服务端代码进行改进，加入心跳机制，每隔3s从服务端发送ping，浏览器在收到之后给服务器回复pong，服务端监听pong：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> WebSocketServer = <span class="built_in">require</span>(<span class="string">'ws'</span>).Server;</span><br><span class="line"><span class="keyword">const</span> wss = <span class="keyword">new</span> WebSocketServer(&#123; <span class="attr">port</span>: <span class="number">8082</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">noop</span>(<span class="params"></span>) </span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'noop'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">heartbeat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.isAlive = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">wss.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> <span class="title">connection</span>(<span class="params">ws</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'会话已建立'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> timer = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> info = <span class="string">'I`m server info'</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(info);</span><br><span class="line">        ws.send(info);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">    ws.isAlive = <span class="literal">true</span>;</span><br><span class="line">    ws.on(<span class="string">'pong'</span>, heartbeat);</span><br><span class="line">    <span class="keyword">const</span> interval = setInterval(<span class="function"><span class="keyword">function</span> <span class="title">ping</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        wss.clients.forEach(<span class="function"><span class="keyword">function</span> <span class="title">each</span>(<span class="params">ws</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (ws.isAlive === <span class="literal">false</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> ws.terminate();</span><br><span class="line">            &#125;</span><br><span class="line">            ws.isAlive = <span class="literal">false</span>;</span><br><span class="line">            ws.ping(noop);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">    ws.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> <span class="title">incoming</span>(<span class="params">message</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'received: %s'</span>, message);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    ws.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    ws.on(<span class="string">'close'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">reson</span>) </span>&#123;</span><br><span class="line">    	 clearInterval(timer);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'close'</span>, reson);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>通过抓包可以看到ping pong的过程：<br><img src="http://ob9qd20l4.bkt.clouddn.com/image-websocket2.png" alt=""></p>
+<p>通过抓包可以看到ping pong的过程：<br><img src="http://ob9qd20l4.bkt.clouddn.com/image-websocket2.png" alt></p>
 <p>这样当收不到浏览器的时候，由于isAlive为false，会执行ws.terminate()关闭连接和其他清理工作。</p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
 <li><a href="http://blog.techbeta.me/2015/12/websocket/" target="_blank" rel="noopener">websocket ,ping pong heardbeat心跳机制</a></li>
