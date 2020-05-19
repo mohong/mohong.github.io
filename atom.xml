@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://arthas.com.cn/"/>
-  <updated>2019-02-13T08:38:56.000Z</updated>
+  <updated>2020-05-19T12:26:52.802Z</updated>
   <id>http://arthas.com.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>npm link之后无法import导入的解决办法</title>
+    <link href="http://arthas.com.cn/2020/05/19/npmlink%E4%B9%8B%E5%90%8E%E6%97%A0%E6%B3%95import%E5%AF%BC%E5%85%A5%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://arthas.com.cn/2020/05/19/npmlink之后无法import导入的解决办法/</id>
+    <published>2020-05-19T12:10:29.000Z</published>
+    <updated>2020-05-19T12:26:52.802Z</updated>
+    
+    <content type="html"><![CDATA[<p>我们在开发npm包的时候，希望通过npm link之后在本地调试，确定没有问题之后再发布npm仓库。今天遇到了npm link一个正在开发中的包，然后在vue工程里面import之后为undefined的问题。</p><h2 id="具体操作为"><a href="#具体操作为" class="headerlink" title="具体操作为"></a>具体操作为</h2><p>1、在该包下面执行 <code>npm link</code>，软连到全局；<br>2、在vue工程中<code>npm link my-package-name</code>，将软连加入到该工程的node_modules下；<br>3、在该工程中通过ES6语法import导入，console.log输出，结果为undefined；</p><h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>因为是vue-cli 3.0初始化的工程，打包用的是webpack，而webpack的默认配置中<a href="https://webpack.docschina.org/configuration/resolve/#resolve-symlinks" target="_blank" rel="noopener">symlinks</a>的默认值是true，也就是说，“将解析为其_真实_路径，而不是其符号链接(symlink)位置”，导致模块解析失败。</p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>在<code>vue.config.js</code>中，将该参数设置为false:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  configureWebpack: &#123;</span><br><span class="line">    resolve: &#123;</span><br><span class="line">      symlinks: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://www.jianshu.com/p/ca252cd667df" target="_blank" rel="noopener">https://www.jianshu.com/p/ca252cd667df</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我们在开发npm包的时候，希望通过npm link之后在本地调试，确定没有问题之后再发布npm仓库。今天遇到了npm link一个正在开发中的包，然后在vue工程里面import之后为undefined的问题。&lt;/p&gt;
+&lt;h2 id=&quot;具体操作为&quot;&gt;&lt;a href=&quot;#具体
+      
+    
+    </summary>
+    
+    
+      <category term="webpack" scheme="http://arthas.com.cn/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>函数节流</title>
@@ -497,33 +521,6 @@
         &lt;p&gt;所有CSS布局技术的根本都是3个基本概念：定位、浮动和外边距操纵&lt;/p&gt;
 &lt;h2 id=&quot;计划布局&quot;&gt;&lt;a href=&quot;#计划布局&quot; class=&quot;headerlink&quot; title=&quot;计划布局&quot;&gt;&lt;/a&gt;计划布局&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;检查设计，寻找重复的模式，&lt;/l
-      
-    
-    </summary>
-    
-      <category term="前端" scheme="http://arthas.com.cn/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="css" scheme="http://arthas.com.cn/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS之盒子模型</title>
-    <link href="http://arthas.com.cn/2018/03/14/CSS%E4%B9%8B%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/"/>
-    <id>http://arthas.com.cn/2018/03/14/CSS之盒子模型/</id>
-    <published>2018-03-14T06:21:06.000Z</published>
-    <updated>2018-03-14T06:22:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="盒模型概述"><a href="#盒模型概述" class="headerlink" title="盒模型概述"></a>盒模型概述</h2><ul><li>增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的尺寸</li><li>如果在元素上添加背景，那么背景会应用于由内容和内边距组成的区域</li><li>外边框是透明的，一般是用他控制元素之间的间距</li><li>outline（轮廓）绘制元素框之上，不影响元素的大小或定位</li></ul><h2 id="IE和盒模型"><a href="#IE和盒模型" class="headerlink" title="IE和盒模型"></a>IE和盒模型</h2><p>自从1996年CSS1的推出，W3C组织就建议把所有网页上的对像都放在一个盒(box)中，设计师可以通过创建定义来控制这个盒的属性，这些对像包括段落、列表、标题、图片以及层<br>在W3C盒模型中，一个块级元素的总宽度按照如下的方程式计算：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">总宽度 = margin-left + border-left + padding-left + width + padding-right + border-right + margin-right</span><br></pre></td></tr></table></figure><p>IE盒模型计算方式：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">总宽度 = margin-left + width + margin-right</span><br></pre></td></tr></table></figure><blockquote><p>即W3C的盒模型中content不包括padding,border和margin，IE盒模型的content包括padding和border，不包括margin.</p></blockquote><p>关于IE的版本<br>IE5.5及更早的版本使用的是IE盒模型。很多人似乎没注意到IE6及更新的版本在标准兼容模式（standards compliant mode）下使用的是W3C的盒模型标准。我们说这是一个好消息因为这意味着此盒模型问题只会出现在IE5.5及其更早的版本中。只要为文档设置一个DOCTYPE，就会使得IE遵循标准兼容模式的方式工作。<br>但是你如果非要用IE盒模型，CSS3提供了可能，可通过<code>box-sizing:border-box</code>指定。</p><p>参考：<a href="http://www.osmn00.com/translation/213.html" target="_blank" rel="noopener">IE浏览器和CSS盒模型</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;盒模型概述&quot;&gt;&lt;a href=&quot;#盒模型概述&quot; class=&quot;headerlink&quot; title=&quot;盒模型概述&quot;&gt;&lt;/a&gt;盒模型概述&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的尺寸&lt;/li&gt;
-&lt;li&gt;如果在元素上添
       
     
     </summary>
