@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>绘制和变换三角形 - 地图实验室</title><meta name="gridsome:hash" content="5310df7ac6ece0d3f2dbe9d69c65134b639d34fe"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="96x96" href="/assets/static/favicon.b9532cc.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="152x152" href="/assets/static/favicon.62d22cb.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="120x120" href="/assets/static/favicon.1539b60.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="167x167" href="/assets/static/favicon.dc0cdc5.9bb7ffafafc09ac851d81afb65b8ef59.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="180x180" href="/assets/static/favicon.7b22250.9bb7ffafafc09ac851d81afb65b8ef59.png"><link rel="preload" href="/assets/css/0.styles.4e250d62.css" as="style"><link rel="preload" href="/assets/js/app.c96b45ce.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--doc-page-vue.6d543d75.js" as="script"><link rel="preload" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-03-md.328ba624.js" as="script"><link rel="prefetch" href="/assets/js/23.94528a17.js"><link rel="prefetch" href="/assets/js/24.daa57cab.js"><link rel="prefetch" href="/assets/js/page--src--pages--404-vue.0c2c55af.js"><link rel="prefetch" href="/assets/js/page--src--pages--about-vue.d95bcf1e.js"><link rel="prefetch" href="/assets/js/page--src--pages--blog-vue.1552b588.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.15701c37.js"><link rel="prefetch" href="/assets/js/page--src--templates--blog-post-vue.fbf46d42.js"><link rel="prefetch" href="/assets/js/page--src--templates--contributor-vue.039a0668.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--gis--readme-md.cba9dcde.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--gis--test-md.4389c908.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--readme-md.f3ba27a5.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl--readme-md.3e24356c.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-01-md.6a4eb57a.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-02-md.b2297672.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-04-md.d355d98b.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-05-md.8639e50b.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-06-md.afc82bad.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-07-md.bc8932ec.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-08-md.4afd1dcc.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-09-md.9ba24f4f.js"><link rel="prefetch" href="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-10-md.1cccbb36.js"><link rel="stylesheet" href="/assets/css/0.styles.4e250d62.css"><style data-vue-tag="ssr" type="text/css">html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,optgroup,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}html{font:112.5%/1.6 'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;box-sizing:border-box;overflow-y:scroll;}*{box-sizing:inherit;}*:before{box-sizing:inherit;}*:after{box-sizing:inherit;}body{color:hsla(0,0%,0%,0.8);font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:normal;word-wrap:break-word;font-kerning:normal;-moz-font-feature-settings:"kern", "liga", "clig", "calt";-ms-font-feature-settings:"kern", "liga", "clig", "calt";-webkit-font-feature-settings:"kern", "liga", "clig", "calt";font-feature-settings:"kern", "liga", "clig", "calt";}img{max-width:100%;margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}h1{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:1.9rem;line-height:1.1;}h2{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:1.46978rem;line-height:1.1;}h3{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:1.29271rem;line-height:1.1;}h4{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:1rem;line-height:1.1;}h5{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:0.87953rem;line-height:1.1;}h6{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;color:inherit;font-family:'Inter','Roboto','Oxygen','Fira Sans','Helvetica Neue',sans-serif;font-weight:bold;text-rendering:optimizeLegibility;font-size:0.82485rem;line-height:1.1;}hgroup{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}ul{margin-left:1.6rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;list-style-position:outside;list-style-image:none;}ol{margin-left:1.6rem;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;list-style-position:outside;list-style-image:none;}dl{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}dd{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}p{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}figure{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}pre{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;font-size:0.85rem;line-height:1.6rem;}table{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;font-size:1rem;line-height:1.6rem;border-collapse:collapse;width:100%;}fieldset{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}blockquote{margin-left:1.6rem;margin-right:1.6rem;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}form{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}noscript{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}iframe{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}hr{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:calc(1.6rem - 1px);background:hsla(0,0%,0%,0.2);border:none;height:1px;}address{margin-left:0;margin-right:0;margin-top:0;padding-bottom:0;padding-left:0;padding-right:0;padding-top:0;margin-bottom:1.6rem;}b{font-weight:bold;}strong{font-weight:bold;}dt{font-weight:bold;}th{font-weight:bold;}li{margin-bottom:calc(1.6rem / 2);}ol li{padding-left:0;}ul li{padding-left:0;}li > ol{margin-left:1.6rem;margin-bottom:calc(1.6rem / 2);margin-top:calc(1.6rem / 2);}li > ul{margin-left:1.6rem;margin-bottom:calc(1.6rem / 2);margin-top:calc(1.6rem / 2);}blockquote *:last-child{margin-bottom:0;}li *:last-child{margin-bottom:0;}p *:last-child{margin-bottom:0;}li > p{margin-bottom:calc(1.6rem / 2);}code{font-size:0.85rem;line-height:1.6rem;}kbd{font-size:0.85rem;line-height:1.6rem;}samp{font-size:0.85rem;line-height:1.6rem;}abbr{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}acronym{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;}abbr[title]{border-bottom:1px dotted hsla(0,0%,0%,0.5);cursor:help;text-decoration:none;}thead{text-align:left;}td,th{text-align:left;border-bottom:1px solid hsla(0,0%,0%,0.12);font-feature-settings:"tnum";-moz-font-feature-settings:"tnum";-ms-font-feature-settings:"tnum";-webkit-font-feature-settings:"tnum";padding-left:1.06667rem;padding-right:1.06667rem;padding-top:0.8rem;padding-bottom:calc(0.8rem - 1px);}th:first-child,td:first-child{padding-left:0;}th:last-child,td:last-child{padding-right:0;}</style><script data-vue-tag="ssr" src="/baidu.js"></script><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    
+    <script>
+      // Add dark / light detection that runs before Vue.js load. Borrowed from overreacted.io
+      (function() {
+        window.__onThemeChange = function() {};
+        function setTheme(newTheme) {
+          window.__theme = newTheme;
+          preferredTheme = newTheme;
+          document.body.setAttribute('data-theme', newTheme);
+          window.__onThemeChange(newTheme);
+        }
+
+        var preferredTheme;
+        try {
+          preferredTheme = localStorage.getItem('theme');
+        } catch (err) { }
+
+        window.__setPreferredTheme = function(newTheme) {
+          setTheme(newTheme);
+          try {
+            localStorage.setItem('theme', newTheme);
+          } catch (err) {}
+        }
+
+        var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        darkQuery.addListener(function(e) {
+          window.__setPreferredTheme(e.matches ? 'dark' : 'light');
+        });
+
+        setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+      })();
+    </script>
+
+    <div id="app" dark="" data-server-rendered="true" class="has-sidebar docs-page"><header><div class="header-bar"></div><div class="header-inner container flex gap-30"><div oncontextmenu="return false;" class="logo"><a href="/" title="Back to home" class="logo__link active"><svg width="245" height="245" viewBox="0 0 245 245" fill="none" xmlns="http://www.w3.org/2000/svg" alt="maplab.top" class="logo__svg logo__svg--small"><path d="M221.494 101.381c11.78-.566 22.207 8.572 23.224 20.362 4.406 57.037-47.793 120.931-121.352 122.974C61.377 246.247.068 196.619.068 121.58c0-11.826 9.773-21.413 21.566-21.413s21.353 9.587 21.353 21.413c0 49.359 39.688 81.303 79.329 80.325 48.799-1.356 80.523-43.61 78.873-78.11-.566-11.812 8.526-21.847 20.305-22.414z" fill="url(#gridsome-logo-small_svg__paint0_linear)"></path><path d="M168.15 123.24c0-12.107 9.876-21.922 22.058-21.922h32.146c12.183 0 22.364 9.815 22.364 21.922 0 12.108-10.181 21.923-22.364 21.923h-32.146c-12.182 0-22.058-9.815-22.058-21.923zM100.7 123.272c0-12.125 9.813-21.954 21.904-21.954 12.092 0 21.905 9.829 21.905 21.954s-9.813 21.955-21.905 21.955c-12.091 0-21.904-9.83-21.904-21.955z" fill="#00A672"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M143.902 20.696c.49 11.816-8.666 21.792-20.449 22.283-50.865 2.118-81.918 42.097-80.407 80.057.47 11.816-8.51 21.778-20.293 22.25-11.784.472-22.147-9.065-22.617-20.881C-2.327 62.545 49.18 1.391 121.68.19c11.783-.49 21.732 8.69 22.221 20.506z" fill="#00A672"></path><defs><linearGradient id="gridsome-logo-small_svg__paint0_linear" x1="122.523" y1="100.167" x2="122.523" y2="244.752" gradientUnits="userSpaceOnUse"><stop stop-color="#00583E"></stop><stop offset="1" stop-color="#00835C"></stop></linearGradient></defs></svg><span class="logo__brand"> MapLab </span></a></div><nav class="main-nav flex gap-15 flex-fit"><div class="has-dropdown"><a href><span class="main-nav__label">小册子</span></a><div class="dropdown"><a href="/docs/gis/" rel="noopener noreferrer"><span>算法</span></a><a href="/docs/webgl-programming-guide/chapter-01" rel="noopener noreferrer"><span>WebGL编程指南</span></a><a href="/docs/gis/" rel="noopener noreferrer"><span>摄影</span></a></div></div><a href="/blog/"><span class="main-nav__label">Blog</span></a></nav><form id="search" class="header-search"><label><input id="search-input" placeholder title="Search docs" type="search" class="header-search__input"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></label></form><nav class="header-actions flex"><a role="button" aria-label="Toggle dark" title="Toggle dark" class="toggle-theme"><span data-theme="light"></span><span data-theme="dark"></span><span data-theme="sepia"></span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></a></nav></div></header><div class="container flex flex-align-top"><div class="sidebar"><h3 class="menu-item">Webgl编程指南</h3><a href="/docs/webgl-programming-guide/chapter-01" class="menu-item menu-link">
+            WebGL概述
+          </a><a href="/docs/webgl-programming-guide/chapter-02" class="menu-item menu-link">
+            WebGL入门
+          </a><a href="/docs/webgl-programming-guide/chapter-03" aria-current="page" class="menu-item menu-link active--exact active">
+            绘制和变换三角形
+          </a><a href="/docs/webgl-programming-guide/chapter-04" class="menu-item menu-link">
+            高级变换与动画基础
+          </a><a href="/docs/webgl-programming-guide/chapter-05" class="menu-item menu-link">
+            颜色与纹理
+          </a><a href="/docs/webgl-programming-guide/chapter-06" class="menu-item menu-link">
+            OpenGL ES 着色器语言
+          </a><a href="/docs/webgl-programming-guide/chapter-07" class="menu-item menu-link">
+            进入三维世界
+          </a><a href="/docs/webgl-programming-guide/chapter-08" class="menu-item menu-link">
+            光照
+          </a><a href="/docs/webgl-programming-guide/chapter-09" class="menu-item menu-link">
+            层次模型
+          </a><a href="/docs/webgl-programming-guide/chapter-10" class="menu-item menu-link">
+            高级技术
+          </a></div><section class="section doc-content flex-fit"><div class="section--inner container container-md"><div class="post mb"><h1 id="绘制和变换三角形"><a href="#%E7%BB%98%E5%88%B6%E5%92%8C%E5%8F%98%E6%8D%A2%E4%B8%89%E8%A7%92%E5%BD%A2" aria-hidden="true">#</a>绘制和变换三角形</h1><h2 id="绘制多个点"><a href="#%E7%BB%98%E5%88%B6%E5%A4%9A%E4%B8%AA%E7%82%B9" aria-hidden="true">#</a>绘制多个点</h2><p><strong>缓冲区对象</strong></p><p>即buffer object，它可以一次性地向着色器传入多个顶点的数据。缓冲区对象是WebGL系统中的一块内存区域，我们可以一次性地向缓冲区对象中填充大量的顶点数据，然后将这些数据保存在其中，供顶点着色器使用。</p><p>MuliPoints</p><pre class="language-js"><code class="language-js">	<span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">' gl_Position = a_Position;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">' gl_PointSize = 20.0;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置尺寸</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+    
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">POINTS</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><ul><li>创建缓冲区（gl.createBuffer()）</li><li>绑定缓冲区对象（gl.bindBuffer()）</li><li>将数据写入缓冲区对象（gl.bufferData()）</li><li>将缓冲区对象分配给一个attribute变量（gl.vertexAttribPointer()）</li><li>开启attribute变量（gl.enableVertexAttribArray()）</li></ul><p><code>gl.createBuffer()</code></p><p>创建缓冲区对象。</p><p><strong>返回值：</strong></p><table><thead><tr><th>返回值</th><th>说明</th></tr></thead><tbody><tr><td>非null</td><td>新创建的缓冲区对象</td></tr><tr><td>null</td><td>创建缓冲区对象失败</td></tr></tbody></table><p><code>gl.deleteBuffer(buffer)</code></p><p>删除参数buffer表示的缓冲区对象。</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>buffer</td><td>待删除的缓冲区对象</td></tr></tbody></table><p><strong>返回值：</strong>无</p><p><code>gl.bindBuffer(target, buffer)</code></p><p>允许使用buffer表示的缓冲区对象并将其绑定到target表示的目标上。</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>target</td><td>指定绑定点，可以是以下中的一个：<br> gl.ARRAY_BUFFER:包含顶点属性的Buffer，如顶点坐标，纹理坐标数据或顶点颜色数据；<br>gl.ELEMENT_ARRAY_BUFFER：用于元素索引的Buffer</td></tr><tr><td>buffer</td><td>制定之前由gl.createBuffer()返回的带绑定的缓冲区对象，如果为null，则禁用对target的绑定</td></tr></tbody></table><p><strong>返回值：</strong>无</p><p><code>gl.bufferData(target, data, usage)</code></p><p>开辟存储空间，向绑定在target上的缓冲区对象中写入数据data。</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th><th>可选值</th></tr></thead><tbody><tr><td>target</td><td>绑定点</td><td>gl.ARRAY_BUFFER或gl.ELEMENT_ARRAY_BUFFER</td></tr><tr><td>data</td><td>写入缓冲区对象的数据（类型化数组）</td><td></td></tr><tr><td>usage</td><td>表示程序将如何使用存储中缓冲区对象中的数据。该参数帮助webgl优化操作，即使传入了错误的值，程序也不会终止。</td><td>gl.STATIC_DRAW: 只会向缓冲区对象中写入一次数据，但需要绘制很多次；<br>gl.STREAM_DRAW:只会向缓冲区对象中写入一次数据，然后绘制若干次；<br>gl.DYNYMIC_DRAW:会向缓冲区对象中多次写入数据，并绘制很多次</td></tr></tbody></table><h3 id="类型化数组"><a href="#%E7%B1%BB%E5%9E%8B%E5%8C%96%E6%95%B0%E7%BB%84" aria-hidden="true">#</a>类型化数组</h3><table><thead><tr><th>数组类型</th><th>每个元素所占字节数</th><th>描述（C语言中的数据类型）</th></tr></thead><tbody><tr><td>Int8Array</td><td>1</td><td>8位整型数（signed char）</td></tr><tr><td>UInt8Array</td><td>1</td><td>8位无符号整型数（unsigned char）</td></tr><tr><td>Int16Array</td><td>2</td><td>16位整型数（signed short）</td></tr><tr><td>UInt16Array</td><td>2</td><td>16位无符号整型数（unsigned short）</td></tr><tr><td>Int32Array</td><td>4</td><td>32位整型数（signed int）</td></tr><tr><td>UInt32Array</td><td>4</td><td>32位无符号整型数（unsigned int）</td></tr><tr><td>Float32Array</td><td>4</td><td>单精度32位浮点数（float）</td></tr><tr><td>Float64Array</td><td>8</td><td>双精度64位福点数（double）</td></tr></tbody></table><p>类型化数组有一些列方法和属性，但是不支持push()和pop()方法。</p><table><thead><tr><th>方法、属性和常量</th><th>描述</th></tr></thead><tbody><tr><td>get(index)</td><td>获取第index个元素值</td></tr><tr><td>set(index, value)</td><td>设置第index个元素的值为value</td></tr><tr><td>set(array, offset)</td><td>从第offset个元素开始将数组array中的值填充进去</td></tr><tr><td>length</td><td>数组的长度</td></tr><tr><td>BYTES_PER_ELEMENT</td><td>数组中每个元素所占的字节数</td></tr></tbody></table><p>可以使用gl.vertexAttrib[1234]f系列函数位attribute变量分配值。但是，这些方法一次只能向attribute变阿玲分配（传输）一个值。而vertexAttribAttribPointer可以将整个缓冲区对象（的引用或指针）分配给attribute变量。</p><p><code>gl.vertexAttribAttribPointer(location, size, type, normalized, stride, offset)</code></p><p>将绑定到gl.ARRAY_BUFFER的缓冲区对象分配给由location指定的attribute变量。</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>location</td><td>指定待分配attribute变量的存储位置</td></tr><tr><td>size</td><td>指定缓冲区中每个顶点的分量个数（1到4），若size比attribute变量需要的分量小，确实部分将按照gl.vertexAttrib[1234]f()相同的规则补全。</td></tr><tr><td>type</td><td>指定数据格式，用以下类型：<br>gl.UNSIGNED_BYTE: 无符号字节，UInt8Array; <br>gl.SHORT: 短整型，Int16Array;<br>gl.UNSIGNED_SHORT: 无符号短整型，UInt16Array; <br>gl.INT: 整型，Int32Array; <br>gl.UNSIGNED_INT，无符号整型，UInt32Array;<br>gl.FLOAT: 浮点型，Float32Array;</td></tr><tr><td>normalized</td><td>传入true或false，表明师傅将非浮点型数据归一化到[0, 1]或者[-1, 1]。</td></tr><tr><td>stride</td><td>指定相邻两个顶点间的字节数，默认为0</td></tr><tr><td>offset</td><td>指定缓冲区对象中的偏移量（以字节为单位），即attribute变量从缓冲区的何处开始存储。如果是从气势位置开始的，offset设为0。</td></tr></tbody></table><p><strong>返回值：</strong> 无</p><p><code>gl.enableVertexArray(location)</code></p><p>开启location指定的attribute变量。（使得缓冲区对象和attribute变量之间的链接真正的建立起来。）</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>location</td><td>指定attribute变量的存储位置</td></tr></tbody></table><p><strong>返回值：</strong>无</p><p><code>gl.disableVertexArray(location)</code></p><p>关闭location指定的attribute变量。</p><p><strong>参数：</strong></p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>location</td><td>指定attribute变量的存储位置</td></tr></tbody></table><p><strong>返回值：</strong>无</p><h2 id="hello-triangle"><a href="#hello-triangle" aria-hidden="true">#</a>Hello Triangle</h2><pre class="language-js"><code class="language-js">  <span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">' gl_Position = a_Position;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+    
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制三角形</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><h3 id="webgl可以绘制的基本图像"><a href="#webgl%E5%8F%AF%E4%BB%A5%E7%BB%98%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9B%BE%E5%83%8F" aria-hidden="true">#</a>WebGL可以绘制的基本图像</h3><table><thead><tr><th>基本图形</th><th>参数mode</th><th>描述</th></tr></thead><tbody><tr><td>点</td><td>gl.POINTS</td><td>一些列点，绘制在v0、v1、v2……处</td></tr><tr><td>线段</td><td>gl.LINES</td><td>一系列单独的线段，绘制在（v0, v1）、(v2、v3)、(v4、v5)……处，如果点的个数是奇数，最后一个点将被忽略</td></tr><tr><td>线条</td><td>gl.LINE_STRIP</td><td>一系列连接的线段，被绘制在（v0, v1）、（v1, v2）、（v2, v3）……处，第1个点是第一条线段的起点，第2个点是第1条线段的终点和第2条线段的起点……以此类推。</td></tr><tr><td>回路</td><td>gl.LINE_LOOP</td><td>一系列连接的线段。与gl.LINE_STRIP绘制的线段相比，增加了一条从最后一个点到第一个点的线段。</td></tr><tr><td>三角形</td><td>gl.TRIANGLES</td><td>一些列单独的三角形，绘制在（v0, v1, v2）、（v3, v4, v5）……处，如果点的个数不是3的整数倍，最后剩下的1或者2个点将被忽略</td></tr><tr><td>三角带</td><td>gl.TRIANGLE_STRIP</td><td>一系列条带状的三角形，前三个点构成了第一个三角形，从第二个点开始三个点构成了第二个三角形（该三角形与前一个三角形共享一条边），以此类推。这些三角形被绘制在（v0, v1, v2）、（v2, v1, v3）、（v2, v3, v4）……处（注意点的顺序）</td></tr><tr><td>三角扇</td><td>gl.TRIANGLE_FAN</td><td>一系列三角形组成的类似于扇形的图形。前三个点构成了第一个三角形，接下来的第一个点前一个三角形的最后一条边组成接下来的一个三角形。这些三角形被绘制在（v0, v1, v2）、（v0, v2, v3）、（v0, v3, v4）……处</td></tr></tbody></table><img src="images/image-20210725115852921.png" alt="image-20210725115852921" style="zoom:50%;"><h2 id="移动旋转和缩放"><a href="#%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E5%92%8C%E7%BC%A9%E6%94%BE" aria-hidden="true">#</a>移动、旋转和缩放</h2><h3 id="齐次坐标"><a href="#%E9%BD%90%E6%AC%A1%E5%9D%90%E6%A0%87" aria-hidden="true">#</a>齐次坐标</h3><p><a href="http://www.360doc.com/content/10/1226/10/3843418_81406265.shtml" target="_blank" rel="nofollow noopener noreferrer">齐次坐标</a></p><p><a href="https://www.jianshu.com/p/7e701d7bfd79" target="_blank" rel="nofollow noopener noreferrer">写给大家看的“透视除法” —— 齐次坐标和投影</a></p><h3 id="仿射变换"><a href="#%E4%BB%BF%E5%B0%84%E5%8F%98%E6%8D%A2" aria-hidden="true">#</a>仿射变换</h3><p>移动（平移）、旋转和缩放三角形，这样的操作称为<strong>变换</strong>或者<strong>仿射变换</strong>。</p><h3 id="平移"><a href="#%E5%B9%B3%E7%A7%BB" aria-hidden="true">#</a>平移</h3><p>没有使用平移矩阵的平移：</p><pre class="language-js"><code class="language-js"><span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'uniform vec4 u_Translation;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">' gl_Position = a_Position + u_Translation;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token maybe-class-name">Tx</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Ty</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Tz</span> <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+
+    <span class="token comment">// 将平移距离传输给顶点着色器</span>
+    <span class="token keyword">const</span> u_Translation <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_Translation'</span><span class="token punctuation">)</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniform4f</span><span class="token punctuation">(</span>u_Translation<span class="token punctuation">,</span> <span class="token maybe-class-name">Tx</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Ty</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Tz</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><p><strong>平移矩阵</strong>
+$$
+\left[
+\matrix{
+	x<code>\\ y</code> \
+	z` \
+	1
+}
+\right]
+ =
+\left[
+  \matrix{
+    1 &amp; 0 &amp; 0 &amp; Tx \
+    0 &amp; 1 &amp; 0 &amp; Ty \
+    0 &amp; 0 &amp; 1 &amp; Tz \
+    0 &amp; 0 &amp; 0 &amp; 1
+  }
+\right]</p><ul><li>\left[
+\matrix{
+	x \
+	y \
+	z \
+	1
+}
+\right]
+$$
+使用平移矩阵的平移：</li></ul><pre class="language-js"><code class="language-js"><span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'uniform mat4 u_xformMatrix;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position = u_xformMatrix * a_Position;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token maybe-class-name">Tx</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Ty</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Tz</span> <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+
+    <span class="token comment">// 创建平移矩阵</span>
+    <span class="token keyword">const</span> xformMatrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token maybe-class-name">Tx</span><span class="token punctuation">,</span>  <span class="token maybe-class-name">Ty</span><span class="token punctuation">,</span>  <span class="token maybe-class-name">Tz</span><span class="token punctuation">,</span>  <span class="token number">1.0</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 将平移矩阵传输给顶点着色器</span>
+    <span class="token keyword">const</span> u_xformMatrix <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_xformMatrix'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniformMatrix4fv</span><span class="token punctuation">(</span>u_xformMatrix<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> xformMatrix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><p><code>gl.uniformMatrix4fv(location, transpose, array)</code></p><p>将array表示的4x4矩阵分配给由location指定的uniform变量。</p><p><strong>参数：</strong></p><table><thead><tr><th>名称</th><th>说明</th></tr></thead><tbody><tr><td>location</td><td>uniform变量的存储位置</td></tr><tr><td>transpose</td><td>是否转置矩阵，在webgl中必须指定为false</td></tr><tr><td>array</td><td>待传输的类型化数组，4x4矩阵案列主序存储在其中</td></tr></tbody></table><p><strong>返回值：</strong>无</p><h3 id="旋转"><a href="#%E6%97%8B%E8%BD%AC" aria-hidden="true">#</a>旋转</h3><p>未使用旋转矩阵的变换：</p><pre class="language-js"><code class="language-js"><span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token comment">// x` = xcosb - ysinb;</span>
+    <span class="token comment">// y` = xsinb + ycosb;</span>
+    <span class="token comment">// z` = z</span>
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'uniform float u_CosB, u_SinB;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position.x = a_Position.x * u_CosB - a_Position.y * u_SinB;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position.y = a_Position.x * u_SinB + a_Position.y * u_CosB;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position.z = a_Position.z;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position.w = 1.0;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token constant">ANGLE</span> <span class="token operator">=</span> <span class="token number">90.0</span><span class="token punctuation">;</span> <span class="token comment">// 旋转角度</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+
+    <span class="token comment">// // Pass the data required to rotate the shape to the vertex shader</span>
+    <span class="token keyword">const</span> radian <span class="token operator">=</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token constant">PI</span> <span class="token operator">*</span> <span class="token constant">ANGLE</span> <span class="token operator">/</span> <span class="token number">180.0</span><span class="token punctuation">;</span> <span class="token comment">// Convert to radians</span>
+    <span class="token keyword">const</span> cosB <span class="token operator">=</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">cos</span><span class="token punctuation">(</span>radian<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> sinB <span class="token operator">=</span> <span class="token known-class-name class-name">Math</span><span class="token punctuation">.</span><span class="token method function property-access">sin</span><span class="token punctuation">(</span>radian<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> u_CosB <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_CosB'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> u_SinB <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_SinB'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniform1f</span><span class="token punctuation">(</span>u_CosB<span class="token punctuation">,</span> cosB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniform1f</span><span class="token punctuation">(</span>u_SinB<span class="token punctuation">,</span> sinB<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><p><strong>旋转矩阵</strong>
+$$
+\left[
+\matrix{
+	x<code>\\ y</code> \
+	z` \
+	1
+}
+\right]
+ =
+\left[
+  \matrix{
+    cos\beta &amp; -sin\beta &amp; 0 &amp; 0 \
+    sin\beta &amp; cos\beta &amp; 0 &amp; 0 \
+    0 &amp; 0 &amp; 1 &amp; 0 \
+    0 &amp; 0 &amp; 0 &amp; 1
+  }
+\right]</p><ul><li>\left[
+\matrix{
+	x \
+	y \
+	z \
+	1
+}
+\right]
+$$
+使用旋转矩阵的变换：</li></ul><pre class="language-js"><code class="language-js"><span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'uniform mat4 u_xformMatrix;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position = u_xformMatrix * a_Position;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token maybe-class-name">Tx</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Ty</span> <span class="token operator">=</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Tz</span> <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+
+    <span class="token comment">// 创建平移矩阵</span>
+    <span class="token keyword">const</span> xformMatrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token maybe-class-name">Tx</span><span class="token punctuation">,</span>  <span class="token maybe-class-name">Ty</span><span class="token punctuation">,</span>  <span class="token maybe-class-name">Tz</span><span class="token punctuation">,</span>  <span class="token number">1.0</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 将平移矩阵传输给顶点着色器</span>
+    <span class="token keyword">const</span> u_xformMatrix <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_xformMatrix'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniformMatrix4fv</span><span class="token punctuation">(</span>u_xformMatrix<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> xformMatrix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre><h3 id="缩放"><a href="#%E7%BC%A9%E6%94%BE" aria-hidden="true">#</a>缩放</h3><p><strong>缩放矩阵</strong>
+$$
+\left[
+\matrix{
+	x<code>\\ y</code> \
+	z` \
+	1
+}
+\right]
+ =
+\left[
+  \matrix{
+    Sx &amp; 0 &amp; 0 &amp; 0 \
+    0 &amp; Sy &amp; 0 &amp; 0 \
+    0 &amp; 0 &amp; Sz &amp; 0 \
+    0 &amp; 0 &amp; 0 &amp; 1
+  }
+\right]</p><ul><li>\left[
+\matrix{
+	x \
+	y \
+	z \
+	1
+}
+\right]
+$$</li></ul><p>使用缩放矩阵的变换：</p><pre class="language-js"><code class="language-js"><span class="token comment">// 顶点着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">VSHADER_SOURCE</span> <span class="token operator">=</span> 
+    <span class="token string">'attribute vec4 a_Position;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'uniform mat4 u_xformMatrix;\n'</span> <span class="token operator">+</span>
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_Position = u_xformMatrix * a_Position;\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置坐标</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 片源着色器</span>
+  <span class="token keyword">const</span> <span class="token constant">FSHADER_SOUCE</span> <span class="token operator">=</span> 
+    <span class="token string">'void main() {\n'</span> <span class="token operator">+</span>
+    <span class="token string">'  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n'</span> <span class="token operator">+</span> <span class="token comment">// 设置颜色</span>
+    <span class="token string">'}\n'</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> <span class="token maybe-class-name">Sx</span> <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Sy</span> <span class="token operator">=</span> <span class="token number">1.5</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Sz</span> <span class="token operator">=</span> <span class="token number">1.0</span>
+
+  <span class="token keyword">function</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> canvas <span class="token operator">=</span> <span class="token dom variable">document</span><span class="token punctuation">.</span><span class="token method function property-access">getElementById</span><span class="token punctuation">(</span><span class="token string">'webgl'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> gl <span class="token operator">=</span> <span class="token function">getWebGLContext</span><span class="token punctuation">(</span>canvas<span class="token punctuation">)</span>
+
+    <span class="token comment">// 初始化着色器</span>
+    <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">initShaders</span><span class="token punctuation">(</span>gl<span class="token punctuation">,</span> <span class="token constant">VSHADER_SOURCE</span><span class="token punctuation">,</span> <span class="token constant">FSHADER_SOUCE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword control-flow">return</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 设置顶点位置</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span>gl<span class="token punctuation">)</span>
+
+    <span class="token comment">// 创建平移矩阵</span>
+    <span class="token keyword">const</span> xformMatrix <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token maybe-class-name">Sx</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Sy</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token maybe-class-name">Sz</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// 将平移矩阵传输给顶点着色器</span>
+    <span class="token keyword">const</span> u_xformMatrix <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getUniformLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'u_xformMatrix'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">uniformMatrix4fv</span><span class="token punctuation">(</span>u_xformMatrix<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> xformMatrix<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 指定绘图区域的背景颜色</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clearColor</span><span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">1.0</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 将指定缓冲区设定为预定的值，如果清空的是颜色缓冲区，那么将使用gl.clearColor()指定的值作为预设值。</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">COLOR_BUFFER_BIT</span><span class="token punctuation">)</span>
+    
+    <span class="token comment">// 绘制一个点</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">drawArrays</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">TRIANGLES</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// n为3</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">initVertexBuffers</span><span class="token punctuation">(</span><span class="token parameter">gl</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> vertices <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Float32Array</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+      <span class="token number">0.0</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span><span class="token punctuation">,</span>
+      <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">0.5</span>
+    <span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> n <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">// 点的个数</span>
+    <span class="token comment">// 创建缓冲区对象</span>
+    <span class="token keyword">const</span> vertexBuffer <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">createBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将缓冲区对象绑定到目标</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bindBuffer</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertexBuffer<span class="token punctuation">)</span>
+    <span class="token comment">// 向缓冲区对象中写入数据</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">bufferData</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token constant">ARRAY_BUFFER</span><span class="token punctuation">,</span> vertices<span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">STATIC_DRAW</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取a_Position变量的存储位置</span>
+    <span class="token keyword">const</span> a_Position <span class="token operator">=</span> gl<span class="token punctuation">.</span><span class="token method function property-access">getAttribLocation</span><span class="token punctuation">(</span>gl<span class="token punctuation">.</span><span class="token property-access">program</span><span class="token punctuation">,</span> <span class="token string">'a_Position'</span><span class="token punctuation">)</span>
+    <span class="token comment">// 将缓冲区对象分配给a_Position变量</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">vertexAttribPointer</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> gl<span class="token punctuation">.</span><span class="token constant">FLOAT</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token comment">// 连接a_Position变量与分配给它的缓冲区对象</span>
+    gl<span class="token punctuation">.</span><span class="token method function property-access">enableVertexAttribArray</span><span class="token punctuation">(</span>a_Position<span class="token punctuation">)</span>
+    <span class="token keyword control-flow">return</span> n<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span></code></pre></div><nav class="docs-nav"><div class="docs-nav__previous"><a href="/docs/webgl-programming-guide/chapter-02" class="button  button--small docs-nav__link">
+            ← WebGL入门
+          </a></div><div class="docs-nav__next"><a href="/docs/webgl-programming-guide/chapter-04" class="button  button--small docs-nav__link">
+            高级变换与动画基础 →
+          </a></div></nav></div><!----></section><div class="sidebar sidebar--right hide-for-small"><h3>On this page</h3><ul class="menu-item submenu"><li class="submenu__item submenu__item-depth-2"><a href="#绘制多个点" class="submenu__link">
+            绘制多个点
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#类型化数组" class="submenu__link">
+            类型化数组
+          </a></li><li class="submenu__item submenu__item-depth-2"><a href="#hello-triangle" class="submenu__link">
+            Hello Triangle
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#webgl可以绘制的基本图像" class="submenu__link">
+            WebGL可以绘制的基本图像
+          </a></li><li class="submenu__item submenu__item-depth-2"><a href="#移动旋转和缩放" class="submenu__link">
+            移动、旋转和缩放
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#齐次坐标" class="submenu__link">
+            齐次坐标
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#仿射变换" class="submenu__link">
+            仿射变换
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#平移" class="submenu__link">
+            平移
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#旋转" class="submenu__link">
+            旋转
+          </a></li><li class="submenu__item submenu__item-depth-3"><a href="#缩放" class="submenu__link">
+            缩放
+          </a></li></ul></div></div><!----></div>
+    <script>window.__INITIAL_STATE__={"data":{"doc":{"title":"绘制和变换三角形","headings":[{"value":"绘制和变换三角形"}],"subtitles":[{"depth":1,"value":"绘制和变换三角形","anchor":"#绘制和变换三角形"},{"depth":2,"value":"绘制多个点","anchor":"#绘制多个点"},{"depth":3,"value":"类型化数组","anchor":"#类型化数组"},{"depth":2,"value":"Hello Triangle","anchor":"#hello-triangle"},{"depth":3,"value":"WebGL可以绘制的基本图像","anchor":"#webgl可以绘制的基本图像"},{"depth":2,"value":"移动、旋转和缩放","anchor":"#移动旋转和缩放"},{"depth":3,"value":"齐次坐标","anchor":"#齐次坐标"},{"depth":3,"value":"仿射变换","anchor":"#仿射变换"},{"depth":3,"value":"平移","anchor":"#平移"},{"depth":3,"value":"旋转","anchor":"#旋转"},{"depth":3,"value":"缩放","anchor":"#缩放"}]}},"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.c96b45ce.js" defer></script><script src="/assets/js/page--src--templates--doc-page-vue.6d543d75.js" defer></script><script src="/assets/js/vue-remark--docs--webgl-programming-guide--chapter-03-md.328ba624.js" defer></script>
+  </body>
+</html>
